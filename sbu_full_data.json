@@ -1,0 +1,182 @@
+{
+    "TOTAL":  {
+                  "rkap":  0,
+                  "targetKum":  {
+
+                                },
+                  "targetSa":  {
+
+                               },
+                  "realKum":  {
+
+                              },
+                  "realSa":  [
+
+                             ]
+              },
+    "MP PLN 1":  {
+                     "rkap":  0,
+                     "targetKum":  {
+
+                                   },
+                     "targetSa":  {
+
+                                  },
+                     "realKum":  {
+
+                                 },
+                     "realSa":  [
+
+                                ]
+                 },
+    "MP PLN 2":  {
+                     "rkap":  0,
+                     "targetKum":  {
+
+                                   },
+                     "targetSa":  {
+
+                                  },
+                     "realKum":  {
+
+                                 },
+                     "realSa":  [
+
+                                ]
+                 },
+    "JBB":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "JTG":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "JBT":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "BNR":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "SBU":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "SBT":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "SBS":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "SLW":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            },
+    "KLM":  {
+                "rkap":  0,
+                "targetKum":  {
+
+                              },
+                "targetSa":  {
+
+                             },
+                "realKum":  {
+
+                            },
+                "realSa":  [
+
+                           ]
+            }
+}

@@ -1,0 +1,40 @@
+﻿No,ID PA,Nama Pelanggan,Layanan,Nilai (Rp Miliar),Bidang,SBU,PIC,Sales,Target Aktivasi,Aging Hari
+1,"PA-2026-0842","PLN UIP Kalimantan Bagian Barat","Penarikan Kabel OPGW 150kV Tayan - Sandai",54.8,"PLN UIT/UIP","SBU Kalimantan","Eko Wahyudi","Taufik Hidayat","2026-08-25",58
+2,"PA-2026-0843","PLN UID Sumatera Barat","Sistem Smart Metering AMI Tahap 3 Padang",42.1,"PLN UID/UIW","SBU Sumatera Bagian Tengah","Denny Siregar","Nadia Putri","2026-09-02",44
+3,"PA-2026-0844","PLN Indonesia Power PLTU Suralaya","Jaringan IoT Sensor Boiler & Turbin",36.5,"PLN Anak Perusahaan","SBU Jakarta & Banten","Fajar Nugroho","Arif Budiman","2026-09-08",36
+4,"PA-2026-0845","PLN UID Bali","EV Charging Station Hub Fast Charger",31.2,"PLN UID/UIW","SBU Bali & Nusa Tenggara","Maya Indah","Wayan Sudira","2026-09-12",31
+5,"PA-2026-0846","PLN UID Aceh","Sistem Radio Komunikasi DMR Banda Aceh",27.8,"PLN UID/UIW","SBU Sumatera Bagian Utara","Rizky Ramadhan","Teuku Iskandar","2026-09-15",25
+6,"PA-2026-0847","PLN UIT Jawa Bagian Barat","Fiber Optic Underground Cawang - Gandul",24,"PLN UIT/UIP","SBU Jawa Bagian Barat","Anwar Sadat","Maya Safitri","2026-09-18",19
+7,"PA-2026-0848","PT PLN (Persero) Kantor Pusat","Integrasi Cloud SAP S/4HANA Finance",19.6,"PLN Holding","SBU Kantor Pusat","Tri Prabowo","Cynthia Dewi","2026-09-20",16
+8,"PA-2026-0849","PLN UIP Maluku & Papua","Infrastruktur IT Kantor Proyek Ambon",16.3,"PLN UIT/UIP","SBU Sulawesi & IBT","Samuel Latumahina","Agustinus","2026-09-22",14
+9,"PA-2026-0850","PLN UID Jawa Barat UP3 Bekasi","Modernisasi Network LAN 18 ULP",14.5,"PLN UID/UIW","SBU Jawa Bagian Barat","Dwi Cahyono","Lilis Suryani","2026-09-24",11
+10,"PA-2026-0851","PLN Pusat Sertifikasi","Laboratorium Kalibrasi Smart Grid",11.2,"PLN Holding","SBU Kantor Pusat","Hadi Sucipto","Bayu Pamungkas","2026-09-26",8
+11,"PA-2026-0852","PLN UID Jawa Timur UP3 Surabaya Selatan","Automated Meter Reading Industri Rungkut",10.4,"PLN UID/UIW","SBU Jawa Bagian Timur","Surya Dharma","Anindita","2026-09-22",14
+12,"PA-2026-0853","PLN Nusantara Power UP Paiton","Backup Jaringan Dark Fiber Paiton",9.8,"PLN Anak Perusahaan","SBU Jawa Bagian Timur","Darmawan","Heru Prasetyo","2026-09-24",11
+13,"PA-2026-0854","PLN UIT Sumatera Bagian Selatan","Kabel OPGW Keramasan - Simpang Tiga",9.2,"PLN UIT/UIP","SBU Sumatera Bagian Selatan","Bambang Sudiro","Yosep Rizal","2026-09-25",9
+14,"PA-2026-0855","PLN UID Jateng & DIY UP3 Surakarta","Smart Distribution Transformer Monitor",8.6,"PLN UID/UIW","SBU Jawa Bagian Tengah","Prasetyo Utomo","Endah Sulastri","2026-09-25",9
+15,"PA-2026-0856","PLN UIW Kalimantan Selatan & Tengah","Sistem Teleproteksi GI Sampit",8,"PLN UID/UIW","SBU Kalimantan","Syamsul Bahri","Dian Anggraini","2026-09-26",7
+16,"PA-2026-0857","PLN UID Lampung UP3 Kotabumi","Relokasi Jalur FO Pelebaran Jalan",7.5,"PLN UID/UIW","SBU Sumatera Bagian Selatan","Indra Jaya","Ferry Irawan","2026-09-27",6
+17,"PA-2026-0858","PLN Puslitbang Duren Tiga","Supercomputer Server Rack Installation",7.1,"PLN Holding","SBU Kantor Pusat","Dr. Arifin","Rangga Pratama","2026-09-27",6
+18,"PA-2026-0859","PLN UID Riau UP3 Pekanbaru","IP VPN Redundant Link Kantor Wilayah",6.7,"PLN UID/UIW","SBU Sumatera Bagian Tengah","Nasrun","Helmi Hasan","2026-09-28",5
+19,"PA-2026-0860","PLN UIP Sulawesi UPK Gorontalo","Radio Komunikasi GI Isimu",6.2,"PLN UIT/UIP","SBU Sulawesi & IBT","Rahmat Isa","Novita Sari","2026-09-28",5
+20,"PA-2026-0861","PLN UIP Nusra UPK Kupang","CCTV Perimeter GI Bolok",5.8,"PLN UIT/UIP","SBU Bali & Nusa Tenggara","Yoseph Bala","Marselinus","2026-09-29",3
+21,"PA-2026-0862","PLN Indonesia Power UP Saguling","Sensor Debit Air & Dam Safety Monitoring",5.4,"PLN Anak Perusahaan","SBU Jawa Bagian Barat","Dadang Gunawan","Cecep Suryana","2026-09-29",3
+22,"PA-2026-0863","PLN UID Sumut UP3 Medan","Backbone Fiber Optic Kawasan Industri KIM",5.1,"PLN UID/UIW","SBU Sumatera Bagian Utara","Harun Lubis","Zulfahmi","2026-09-29",3
+23,"PA-2026-0864","PLN UID Jakarta Raya UP3 Menteng","Integrasi Fiber Optic MRT Fase 2",4.8,"PLN UID/UIW","SBU Jakarta & Banten","Irfan Syahputra","Aditya Nugraha","2026-09-30",2
+24,"PA-2026-0865","PLN UIW Papua UP3 Sorong","VSAT Site Raja Ampat",4.5,"PLN UID/UIW","SBU Sulawesi & IBT","Petrus Kambuaya","Dominggus","2026-09-30",2
+25,"PA-2026-0866","PLN UIT JBT UPT Bandung","Perangkat SDH Transmisi Padalarang",4.2,"PLN UIT/UIP","SBU Jawa Bagian Barat","Agus Salim","Robby Sugara","2026-09-30",2
+26,"PA-2026-0867","PLN UID Jatim UP3 Jember","Router Edge Coba Uji Petik AMI",3.9,"PLN UID/UIW","SBU Jawa Bagian Timur","Miftahul Huda","Luluk Maslucha","2026-09-30",2
+27,"PA-2026-0868","PLN Enjiniring Head Office","Cloud Workstation GPU Processing",3.6,"PLN Anak Perusahaan","SBU Kantor Pusat","Wisnu Wardhana","Gilang Ramadhan","2026-09-30",2
+28,"PA-2026-0869","PLN UID Sumbar UP3 Bukittinggi","Dedicated Radio Jam Gadang Link",3.3,"PLN UID/UIW","SBU Sumatera Bagian Tengah","Marlius","Erwan Tanjung","2026-09-30",2
+29,"PA-2026-0870","PLN UIP JBB UPK Cilegon","Access Point Luar Ruang Gardu Cilegon",3,"PLN UIT/UIP","SBU Jakarta & Banten","Tubagus Haidar","Entin Kartini","2026-09-30",1
+30,"PA-2026-0871","PLN Batam UP3 Nagoya","Jaringan Fiber Optic Perkantoran",2.7,"PLN Anak Perusahaan","SBU Sumatera Bagian Tengah","Kelvin","Stella","2026-09-30",1
+31,"PA-2026-0872","PLN UID Kalselteng UP3 Palangkaraya","Jaringan Antar Kantor Sub ULP",2.4,"PLN UID/UIW","SBU Kalimantan","Yance","Neneng","2026-09-30",1
+32,"PA-2026-0873","PLN Indonesia Power UP Cirata","Hydro Sensor Network",2.1,"PLN Anak Perusahaan","SBU Jawa Bagian Barat","Iwan Setiawan","Ujang Koswara","2026-09-30",1
+33,"PA-2026-0874","PLN UID Bali UP3 Kuta","Free WiFi Destinasi Pantai Pandawa",1.8,"PLN UID/UIW","SBU Bali & Nusa Tenggara","Gede Suartana","Ni Made Rai","2026-09-30",1
+34,"PA-2026-0875","PLN UIP JBT UPK 2 Solo","Interkoneksi Fiber Optic GI Palur",1.5,"PLN UIT/UIP","SBU Jawa Bagian Tengah","Sugeng Raharjo","Retno Wulandari","2026-09-30",0
+35,"PA-2026-0876","PLN UID Sulselrabar UP3 Makassar","IP Transit 10G Center",1.3,"PLN UID/UIW","SBU Sulawesi & IBT","Baso Amir","Hasnah","2026-09-30",0
+36,"PA-2026-0877","PLN UIW Maluku UP3 Ternate","Link Radio Gelombang Mikro",1.1,"PLN UID/UIW","SBU Sulawesi & IBT","Faisal Taher","Rosmini","2026-09-30",0
+37,"PA-2026-0878","PLN UID Aceh UP3 Meulaboh","Jaringan Komunikasi ULP Calang",0.9,"PLN UID/UIW","SBU Sumatera Bagian Utara","Maimun","Cut Intan","2026-09-30",0
+38,"PA-2026-0879","PLN Pusat Pemeliharaan Bandung","Mobile Diagnostic Tool Link",0.7,"PLN Holding","SBU Jawa Bagian Barat","Tateng","Ayu","2026-09-30",0
+39,"PA-2026-0880","PLN Icon Plus Regional Jawa Timur","POP Gateway Waru Sidoarjo",0.5,"PLN Holding","SBU Jawa Bagian Timur","Bagus Setyawan","Ratna","2026-09-30",0

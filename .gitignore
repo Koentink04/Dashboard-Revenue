@@ -1,0 +1,18 @@
+.vercel
+.thumbnail
+node_modules
+*.tmp
+~*.xlsx
+~*.xls
+.DS_Store
+Thumbs.db
+Revenue_Monitoring-main/
+~$*.xlsx
+~$*.xls
+Revenue_Monitoring-main (1)/
+Revenue_Monitoring-main*.zip
+
+Revenue_Monitoring-main (2)/
+Revenue_Monitoring-main*/
+*.bak*
+test_utang_capture.html

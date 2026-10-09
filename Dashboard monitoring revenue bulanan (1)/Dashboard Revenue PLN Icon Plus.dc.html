@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:linear-gradient(180deg,#F8FAFC 0%,#F1F5F9 100%);font-family:'Plus Jakarta Sans','Helvetica Neue',Helvetica,Arial,sans-serif;color:#0F172A;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+*{box-sizing:border-box}
+a{color:#0072CE;text-decoration:none}
+a:hover{color:#005AA3;text-decoration:underline}
+</style></helmet>
+<div style="display:grid;grid-template-columns:256px 1fr;min-width:1440px;min-height:100vh">
+
+<div style="background:#0A2540;color:#E2E8F0;display:flex;flex-direction:column;padding-bottom:20px">
+<div onClick="{{ goRevenue }}" style="display:flex;align-items:center;gap:12px;padding:20px 20px 22px;border-bottom:1px solid rgba(226,232,240,.12);cursor:pointer" title="Buka Dashboard Revenue">
+<div style="background:#fff;border-radius:10px;padding:6px 8px;display:flex;align-items:center">
+<img src="assets/pln-iconplus.png" alt="PLN Icon Plus" style="height:26px;display:block">
+</div>
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="font-size:12.5px;font-weight:800;letter-spacing:-.01em;color:#fff">Revenue Assurance</div>
+<div style="font-size:8.5px;font-weight:700;letter-spacing:.14em;color:#00A3E0">CORE PROCESS SUITE</div>
+</div>
+</div>
+
+<sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">
+<div style="padding:18px 0 2px">
+<div style="display:flex;align-items:center;gap:9px;padding:0 20px 10px">
+<span style="width:14px;height:2px;border-radius:1px;background:linear-gradient(90deg,#00A3E0,#00C076);flex:none"></span>
+<span style="font-size:9px;font-weight:800;letter-spacing:.16em;color:#00A3E0">{{ g.label }}</span>
+</div>
+<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="2">
+<div onClick="{{ i.onClick }}" style="{{ i.style }}" title="{{ i.hint }}">
+<span style="{{ i.barStyle }}"></span>
+<div style="flex:1;min-width:0">
+<div style="{{ i.nameStyle }}">{{ i.name }}</div>
+<div style="{{ i.subStyle }}">{{ i.sub }}</div>
+</div>
+<span style="{{ i.dotStyle }}"></span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+
+<div style="flex:1"></div>
+<div style="margin:18px 16px 0;padding:14px 15px;background:linear-gradient(150deg,rgba(0,163,224,.16),rgba(0,192,118,.1));border:1px solid rgba(0,163,224,.32);border-radius:14px">
+<div style="display:flex;align-items:center;gap:7px">
+<span style="width:7px;height:7px;border-radius:2px;background:#FFD100;flex:none"></span>
+<span style="font-size:8.5px;font-weight:800;letter-spacing:.13em;color:#9FB6CC">CUTOFF PERIODE</span>
+</div>
+<div style="font-size:14px;font-weight:800;margin-top:8px;color:#fff">30 September 2026</div>
+<div style="font-size:10.5px;font-weight:500;color:#9FB6CC;margin-top:3px">Sisa 4 hari kerja</div>
+<div style="height:6px;background:rgba(255,255,255,.14);border-radius:3px;margin-top:11px;overflow:hidden">
+<div style="width:82%;height:100%;background:linear-gradient(90deg,#FFD100,#00A3E0);border-radius:3px"></div>
+</div>
+</div>
+</div>
+
+<div style="min-width:0">
+
+<div style="background:#fff;border-bottom:1px solid #E2E8F0;padding:0 28px">
+<div style="display:flex;align-items:center;gap:18px;height:70px">
+<div style="display:flex;flex-direction:column;gap:3px;white-space:nowrap">
+<div style="font-size:18px;font-weight:800;letter-spacing:-.025em">{{ screenTitle }}</div>
+<div style="font-size:9px;font-weight:700;letter-spacing:.13em;color:#94A3B8">{{ screenSub }}</div>
+</div>
+<div style="display:flex;align-items:center;gap:9px;background:#F1F5F9;border:1px solid #E2E8F0;border-radius:999px;padding:9px 16px;min-width:280px" style-hover="border-color:rgba(0,163,224,.4)">
+<span style="width:11px;height:11px;border:2px solid #94A3B8;border-radius:50%;flex:none"></span>
+<span style="font-size:12px;font-weight:500;color:#94A3B8">Cari kontrak, PO, atau customer</span>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:7px">
+<span style="font-size:9px;font-weight:800;letter-spacing:.13em;color:#94A3B8;margin-right:3px">PERIODE</span>
+<sc-for list="{{ monthChips }}" as="m" hint-placeholder-count="12">
+<button onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</button>
+</sc-for>
+</div>
+<div style="width:1px;height:30px;background:#E2E8F0"></div>
+<div style="display:flex;align-items:center;gap:12px;white-space:nowrap">
+<div style="position:relative;width:36px;height:36px;border-radius:10px;background:#F1F5F9;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:rgba(0,163,224,.4)">
+<span style="width:12px;height:12px;border:2px solid #64748B;border-radius:3px 3px 6px 6px"></span>
+<span style="position:absolute;top:-3px;right:-3px;width:16px;height:16px;border-radius:50%;background:#FFD100;color:#0F172A;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff">3</span>
+</div>
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#00A3E0,#0072CE);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:#fff">AS</div>
+<div style="display:flex;flex-direction:column;gap:1px">
+<span style="font-size:12px;font-weight:700">Agung S.</span>
+<span style="font-size:9.5px;font-weight:600;color:#94A3B8">Revenue Assurance</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="padding:22px 28px 40px">
+
+<sc-if value="{{ isRevenue }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="5">
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:20px 22px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);position:relative;overflow:hidden;transition:border-color .18s" style-hover="border-color:rgba(0,163,224,.4)">
+<div style="{{ k.glow }}"></div>
+<div style="display:flex;align-items:center;gap:8px">
+<span style="{{ k.chip }}"></span>
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#94A3B8;white-space:nowrap">{{ k.label }}</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:6px;margin-top:14px">
+<span style="font-size:34px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#0F172A">{{ k.value }}</span>
+<span style="font-size:13px;font-weight:700;color:#94A3B8">{{ k.unit }}</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:14px">
+<span style="{{ k.tagStyle }}">{{ k.tag }}</span>
+<span style="font-size:10.5px;font-weight:500;color:#64748B;line-height:1.35">{{ k.sub }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,163,224,.4)">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px">
+<div>
+<div style="font-size:17px;font-weight:800;letter-spacing:-.02em">Revenue Bulanan 2026</div>
+<div style="font-size:11.5px;font-weight:500;color:#64748B;margin-top:4px">Klik balok untuk mengganti periode &middot; rangka putus-putus = target bulan</div>
+</div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end">
+<sc-for list="{{ legend }}" as="l" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:7px;white-space:nowrap">
+<span style="{{ l.dotStyle }}"></span>
+<span style="font-size:10.5px;font-weight:600;color:#64748B">{{ l.label }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin-top:14px;background:linear-gradient(180deg,#FBFDFE 0%,#F1F5F9 100%);border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px 4px">
+<svg viewBox="{{ chart.vb }}" width="100%" style="display:block;overflow:visible">
+<defs>
+<linearGradient id="plnBar" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#00A3E0"></stop>
+<stop offset="100%" stop-color="#00C076"></stop>
+</linearGradient>
+</defs>
+<sc-for list="{{ chart.grid }}" as="g" hint-placeholder-count="12">
+<polygon points="{{ g.points }}" style="{{ g.style }}"></polygon>
+</sc-for>
+<sc-for list="{{ chart.bars }}" as="b" hint-placeholder-count="12">
+<g style="{{ b.groupStyle }}">
+<polygon points="{{ b.targetTop }}" style="{{ b.targetStyle }}"></polygon>
+<polyline points="{{ b.targetEdge }}" style="{{ b.targetStyle }}"></polyline>
+<sc-for list="{{ b.faces }}" as="f" hint-placeholder-count="6">
+<polygon points="{{ f.points }}" style="{{ f.style }}"></polygon>
+</sc-for>
+<polygon points="{{ b.topPoints }}" style="{{ b.topStyle }}"></polygon>
+<text x="{{ b.labelX }}" y="{{ b.labelY }}" style="{{ b.labelStyle }}">{{ b.label }}</text>
+<text x="{{ b.valX }}" y="{{ b.valY }}" style="{{ b.valStyle }}">{{ b.valText }}</text>
+</g>
+</sc-for>
+<sc-for list="{{ chart.bars }}" as="b" hint-placeholder-count="12">
+<polygon points="{{ b.hitPoints }}" style="{{ b.hitStyle }}" onClick="{{ b.onClick }}" onMouseEnter="{{ b.onEnter }}" onMouseLeave="{{ b.onLeave }}"></polygon>
+</sc-for>
+<sc-if value="{{ chart.tip.on }}" hint-placeholder-val="{{ false }}">
+<g>
+<rect x="{{ chart.tip.x }}" y="{{ chart.tip.y }}" width="{{ chart.tip.w }}" height="{{ chart.tip.h }}" rx="10" style="{{ chart.tip.boxStyle }}"></rect>
+<sc-for list="{{ chart.tip.lines }}" as="l" hint-placeholder-count="5">
+<text x="{{ l.x }}" y="{{ l.y }}" style="{{ l.style }}">{{ l.text }}</text>
+<text x="{{ l.vx }}" y="{{ l.y }}" style="{{ l.vStyle }}">{{ l.value }}</text>
+</sc-for>
+</g>
+</sc-if>
+</svg>
+</div>
+
+<div style="display:flex;gap:30px;padding:16px 4px 0;border-top:1px solid #E2E8F0;margin-top:14px">
+<sc-for list="{{ trendStats }}" as="s" hint-placeholder-count="5">
+<div style="display:flex;flex-direction:column;gap:5px">
+<span style="font-size:8.5px;font-weight:800;letter-spacing:.12em;color:#94A3B8;white-space:nowrap">{{ s.label }}</span>
+<span style="{{ s.valueStyle }}">{{ s.value }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,192,118,.4)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+<div style="font-size:15.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">Status Uang Masuk</div>
+<span style="{{ periodBadge }}">{{ periodLabel }}</span>
+</div>
+<div style="display:flex;height:14px;border-radius:7px;overflow:hidden;background:#E2E8F0;margin-top:18px">
+<sc-for list="{{ buckets }}" as="b" hint-placeholder-count="4">
+<div style="{{ b.stackStyle }}" title="{{ b.title }}"></div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;margin-top:8px">
+<sc-for list="{{ buckets }}" as="b" hint-placeholder-count="4">
+<div style="padding:14px 0;border-bottom:1px solid #F1F5F9">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="{{ b.dotStyle }}"></span>
+<span style="font-size:12.5px;font-weight:700;flex:1">{{ b.label }}</span>
+<span style="font-size:15px;font-weight:800;letter-spacing:-.02em">{{ b.amount }}</span>
+<span style="{{ b.pctStyle }}">{{ b.pct }}</span>
+</div>
+<div style="font-size:10.5px;font-weight:500;color:#94A3B8;margin-top:6px">{{ b.note }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,192,118,.4)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+<div style="font-size:15.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">Revenue per Layanan</div>
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#94A3B8">5 LAYANAN</span>
+</div>
+<sc-if value="{{ hasContributors }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:19px">
+<sc-for list="{{ contributors }}" as="c" hint-placeholder-count="5">
+<div>
+<div style="display:flex;align-items:baseline;gap:10px">
+<span style="font-size:12px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span>
+<span style="font-size:13px;font-weight:800;letter-spacing:-.02em">{{ c.amount }}</span>
+<span style="font-size:10px;font-weight:700;color:#94A3B8;width:30px;text-align:right">{{ c.share }}</span>
+</div>
+<div style="display:flex;height:9px;border-radius:5px;overflow:hidden;background:#E2E8F0;margin-top:8px">
+<sc-for list="{{ c.parts }}" as="p" hint-placeholder-count="3">
+<div style="{{ p.style }}" title="{{ p.title }}"></div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ noContributors }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:19px;padding:30px 16px;background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:12px;text-align:center">
+<div style="font-size:12px;font-weight:700;color:#0F172A">Periode belum berjalan</div>
+<div style="font-size:10.5px;font-weight:500;color:#94A3B8;margin-top:6px">Target {{ periodTarget }} &middot; belum ada BA tervalidasi</div>
+</div>
+</sc-if>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,163,224,.4)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+<div style="font-size:15.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">Kendala &amp; Keputusan</div>
+<span style="{{ periodBadge }}">{{ periodLabel }}</span>
+</div>
+
+<sc-if value="{{ isOpenPeriod }}" hint-placeholder-val="{{ true }}">
+<div>
+<div style="display:flex;flex-direction:column;margin-top:14px">
+<sc-for list="{{ decisions }}" as="d" hint-placeholder-count="5">
+<div style="display:flex;align-items:flex-start;gap:11px;padding:12px 0;border-bottom:1px solid #F1F5F9">
+<span style="{{ d.tagStyle }}">{{ d.tag }}</span>
+<div style="flex:1;min-width:0">
+<div style="font-size:11.5px;font-weight:700;line-height:1.4">{{ d.label }}</div>
+<div style="font-size:10px;font-weight:500;color:#94A3B8;margin-top:4px">{{ d.sub }}</div>
+</div>
+<span style="font-size:13px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">{{ d.amount }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:flex-start;gap:11px;margin-top:14px;padding:13px 14px;background:rgba(255,209,0,.12);border:1px solid rgba(255,209,0,.5);border-radius:12px">
+<span style="width:18px;height:18px;border-radius:5px;background:#FFD100;color:#0F172A;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">!</span>
+<span style="font-size:10.5px;font-weight:600;color:#0F172A;line-height:1.45">{{ cutoffWarning }}</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isClosedPeriod }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:16px">
+<div style="display:flex;align-items:center;gap:9px;padding:13px 14px;background:rgba(0,192,118,.1);border:1px solid rgba(0,192,118,.4);border-radius:12px">
+<span style="width:8px;height:8px;border-radius:50%;background:#00C076;flex:none;box-shadow:0 0 0 4px rgba(0,192,118,.2)"></span>
+<span style="font-size:11.5px;font-weight:800;color:#047857">Periode sudah ditutup</span>
+</div>
+<div style="display:flex;flex-direction:column;margin-top:14px">
+<sc-for list="{{ closedFacts }}" as="f" hint-placeholder-count="4">
+<div style="display:flex;align-items:baseline;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F1F5F9">
+<span style="font-size:11.5px;font-weight:600;color:#64748B">{{ f.label }}</span>
+<span style="{{ f.valueStyle }}">{{ f.value }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isFuturePeriod }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:16px">
+<div style="padding:30px 16px;background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:12px;text-align:center">
+<div style="font-size:12px;font-weight:700;color:#0F172A">Belum ada kendala tercatat</div>
+<div style="font-size:10.5px;font-weight:500;color:#94A3B8;margin-top:6px">Periode dibuka setelah cutoff bulan sebelumnya</div>
+</div>
+<div style="display:flex;flex-direction:column;margin-top:14px">
+<sc-for list="{{ futureFacts }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;align-items:baseline;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F1F5F9">
+<span style="font-size:11.5px;font-weight:600;color:#64748B">{{ f.label }}</span>
+<span style="{{ f.valueStyle }}">{{ f.value }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px">
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,163,224,.4)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+<div style="font-size:15.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">Pencapaian per Kuartal</div>
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#94A3B8">REALISASI / TARGET</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 26px;margin-top:20px">
+<sc-for list="{{ quarters }}" as="q" hint-placeholder-count="4">
+<div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px">
+<span style="font-size:12.5px;font-weight:800">{{ q.label }}</span>
+<span style="{{ q.pctStyle }}">{{ q.pct }}</span>
+</div>
+<div style="height:12px;background:#E2E8F0;border-radius:6px;overflow:hidden;display:flex">
+<div style="{{ q.cashStyle }}"></div>
+<div style="{{ q.restStyle }}"></div>
+</div>
+<div style="font-size:10px;font-weight:600;color:#94A3B8;margin-top:8px">{{ q.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,192,118,.4)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+<div style="font-size:15.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap">Collection Rate</div>
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#94A3B8">CASH IN / DIAKUI</span>
+</div>
+<div style="display:flex;align-items:flex-end;gap:18px;margin-top:16px">
+<span style="font-size:52px;font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(135deg,#00A3E0,#00C076);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">{{ collectionRate }}</span>
+<div style="display:flex;flex-direction:column;gap:4px;padding-bottom:7px">
+<span style="font-size:12px;font-weight:800;color:#00C076">{{ collectionDelta }}</span>
+<span style="font-size:10.5px;font-weight:500;color:#94A3B8">YTD vs 2025</span>
+</div>
+</div>
+<div style="display:flex;gap:5px;align-items:flex-end;height:58px;margin-top:20px">
+<sc-for list="{{ spark }}" as="s" hint-placeholder-count="12">
+<div onClick="{{ s.onClick }}" style="{{ s.wrapStyle }}" title="{{ s.title }}">
+<div style="{{ s.barStyle }}"></div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:5px;margin-top:7px">
+<sc-for list="{{ spark }}" as="s" hint-placeholder-count="12">
+<div style="{{ s.labelStyle }}">{{ s.label }}</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:6px">
+<div style="font-size:10.5px;font-weight:500;color:#94A3B8;line-height:1.6">Nilai dalam miliar rupiah (M). Data mockup untuk keperluan desain.<br>Sumber: BA tervalidasi dari Otomatisasi BA (3) + konfirmasi delivery dari Dashboard CR/JR (1).</div>
+<div style="display:flex;gap:10px">
+<button style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:11px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:#0F172A;cursor:pointer" style-hover="border-color:rgba(0,163,224,.5)">Ekspor rekap</button>
+<button style="background:linear-gradient(135deg,#00A3E0,#0072CE);border:none;border-radius:10px;padding:11px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 6px 18px -4px rgba(0,114,206,.5)" style-hover="filter:brightness(1.08)">Tutup Periode {{ periodShort }}</button>
+</div>
+</div>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isModule }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+
+<div style="background:#0A2540;border-radius:16px;padding:26px 28px;color:#fff;position:relative;overflow:hidden">
+<div style="position:absolute;top:-70px;right:-40px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(0,163,224,.35) 0%,transparent 70%)"></div>
+<div style="font-size:9px;font-weight:800;letter-spacing:.14em;color:#00A3E0">{{ flowGroup }}</div>
+<div style="font-size:26px;font-weight:800;letter-spacing:-.035em;margin-top:9px">{{ flowTitle }}</div>
+<div style="font-size:12.5px;font-weight:500;color:#9FB6CC;margin-top:9px;max-width:760px;line-height:1.6">{{ flowDesc }}</div>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05)">
+<div style="font-size:9px;font-weight:800;letter-spacing:.13em;color:#94A3B8">POSISI DALAM RANTAI PROSES &nbsp;·&nbsp; KLIK UNTUK PINDAH</div>
+<div style="display:flex;align-items:center;gap:9px;margin-top:15px;flex-wrap:wrap">
+<sc-for list="{{ chain }}" as="c" hint-placeholder-count="7">
+<div style="display:flex;align-items:center;gap:9px">
+<div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
+<span style="{{ c.arrowStyle }}">&rarr;</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<sc-for list="{{ flowMetrics }}" as="m" hint-placeholder-count="4">
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:20px 22px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05);transition:border-color .18s" style-hover="border-color:rgba(0,163,224,.4)">
+<div style="display:flex;align-items:center;gap:8px">
+<span style="{{ m.chip }}"></span>
+<span style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#94A3B8;white-space:nowrap">{{ m.label }}</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:6px;margin-top:14px">
+<span style="font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1">{{ m.value }}</span>
+<span style="font-size:12px;font-weight:700;color:#94A3B8">{{ m.unit }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05)">
+<div style="font-size:15.5px;font-weight:800;letter-spacing:-.02em">Alur Proses</div>
+<div style="display:flex;align-items:stretch;gap:10px;margin-top:18px">
+<sc-for list="{{ flowSteps }}" as="s" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+<div style="flex:1;min-width:0;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:17px 17px 19px">
+<div style="display:flex;align-items:center;gap:9px">
+<span style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#00A3E0,#0072CE);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">{{ s.n }}</span>
+<span style="font-size:12.5px;font-weight:800;letter-spacing:-.01em">{{ s.name }}</span>
+</div>
+<div style="font-size:10.5px;font-weight:500;color:#64748B;margin-top:10px;line-height:1.55">{{ s.desc }}</div>
+<div style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:4px 9px;background:rgba(0,192,118,.1);border:1px solid rgba(0,192,118,.32);border-radius:999px">
+<span style="width:6px;height:6px;border-radius:50%;background:#00C076;flex:none"></span>
+<span style="font-size:9.5px;font-weight:800;color:#047857;white-space:nowrap">{{ s.out }}</span>
+</div>
+</div>
+<span style="{{ s.arrowStyle }}">&rarr;</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+<sc-for list="{{ flowLinks }}" as="l" hint-placeholder-count="2">
+<div style="background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px -2px rgba(0,114,206,.05)">
+<div style="font-size:9px;font-weight:800;letter-spacing:.13em;color:#94A3B8">{{ l.kicker }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:13px">
+<div style="min-width:0">
+<div style="font-size:14.5px;font-weight:800;letter-spacing:-.02em">{{ l.name }}</div>
+<div style="font-size:10.5px;font-weight:500;color:#64748B;margin-top:5px;line-height:1.5">{{ l.sub }}</div>
+</div>
+<button onClick="{{ l.onClick }}" style="{{ l.btnStyle }}" style-hover="filter:brightness(1.08)">{{ l.cta }}</button>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-size:10.5px;font-weight:500;color:#94A3B8;line-height:1.6;padding-top:6px">Angka mockup untuk keperluan desain. Setiap modul memasok data ke modul berikutnya hingga tutup buku di Dashboard Revenue.</div>
+
+</div>
+</sc-if>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1540},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#00A3E0&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#00A3E0&quot;,&quot;#0072CE&quot;,&quot;#00C076&quot;,&quot;#0A2540&quot;],&quot;section&quot;:&quot;Tampilan&quot;},&quot;depth&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:28,&quot;min&quot;:18,&quot;max&quot;:48,&quot;step&quot;:2,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Tampilan&quot;,&quot;unit&quot;:&quot;px&quot;}}">
+// bulan, target, cash in, tertagih menunggu, bermasalah, masih proses  (juta rupiah)
+const M = [
+  ['Jan','Januari',13800,12400,500,210,100],
+  ['Feb','Februari',13800,13100,600,250,100],
+  ['Mar','Maret',14500,12900,700,220,100],
+  ['Apr','April',14500,14350,500,230,100],
+  ['Mei','Mei',15200,13800,600,260,100],
+  ['Jun','Juni',15200,15100,600,240,100],
+  ['Jul','Juli',15800,14100,800,320,100],
+  ['Agu','Agustus',15800,15250,900,360,100],
+  ['Sep','September',16500,7500,3640,2270,1330],
+  ['Okt','Oktober',16500,0,0,0,0],
+  ['Nov','November',17200,0,0,0,0],
+  ['Des','Desember',17200,0,0,0,0]
+];
+const MONTHS = M.map(function(r){
+  return { short:r[0], long:r[1], target:r[2], cash:r[3], wait:r[4], risk:r[5], proc:r[6], real:r[3]+r[4]+r[5]+r[6] };
+});
+const SEP = 8;
+
+const CUSTOMERS = [
+  ['AP2T', 2800, 900, 500, 300],
+  ['P2APST', 1900, 800, 600, 250],
+  ['APKT', 1400, 700, 450, 280],
+  ['eProc', 900, 640, 420, 250],
+  ['Smarter', 500, 600, 300, 250]
+];
+
+const DECISIONS = [
+  ['KRITIS','BA belum ditandatangani klien','5 dokumen · Bank Arta, Dishub, Nusa Energi', 2240],
+  ['KRITIS','PO belum turun','3 penugasan sudah jalan tanpa PO', 1970],
+  ['TINGGI','Dispute volume / nilai','Perlu putusan komersial', 1790],
+  ['TINGGI','Overdue lebih dari 90 hari','Eskalasi ke direksi klien', 1250],
+  ['SEDANG','Open ticket menahan BA','5 ticket SLA belum closed', 730]
+];
+
+const NAV = [
+  ['PRODUCT MANAGEMENT', [
+    ['cat','Product Catalogue','Master layanan & baseline harga','Standarisasi definisi layanan dan spesifikasi'],
+    ['kontrak','Kontrak','Perjanjian, batas SLA, term komersial','Tata kelola parameter kontraktual dan scope']
+  ]],
+  ['PRE-OPERATIONS & INGESTION', [
+    ['opp','Opportunity & PO','Harga · Load SDM · Penugasan','Tarif dan alokasi sumber daya masuk ke layer operasional']
+  ]],
+  ['OPERATIONAL CONTROL', [
+    ['crjr','Dashboard CR / JR','Work package & WBS','Melacak tahap eksekusi dan milestone deliverable'],
+    ['sla','SLA & Open Ticket','Kepatuhan SLA, siklus ticket','Memantau turnaround insiden dari tugas operasional'],
+    ['ba','Otomatisasi BA','BAST · BASO · BAI','Menerbitkan berita acara dari WBS dan metrik SLA']
+  ]],
+  ['REVENUE ASSURANCE', [
+    ['rev','Revenue','Cutoff · Nilai · Kendala','Agregasi BA tervalidasi untuk tutup buku bulanan']
+  ]]
+];
+
+const CHAIN = ['cat','kontrak','opp','crjr','sla','ba','rev'];
+const SHORT = { cat:'Product Catalogue', kontrak:'Kontrak', opp:'Opportunity & PO', crjr:'Dashboard CR / JR', sla:'SLA & Open Ticket', ba:'Otomatisasi BA', rev:'Revenue' };
+// id: [grup, judul, deskripsi, langkah[nama,penjelasan,keluaran], metrik[label,nilai,unit], sumberDesc, tujuanDesc]
+const FLOWS = {
+  cat: ['PRODUCT MANAGEMENT','Product Catalogue','Master seluruh layanan PLN Icon Plus beserta baseline harga dan spesifikasi teknis. Semua penawaran dan kontrak wajib merujuk definisi di sini agar nilai revenue dapat diakui tanpa dispute.',
+    [['Definisi layanan','Nama, ruang lingkup, dan spesifikasi teknis layanan','Service ID'],
+     ['Baseline harga & SLA','Tarif dasar, satuan tagih, dan target SLA per layanan','Price book'],
+     ['Approval produk','Persetujuan komersial dan legal atas paket layanan','Approved'],
+     ['Publikasi katalog','Layanan siap dipakai penawaran dan kontrak','Katalog aktif']],
+    [['LAYANAN AKTIF','5',''],['REVISI HARGA 2026','12',''],['MENUNGGU APPROVAL','2',''],['REVENUE DITOPANG','16,50','M']],
+    '', 'Definisi layanan dan harga menjadi acuan penyusunan kontrak.'],
+  kontrak: ['PRODUCT MANAGEMENT','Kontrak','Tata kelola perjanjian pelanggan: term komersial, batas SLA, termin pembayaran, dan masa berlaku. Kontrak inilah yang mengikat nilai yang boleh ditagih pada setiap periode.',
+    [['Draft perjanjian','Menyusun scope dari layanan katalog','Draft'],
+     ['Negosiasi term & SLA','Kesepakatan harga, denda, dan termin bayar','Term final'],
+     ['Tanda tangan','Eksekusi kontrak oleh kedua pihak','Kontrak sah'],
+     ['Registrasi scope','Pencatatan scope dan termin ke sistem','Scope aktif']],
+    [['KONTRAK AKTIF','18',''],['NILAI TERIKAT','142,80','M'],['EXPIRE < 90 HARI','3',''],['SLA TERDEFINISI','100','%']],
+    'Scope dan harga diambil dari Product Catalogue.', 'Kontrak aktif membuka opportunity dan penerbitan PO.'],
+  opp: ['PRE-OPERATIONS & INGESTION','Opportunity & PO','Titik masuk permintaan pelanggan: penetapan harga dari katalog, perhitungan beban SDM, lalu penerbitan PO sebagai dasar penugasan operasional.',
+    [['Opportunity masuk','Permintaan pelanggan atas layanan berkontrak','Opportunity'],
+     ['Harga dari katalog','Kalkulasi nilai berdasarkan price book','Quotation'],
+     ['Load SDM & penugasan','Alokasi tim dan jadwal pelaksanaan','Assignment'],
+     ['PO terbit','Dasar formal pekerjaan dan penagihan','PO aktif']],
+    [['OPPORTUNITY OPEN','24',''],['PO TERBIT SEP','31',''],['PO BELUM TURUN','3',''],['NILAI PIPELINE','22,40','M']],
+    'Term komersial mengikuti kontrak aktif.', 'PO dan penugasan diturunkan menjadi work package.'],
+  crjr: ['OPERATIONAL CONTROL','Dashboard CR / JR','Pengendalian eksekusi lapangan: change request dan job request dipecah menjadi work package berbasis WBS, lalu dipantau hingga delivery dikonfirmasi.',
+    [['Work package (WBS)','Pemecahan penugasan menjadi paket kerja terukur','WP aktif'],
+     ['Eksekusi lapangan','Realisasi pekerjaan sesuai jadwal dan mutu','Progress'],
+     ['Konfirmasi delivery','Verifikasi hasil kerja oleh pengawas','Delivered'],
+     ['Milestone closed','Paket kerja dinyatakan selesai','Closed']],
+    [['WORK PACKAGE AKTIF','96',''],['ON SCHEDULE','87','%'],['DELIVERY DIKONFIRMASI','74',''],['TERLAMBAT','9','']],
+    'Penugasan dan PO dari layer pre-operations.', 'Progress WBS menjadi bahan penerbitan berita acara.'],
+  sla: ['OPERATIONAL CONTROL','SLA & Open Ticket','Pemantauan kepatuhan SLA dan siklus penyelesaian ticket. Ticket yang belum closed menahan penerbitan berita acara, sehingga langsung berdampak pada revenue periode.',
+    [['Ticket masuk','Insiden atau permintaan layanan tercatat','Ticket'],
+     ['Triage & assign','Prioritas dan penunjukan penanggung jawab','Assigned'],
+     ['Penyelesaian','Perbaikan dan pemulihan layanan','Resolved'],
+     ['Verifikasi SLA','Pengukuran turnaround terhadap komitmen','SLA metric']],
+    [['OPEN TICKET','5',''],['SLA COMPLIANCE','96,2','%'],['RATA TURNAROUND','4,1','jam'],['MENAHAN BA','5','']],
+    'Objek ticket berasal dari pekerjaan CR / JR.', 'Metrik SLA menjadi lampiran wajib berita acara.'],
+  ba: ['OPERATIONAL CONTROL','Otomatisasi BA','Penerbitan BAST, BASO, dan BAI secara otomatis dari data WBS dan metrik SLA. BA tervalidasi adalah satu-satunya dasar pengakuan revenue.',
+    [['Tarik data WBS & SLA','Konsolidasi progress dan kepatuhan layanan','Dataset'],
+     ['Generate BA','Penyusunan BAST / BASO / BAI otomatis','BA draft'],
+     ['Tanda tangan klien','Persetujuan pelanggan atas hasil kerja','BA signed'],
+     ['BA tervalidasi','Siap menjadi dasar invoice dan revenue','Validated']],
+    [['BA TERBIT SEP','62',''],['TERVALIDASI','57',''],['BELUM DITTD','5',''],['NILAI TERTAHAN','2,24','M']],
+    'Data delivery dan metrik SLA dari operational control.', 'BA tervalidasi diagregasi di Dashboard Revenue.']
+};
+
+// PLN Icon Plus tokens
+const T = {
+  cyan:'#00A3E0', cyanDeep:'#0072CE', green:'#00C076', greenDeep:'#10B981',
+  yellow:'#FFD100', navy:'#0F172A', navyDeep:'#0A2540',
+  text:'#0F172A', sub:'#64748B', muted:'#94A3B8', track:'#E2E8F0', rose:'#E11D48'
+};
+const C = { cash: T.green, wait: T.cyan, risk: T.rose, proc: T.muted };
+const SEG = [['cash','Terbayar'],['wait','Tertagih, menunggu bayar'],['risk','Bermasalah'],['proc','Masih proses']];
+
+function shade(h, f){
+  var n = parseInt(h.slice(1), 16);
+  var r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  if (f >= 1) { r = Math.round(r + (255 - r) * (f - 1)); g = Math.round(g + (255 - g) * (f - 1)); b = Math.round(b + (255 - b) * (f - 1)); }
+  else { r = Math.round(r * f); g = Math.round(g * f); b = Math.round(b * f); }
+  return 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+function fmtM(jt){ return (jt/1000).toFixed(2).replace('.',','); }
+function rpM(jt){ return fmtM(jt) + ' M'; }
+function pctS(a,b){ return b ? Math.round(a/b*100) + '%' : '0%'; }
+function hexA(c,a){ return c + a; }
+
+const IX = 0.866, IY = 0.5;
+const GRAD = 'linear-gradient(135deg,' + T.cyan + ' 0%,' + T.green + ' 100%)';
+
+class Component extends DCLogic {
+  state = { sel: SEP, hover: -1, screen: 'rev' };
+
+  get accent(){ return this.props.accent || T.cyan; }
+  get depth(){ var d = this.props.depth; return typeof d === 'number' ? d : 28; }
+
+  renderVals(){
+    var self = this, st = this.state, acc = this.accent;
+    var sel = MONTHS[st.sel];
+    var scr = st.screen, fl = FLOWS[scr];
+    function goTo(id){ return function(){ self.setState({ screen:id }); }; }
+    var linkDefs = [];
+    if (fl) {
+      var ci = CHAIN.indexOf(scr);
+      if (ci > 0) linkDefs.push(['MASUKAN DARI', CHAIN[ci-1], fl[5], 'Lihat modul', false]);
+      if (ci < CHAIN.length - 1) linkDefs.push(['KELUARAN KE', CHAIN[ci+1], fl[6], 'Lanjut ke modul', true]);
+    }
+
+    var kpiDefs = [
+      ['TARGET ' + sel.short.toUpperCase(), fmtM(sel.target), 'M', '', 'plan ' + sel.long + ' 2026', T.navyDeep],
+      ['REVENUE DIAKUI', fmtM(sel.real), 'M', pctS(sel.real, sel.target), 'BA tervalidasi + delivery terkonfirmasi', T.cyan],
+      ['TERBAYAR / CASH IN', fmtM(sel.cash), 'M', pctS(sel.cash, sel.real), 'dana sudah masuk rekening', T.green],
+      ['BELUM CAIR', fmtM(sel.wait + sel.risk), 'M', pctS(sel.wait + sel.risk, sel.real), 'invoice terbit, belum dibayar', T.cyanDeep],
+      ['BERMASALAH', fmtM(sel.risk), 'M', pctS(sel.risk, sel.real), 'overdue, dispute & kurang bayar', T.rose]
+    ];
+    var kpis = kpiDefs.map(function(d){
+      return {
+        label:d[0], value:d[1], unit:d[2], tag:d[3], sub:d[4],
+        glow:{ position:'absolute', top:'-38px', right:'-38px', width:'96px', height:'96px', borderRadius:'50%', background:'radial-gradient(circle,' + hexA(d[5],'22') + ' 0%,transparent 70%)' },
+        chip:{ width:'10px', height:'10px', borderRadius:'3px', background:d[5], flex:'none' },
+        tagStyle: d[3] ? { fontSize:'10.5px', fontWeight:800, color:d[5], background:hexA(d[5],'16'), border:'1px solid '+hexA(d[5],'33'), padding:'3px 8px', borderRadius:'999px', flex:'none' } : { display:'none' }
+      };
+    });
+
+    // ---------- isometric chart ----------
+    var s = self.depth, colW = 62, H = 168, maxV = 0;
+    MONTHS.forEach(function(m){ maxV = Math.max(maxV, m.target, m.real); });
+    var hScale = H / maxV;
+    var dx = s * IX, dy = s * IY;
+    function poly(pts){ return pts.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' '); }
+
+    var bars = [], grid = [];
+    MONTHS.forEach(function(m, i){
+      var ox = i * colW;
+      function A(y){ return [ox, -dy - y]; }
+      function B(y){ return [ox + dx, -y]; }
+      function Cp(y){ return [ox, dy - y]; }
+      function D(y){ return [ox - dx, -y]; }
+
+      grid.push({ points: poly([A(0),B(0),Cp(0),D(0)]), style:{ fill:'#E2E8F0', stroke:'#CBD5E1', strokeWidth:1 } });
+
+      var active = st.sel === i, hovered = st.hover === i;
+      var faces = [], acc2 = 0, topColor = C.cash, topMax = 0;
+      SEG.forEach(function(g){
+        var v = m[g[0]];
+        if (!v) return;
+        var y1 = acc2 * hScale, y2 = (acc2 + v) * hScale;
+        acc2 += v;
+        if (v > topMax) { topMax = v; topColor = C[g[0]]; }
+        faces.push({ points: poly([D(y2),Cp(y2),Cp(y1),D(y1)]), style:{ fill: shade(C[g[0]], 0.95), stroke:'rgba(255,255,255,.34)', strokeWidth:0.6 } });
+        faces.push({ points: poly([B(y2),Cp(y2),Cp(y1),B(y1)]), style:{ fill: shade(C[g[0]], 0.7), stroke:'rgba(255,255,255,.22)', strokeWidth:0.6 } });
+      });
+
+      var hTot = acc2 * hScale, tH = m.target * hScale;
+      var topH = Math.max(hTot, tH) + 9;
+
+      bars.push({
+        groupStyle:{ opacity: active ? 1 : hovered ? 0.94 : 0.5, transition:'opacity .18s' },
+        faces: faces,
+        topPoints: acc2 ? poly([A(hTot),B(hTot),Cp(hTot),D(hTot)]) : '',
+        topStyle: acc2 ? { fill: shade(topColor, 1.5), stroke: shade(topColor, 0.98), strokeWidth:0.9 } : { display:'none' },
+        targetTop: poly([A(tH),B(tH),Cp(tH),D(tH)]),
+        targetEdge: poly([Cp(tH), Cp(0)]),
+        targetStyle:{ fill:'none', stroke: active ? '#64748B' : '#CBD5E1', strokeWidth:1.2, strokeDasharray:'3 3' },
+        label: m.short,
+        labelX: ox.toFixed(1), labelY: (dy + 18).toFixed(1),
+        labelStyle:{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:'11px', fontWeight: active?800:600, fill: active ? T.text : T.muted, textAnchor:'middle' },
+        valText: m.real ? fmtM(m.real) : '—',
+        valX: ox.toFixed(1), valY: (-topH - 7).toFixed(1),
+        valStyle: (active || hovered) ? { fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:'12px', fontWeight:800, fill:T.text, textAnchor:'middle' } : { display:'none' },
+        hitPoints: poly([D(topH),A(topH),B(topH),B(0),Cp(0),D(0)]),
+        hitStyle:{ fill:'#000', fillOpacity:0, cursor:'pointer' },
+        onClick: function(){ self.setState({ sel:i }); },
+        onEnter: function(){ self.setState({ hover:i }); },
+        onLeave: function(){ self.setState({ hover:-1 }); }
+      });
+    });
+
+    var vbX = -dx - 20, vbY = -H - 48, vbW = 11*colW + 2*dx + 40, vbH = H + 48 + dy + 28;
+
+    var hi = st.hover;
+    var tip = { on:false };
+    if (hi >= 0) {
+      var hm = MONTHS[hi];
+      var lines = [{ label: hm.long + ' 2026', value: hm.real ? fmtM(hm.real) + ' M' : 'belum berjalan', head:true },
+                   { label:'Target', value: fmtM(hm.target) + ' M' }];
+      if (hm.real) SEG.forEach(function(g){ if (hm[g[0]]) lines.push({ label:g[1], value: fmtM(hm[g[0]]) + ' M', color:C[g[0]] }); });
+      var tw = 216, th = 24 + lines.length * 17;
+      var ax = hi * colW, ay = -Math.max(hm.real, hm.target) * hScale - 28;
+      var tx = Math.min(Math.max(ax - tw/2, vbX + 4), vbX + vbW - tw - 4);
+      var ty = Math.max(ay - th, vbY + 4);
+      tip = {
+        on:true, x:tx.toFixed(1), y:ty.toFixed(1), w:tw, h:th,
+        boxStyle:{ fill:T.navyDeep, fillOpacity:0.97, stroke:'rgba(0,163,224,.45)', strokeWidth:1 },
+        lines: lines.map(function(l, k){
+          return {
+            text:l.label, value:l.value,
+            x:(tx + 13).toFixed(1), vx:(tx + tw - 13).toFixed(1), y:(ty + 22 + k*17).toFixed(1),
+            style:{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize: l.head ? '12px' : '10.5px', fontWeight: l.head?800:600, fill: l.head ? '#fff' : (l.color || '#9FB6CC') },
+            vStyle:{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize: l.head ? '12px' : '10.5px', fontWeight:800, fill: l.head ? '#fff' : '#E2E8F0', textAnchor:'end' }
+          };
+        })
+      };
+    }
+
+    var bTotal = sel.real || 1;
+    var notes = { cash:'Dana sudah masuk rekening perusahaan', wait:'Invoice terbit, masih dalam termin pembayaran', risk:'Overdue, dispute, dan kurang bayar', proc:'BA atau PO belum lengkap — masih bisa dikejar' };
+    var buckets = SEG.map(function(g){
+      var v = sel[g[0]];
+      return {
+        label:g[1], amount: rpM(v), pct: pctS(v, bTotal), note: notes[g[0]], title: g[1] + ': ' + rpM(v),
+        dotStyle:{ width:'11px', height:'11px', borderRadius:'3px', background:C[g[0]], flex:'none' },
+        pctStyle:{ fontSize:'10.5px', fontWeight:800, color:C[g[0]], background:hexA(C[g[0]],'16'), border:'1px solid '+hexA(C[g[0]],'33'), padding:'3px 8px', borderRadius:'999px' },
+        stackStyle:{ width:(v/bTotal*100)+'%', background:C[g[0]] }
+      };
+    });
+
+    var sepM = MONTHS[SEP];
+    var contributors = CUSTOMERS.map(function(c){
+      var parts = SEG.map(function(g, gi){
+        var share = sepM[g[0]] ? c[gi+1] / sepM[g[0]] : 0;
+        return { key:g[0], label:g[1], v: share * sel[g[0]] };
+      });
+      return { name:c[0], tot: parts.reduce(function(a,p){ return a+p.v; },0), parts:parts };
+    }).filter(function(c){ return c.tot > 0.5; }).sort(function(a,b){ return b.tot - a.tot; }).slice(0,5)
+      .map(function(c){
+        return {
+          name:c.name, amount: rpM(c.tot), share: pctS(c.tot, sel.real),
+          parts: c.parts.filter(function(p){ return p.v > 0.5; }).map(function(p){
+            return { style:{ width:(p.v/c.tot*100)+'%', background:C[p.key] }, title:p.label + ': ' + rpM(p.v) };
+          })
+        };
+      });
+
+    var quarters = [0,1,2,3].map(function(qi){
+      var ms = MONTHS.slice(qi*3, qi*3+3);
+      var tg = ms.reduce(function(a,m){ return a+m.target; },0);
+      var re = ms.reduce(function(a,m){ return a+m.real; },0);
+      var ca = ms.reduce(function(a,m){ return a+m.cash; },0);
+      var p = tg ? re/tg : 0;
+      var col = re === 0 ? T.muted : p >= 1 ? T.green : p >= .95 ? T.cyanDeep : T.rose;
+      return {
+        label:'Q' + (qi+1) + ' 2026',
+        pct: re ? Math.round(p*100) + '%' : 'belum jalan',
+        pctStyle:{ fontSize:'11px', fontWeight:800, color:col, background:hexA(col,'16'), border:'1px solid '+hexA(col,'33'), padding:'3px 9px', borderRadius:'999px' },
+        text: rpM(re) + ' / target ' + rpM(tg),
+        cashStyle:{ width:(ca/tg*100)+'%', background:T.green },
+        restStyle:{ width:((re-ca)/tg*100)+'%', background:T.cyan }
+      };
+    });
+
+    var spark = MONTHS.map(function(m, i){
+      var r = m.real ? m.cash/m.real : 0;
+      var active = st.sel === i;
+      return {
+        label:m.short, title: m.long + ' — collection ' + (m.real ? Math.round(r*100)+'%' : 'belum berjalan'),
+        onClick: function(){ self.setState({ sel:i }); },
+        wrapStyle:{ flex:1, height:'100%', display:'flex', alignItems:'flex-end', cursor:'pointer', background: active ? '#F1F5F9' : 'transparent', borderRadius:'5px' },
+        barStyle:{ width:'100%', height: m.real ? (r*100)+'%' : '5%', minHeight:'4px', borderRadius:'5px 5px 2px 2px',
+          background: !m.real ? T.track : r >= .9 ? GRAD : r >= .8 ? T.cyan : T.cyanDeep,
+          boxShadow: active ? '0 0 0 2px ' + T.navy : 'none' },
+        labelStyle:{ flex:1, textAlign:'center', fontSize:'9px', fontWeight: active?800:600, color: active ? T.text : T.muted }
+      };
+    });
+
+    var ytdR = MONTHS.reduce(function(a,m){ return a+m.real; },0);
+    var ytdC = MONTHS.reduce(function(a,m){ return a+m.cash; },0);
+    var ytdT = MONTHS.slice(0,9).reduce(function(a,m){ return a+m.target; },0);
+    var below = MONTHS.filter(function(m){ return m.real && m.real < m.target; }).length;
+    var bestM = MONTHS.filter(function(m){ return m.real; }).reduce(function(a,m){ return m.real/m.target > a.real/a.target ? m : a; });
+    var atRisk = DECISIONS.slice(0,2).reduce(function(a,d){ return a+d[3]; },0);
+
+    return {
+      navGroups: NAV.map(function(g){
+        return {
+          label:g[0],
+          items: g[1].map(function(it){
+            var active = it[0] === scr;
+            return {
+              name:it[1], sub:it[2], hint:it[3], onClick: goTo(it[0]),
+              style:{ display:'flex', alignItems:'center', gap:'12px', padding:'11px 20px', cursor: active?'default':'pointer',
+                background: active ? 'linear-gradient(90deg,rgba(0,163,224,.22),rgba(0,163,224,.04))' : 'transparent',
+                borderLeft:'3px solid ' + (active ? T.cyan : 'transparent') },
+              barStyle:{ width:'4px', height:'20px', borderRadius:'2px', flex:'none',
+                background: active ? GRAD : 'rgba(226,232,240,.16)' },
+              nameStyle:{ fontSize:'12px', fontWeight: active?800:600, color: active ? '#fff' : '#C7D5E2', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' },
+              subStyle:{ fontSize:'9.5px', fontWeight:500, color:'#5B7794', marginTop:'3px', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' },
+              dotStyle: active ? { width:'6px', height:'6px', borderRadius:'50%', background:T.green, flex:'none', boxShadow:'0 0 0 4px rgba(0,192,118,.2)' } : { display:'none' }
+            };
+          })
+        };
+      }),
+
+      goRevenue: goTo('rev'),
+      isRevenue: scr === 'rev',
+      isModule: !!fl,
+      screenTitle: fl ? fl[1] : 'Dashboard Revenue',
+      screenSub: fl ? fl[0] : 'CUTOFF AKHIR BULAN · NILAI · KENDALA',
+      flowGroup: fl ? fl[0] : '',
+      flowTitle: fl ? fl[1] : '',
+      flowDesc: fl ? fl[2] : '',
+      chain: CHAIN.map(function(id, i){
+        var on = id === scr;
+        return {
+          label: SHORT[id], onClick: goTo(id),
+          style:{ padding:'9px 14px', borderRadius:'999px', fontSize:'11.5px', fontWeight:800, cursor:'pointer', whiteSpace:'nowrap',
+            background: on ? GRAD : '#F8FAFC', color: on ? '#fff' : T.sub,
+            border:'1px solid ' + (on ? 'transparent' : '#E2E8F0'),
+            boxShadow: on ? '0 6px 16px -6px rgba(0,114,206,.6)' : 'none' },
+          arrowStyle: i === CHAIN.length - 1 ? { display:'none' } : { fontSize:'13px', fontWeight:700, color:'#CBD5E1' }
+        };
+      }),
+      flowSteps: (fl ? fl[3] : []).map(function(s, i){
+        return { n: i+1, name:s[0], desc:s[1], out:s[2],
+          arrowStyle: i === (fl[3].length - 1) ? { display:'none' } : { fontSize:'15px', fontWeight:700, color:'#CBD5E1', flex:'none' } };
+      }),
+      flowMetrics: (fl ? fl[4] : []).map(function(m, i){
+        var cols = [T.cyan, T.green, T.cyanDeep, T.navyDeep];
+        return { label:m[0], value:m[1], unit:m[2], chip:{ width:'10px', height:'10px', borderRadius:'3px', background:cols[i%4], flex:'none' } };
+      }),
+      flowLinks: linkDefs.map(function(l){
+        return { kicker:l[0], name: SHORT[l[1]], sub:l[2], cta:l[3], onClick: goTo(l[1]),
+          btnStyle:{ appearance:'none', border: l[4] ? 'none' : '1px solid #E2E8F0', borderRadius:'10px', padding:'11px 18px',
+            fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:'12px', fontWeight:800, cursor:'pointer', whiteSpace:'nowrap', flex:'none',
+            background: l[4] ? GRAD : '#fff', color: l[4] ? '#fff' : T.text,
+            boxShadow: l[4] ? '0 6px 18px -4px rgba(0,114,206,.5)' : 'none' } };
+      }),
+
+      kpis: kpis,
+      legend: SEG.map(function(g){
+        return { label:g[1], dotStyle:{ width:'10px', height:'10px', borderRadius:'3px', background:C[g[0]], flex:'none' } };
+      }).concat([{ label:'Target bulan', dotStyle:{ width:'10px', height:'10px', borderRadius:'3px', border:'1.5px dashed #94A3B8', flex:'none' } }]),
+
+      chart: { vb: vbX.toFixed(1) + ' ' + vbY.toFixed(1) + ' ' + vbW.toFixed(1) + ' ' + vbH.toFixed(1), grid:grid, bars:bars, tip:tip },
+
+      trendStats: [
+        ['TARGET YTD (JAN–SEP)', rpM(ytdT), T.text],
+        ['REALISASI YTD', rpM(MONTHS.slice(0,9).reduce(function(a,m){return a+m.real;},0)), T.cyan],
+        ['CASH IN YTD', rpM(ytdC), T.green],
+        ['BULAN TERBAIK', bestM.short + ' · ' + pctS(bestM.real, bestM.target), T.green],
+        ['DI BAWAH TARGET', below + ' dari 9 bulan', T.rose]
+      ].map(function(s){
+        return { label:s[0], value:s[1], valueStyle:{ fontSize:'15px', fontWeight:800, letterSpacing:'-.02em', color:s[2] } };
+      }),
+
+      periodLabel: sel.long.toUpperCase() + ' 2026',
+      periodShort: sel.long,
+      periodTarget: rpM(sel.target),
+      periodBadge:{ fontSize:'9px', fontWeight:800, letterSpacing:'.1em', color:T.cyanDeep, background:'rgba(0,163,224,.1)', border:'1px solid rgba(0,163,224,.3)', padding:'4px 9px', borderRadius:'999px', whiteSpace:'nowrap' },
+      monthChips: MONTHS.map(function(m,i){
+        var active = st.sel === i;
+        return {
+          label:m.short,
+          onClick: function(){ self.setState({ sel:i }); },
+          style:{ appearance:'none', background: active ? GRAD : '#F8FAFC', color: active ? '#fff' : (m.real ? T.sub : T.muted),
+            border:'1px solid ' + (active ? 'transparent' : '#E2E8F0'), borderRadius:'8px', padding:'6px 10px',
+            fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:'10.5px', fontWeight:800, cursor:'pointer',
+            boxShadow: active ? '0 4px 12px -3px rgba(0,114,206,.5)' : 'none' }
+        };
+      }),
+
+      buckets: buckets,
+      contributors: contributors,
+      hasContributors: contributors.length > 0,
+      noContributors: contributors.length === 0,
+
+      isOpenPeriod: st.sel === SEP,
+      isClosedPeriod: st.sel < SEP,
+      isFuturePeriod: st.sel > SEP,
+      decisions: DECISIONS.map(function(d){
+        var c = d[0] === 'KRITIS' ? T.rose : d[0] === 'TINGGI' ? T.cyanDeep : T.muted;
+        return {
+          tag:d[0], label:d[1], sub:d[2], amount: rpM(d[3]),
+          tagStyle:{ fontSize:'8.5px', fontWeight:800, letterSpacing:'.07em', color:c, background:hexA(c,'14'), border:'1px solid '+hexA(c,'38'), padding:'4px 7px', borderRadius:'6px', whiteSpace:'nowrap', marginTop:'1px', flex:'none' }
+        };
+      }),
+      cutoffWarning: rpM(atRisk) + ' berisiko tidak masuk periode September jika BA dan PO tidak selesai dalam 4 hari kerja.',
+      closedFacts: [
+        ['Realisasi terhadap target', pctS(sel.real, sel.target), sel.real >= sel.target ? T.green : T.rose],
+        ['Collection rate', pctS(sel.cash, sel.real), T.green],
+        ['Sisa belum cair', rpM(sel.wait + sel.risk), T.cyanDeep],
+        ['Kendala terselesaikan', 'seluruhnya', T.text]
+      ].map(function(f){
+        return { label:f[0], value:f[1], valueStyle:{ fontSize:'13px', fontWeight:800, letterSpacing:'-.02em', color:f[2] } };
+      }),
+      futureFacts: [
+        ['Target periode', rpM(sel.target), T.text],
+        ['Kontrak aktif menopang', '18 kontrak', T.text],
+        ['PO terbit di muka', rpM(4200), T.cyan]
+      ].map(function(f){
+        return { label:f[0], value:f[1], valueStyle:{ fontSize:'13px', fontWeight:800, letterSpacing:'-.02em', color:f[2] } };
+      }),
+
+      quarters: quarters,
+      collectionRate: pctS(ytdC, ytdR),
+      collectionDelta: '+2,4 pt',
+      spark: spark
+    };
+  }
+}
+</script>
+</body>
+</html>

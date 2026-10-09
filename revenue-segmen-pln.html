@@ -1,0 +1,362 @@
+<title>Revenue Segmen PLN 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: navy report banner → KPI cards with icons → two "PENDAPATAN PLN" chart panels (kumulatif, stand alone)
+   with navy pill headers like the slide deck → selisih + catatan side by side → tabel.
+   Color language follows the deck: Target = biru muda, Realisasi = navy, Prognosa = oranye. */
+:root{
+  --bg:#eef3f8; --surface:#ffffff; --surface-2:#f3f7fb; --line:#d9e3ee; --grid:#e6edf4;
+  --ink:#0c2340; --ink-2:#4b5f75; --ink-3:#8696a8;
+  --navy:#0e3b74; --navy-2:#1c5aa6; --navy-deep:#0a2a55;
+  --target:#7fb0e3; --target-2:#5b97d6;
+  --actual:#14427f; --actual-2:#215fae;
+  --fc:#f08a3c; --fc-2:#e2691a;
+  --hl:rgba(91,151,214,.10); --hl-line:#8db8e6;
+  --good:#138a3e; --good-bg:#e3f5ea; --warn:#a86a00; --warn-bg:#fff1d6; --crit:#c2332f; --crit-bg:#fde6e5;
+  --pos:#215fae; --neg:#d0453f;
+  --banner-1:#0a2a55; --banner-2:#1c5aa6; --on-banner:#ffffff; --on-banner-2:#bcd6f3;
+  --shadow:0 1px 2px rgba(12,35,64,.05),0 8px 24px rgba(12,35,64,.06);
+  --font-display:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-body:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08121e; --surface:#0f1c2c; --surface-2:#142538; --line:#21364d; --grid:#1a2c40;
+  --ink:#eaf2fb; --ink-2:#a7bbd0; --ink-3:#6f86a0;
+  --navy:#2d6fc0; --navy-2:#4b8ad6; --navy-deep:#0d2a4f;
+  --target:#3d6b9e; --target-2:#4f82bb;
+  --actual:#6aa6ec; --actual-2:#8cbcf3;
+  --fc:#f39a52; --fc-2:#e57a2c;
+  --hl:rgba(106,166,236,.08); --hl-line:#33577f;
+  --good:#5fd38a; --good-bg:rgba(95,211,138,.14); --warn:#f6c15a; --warn-bg:rgba(246,193,90,.14); --crit:#ff8a84; --crit-bg:rgba(255,138,132,.14);
+  --pos:#6aa6ec; --neg:#ff7b75;
+  --banner-1:#0b2546; --banner-2:#164a8a; --on-banner:#ffffff; --on-banner-2:#a9c8ee;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#08121e; --surface:#0f1c2c; --surface-2:#142538; --line:#21364d; --grid:#1a2c40;
+  --ink:#eaf2fb; --ink-2:#a7bbd0; --ink-3:#6f86a0;
+  --navy:#2d6fc0; --navy-2:#4b8ad6; --navy-deep:#0d2a4f;
+  --target:#3d6b9e; --target-2:#4f82bb;
+  --actual:#6aa6ec; --actual-2:#8cbcf3;
+  --fc:#f39a52; --fc-2:#e57a2c;
+  --hl:rgba(106,166,236,.08); --hl-line:#33577f;
+  --good:#5fd38a; --good-bg:rgba(95,211,138,.14); --warn:#f6c15a; --warn-bg:rgba(246,193,90,.14); --crit:#ff8a84; --crit-bg:rgba(255,138,132,.14);
+  --pos:#6aa6ec; --neg:#ff7b75;
+  --banner-1:#0b2546; --banner-2:#164a8a; --on-banner:#ffffff; --on-banner-2:#a9c8ee;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.5}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:grid;gap:18px}
+
+/* banner */
+.banner{position:relative;overflow:hidden;border-radius:16px;padding:22px 24px;color:var(--on-banner);
+  background:linear-gradient(120deg,var(--banner-1) 0%,var(--banner-2) 100%);display:flex;flex-wrap:wrap;gap:14px 28px;align-items:flex-end;justify-content:space-between}
+.banner::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 48px),
+             radial-gradient(600px 200px at 85% 0%,rgba(255,255,255,.18),transparent 70%)}
+.banner>*{position:relative;z-index:1;min-width:0}
+.eyebrow{font:700 11px/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--on-banner-2)}
+h1{font:800 clamp(22px,3.4vw,32px)/1.12 var(--font-display);margin:8px 0 6px;letter-spacing:-.015em;text-wrap:balance}
+.banner p{margin:0;color:var(--on-banner-2);max-width:60ch}
+.banner p b{color:var(--on-banner)}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.meta span{font:600 12px var(--font-body);padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);white-space:nowrap}
+.meta span.fcp::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--fc);margin-right:7px;vertical-align:1px}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.kpis{grid-template-columns:minmax(0,1fr)}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;box-shadow:var(--shadow)}
+.kpi .ic{grid-row:span 3;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line)}
+.kpi .ic svg{width:24px;height:24px}
+.kpi .k{font:700 11px/1.3 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.kpi .v{font:800 clamp(20px,2.4vw,26px)/1.15 var(--font-display);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kpi .v small{font:600 13px var(--font-body);color:var(--ink-3);letter-spacing:0}
+.kpi .d{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:5px;font:700 11.5px/1 var(--font-mono);padding:4px 8px;border-radius:999px;white-space:nowrap}
+.pill.good{color:var(--good);background:var(--good-bg)} .pill.warn{color:var(--warn);background:var(--warn-bg)} .pill.crit{color:var(--crit);background:var(--crit-bg)}
+
+/* panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 12px;box-shadow:var(--shadow);min-width:0}
+.ph{display:flex;flex-wrap:wrap;gap:10px 16px;justify-content:space-between;align-items:center;margin-bottom:6px}
+.tagh{display:inline-grid;gap:2px;padding:9px 16px 8px;border-radius:10px;background:linear-gradient(120deg,var(--navy-deep),var(--navy));color:#fff;box-shadow:0 4px 12px rgba(14,59,116,.25)}
+.tagh b{font:800 13px/1.1 var(--font-display);letter-spacing:.04em}
+.tagh span{font:600 10.5px/1.1 var(--font-body);letter-spacing:.06em;color:#bcd6f3}
+.insight{color:var(--ink-2);font-size:13px;margin:4px 0 0;max-width:70ch}
+.insight b{color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;font-weight:600;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.t{background:var(--target)} .sw.a{background:var(--actual)} .sw.f{background:var(--fc)}
+.sw.pos{background:var(--pos)} .sw.neg{background:var(--neg)}
+.scroll{overflow-x:auto;overflow-y:visible;margin-inline:-6px;padding-inline:6px;scrollbar-width:thin}
+.chart{position:relative;min-width:680px}
+.chart.small{min-width:0}
+.chart svg{display:block;width:100%;overflow:visible}
+.hint{display:none;font-size:11px;color:var(--ink-3);margin:2px 0 0}
+@media (max-width:720px){.hint{display:block}}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:900px){.two{grid-template-columns:minmax(0,1fr)}}
+.panel h2{font:800 16px/1.3 var(--font-display);margin:0}
+
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 30px rgba(12,35,64,.18);border-radius:10px;padding:10px 12px;font-size:12px;min-width:184px;z-index:5}
+.tip b{font:800 13px var(--font-display);display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px}
+.tip .r{display:flex;justify-content:space-between;align-items:center;gap:14px;color:var(--ink-2);padding:1px 0}
+.tip .r i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.tip .r strong{color:var(--ink);font:600 12px var(--font-mono)}
+.tip .sep{border-top:1px solid var(--line);margin:6px 0 4px}
+
+.svgtext{font:600 11.5px var(--font-body);fill:var(--ink-2)}
+.svgaxis{font:500 10.5px var(--font-mono);fill:var(--ink-3)}
+.svgval{font:600 10.5px var(--font-mono);fill:var(--ink)}
+.svgsmall{font:700 9.5px var(--font-body);letter-spacing:.08em;fill:var(--ink-3)}
+.bar{transform-box:fill-box;transform-origin:50% 100%}
+@media (prefers-reduced-motion:no-preference){
+  .bar{animation:grow .6s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes grow{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+}
+.hit{cursor:pointer;outline:none}
+.hit:focus-visible{outline:2px solid var(--navy-2)}
+
+.notes{display:grid;gap:10px;margin:8px 0 0;padding:0;list-style:none}
+.notes li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:10px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.notes .tag{font:700 10px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.notes .tag.ok{color:var(--good);background:var(--good-bg)} .notes .tag.chk{color:var(--warn);background:var(--warn-bg)} .notes .tag.as{color:var(--crit);background:var(--crit-bg)}
+.notes p{margin:0;color:var(--ink-2);font-size:13px}
+.notes p strong{color:var(--ink)}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow)}
+summary{cursor:pointer;font:800 15px var(--font-display)}
+summary:focus-visible{outline:2px solid var(--navy-2);outline-offset:3px;border-radius:4px}
+.tw{overflow-x:auto;margin-top:12px}
+table{border-collapse:collapse;width:100%;min-width:680px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font:700 10.5px var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+td{font:500 12.5px var(--font-mono)}
+th:first-child,td:first-child{text-align:left;font-family:var(--font-body);font-weight:600}
+tr.fc td{color:var(--fc-2)}
+tfoot td{font-weight:700;border-bottom:0}
+.foot{color:var(--ink-3);font-size:12px;margin:0}
+</style>
+
+<div class="wrap">
+  <section class="banner">
+    <div>
+      <div class="eyebrow">Monitoring Revenue · Segmen PLN</div>
+      <h1>Revenue Segmen PLN 2026</h1>
+      <p id="bannerText"></p>
+    </div>
+    <div class="meta">
+      <span>RKAP 2026</span>
+      <span id="metaActual"></span>
+      <span class="fcp" id="metaFc"></span>
+      <span>Rp miliar</span>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis" aria-label="Ringkasan capaian"></section>
+
+  <section class="panel">
+    <div class="ph">
+      <div>
+        <div class="tagh"><b>PENDAPATAN PLN</b><span>JAN – DES (KUMULATIF)</span></div>
+        <p class="insight" id="cumInsight"></p>
+      </div>
+      <div class="legend"><span><i class="sw t"></i>Target</span><span><i class="sw a"></i>Realisasi</span><span><i class="sw f"></i>Prognosa</span></div>
+    </div>
+    <p class="hint">Geser grafik ke samping untuk melihat semua bulan.</p>
+    <div class="scroll"><div class="chart" id="cumChart"></div></div>
+  </section>
+
+  <section class="panel">
+    <div class="ph">
+      <div>
+        <div class="tagh"><b>PENDAPATAN PLN</b><span>JAN – DES (STAND ALONE)</span></div>
+        <p class="insight" id="monInsight"></p>
+      </div>
+      <div class="legend"><span><i class="sw t"></i>Target</span><span><i class="sw a"></i>Realisasi</span><span><i class="sw f"></i>Prognosa</span></div>
+    </div>
+    <p class="hint">Geser grafik ke samping untuk melihat semua bulan.</p>
+    <div class="scroll"><div class="chart" id="monChart"></div></div>
+  </section>
+
+  <div class="two">
+    <section class="panel">
+      <div class="ph">
+        <div><h2>Selisih terhadap target</h2><p class="insight">Realisasi atau prognosa dikurangi target per bulan. Batang arsir = prognosa.</p></div>
+        <div class="legend"><span><i class="sw pos"></i>Di atas</span><span><i class="sw neg"></i>Di bawah</span></div>
+      </div>
+      <div class="chart small" id="varChart"></div>
+    </section>
+    <section class="panel">
+      <div class="ph"><div><h2>Catatan data</h2><p class="insight">Hasil cek silang angka slide sebelum dashboard dipakai.</p></div></div>
+      <ul class="notes">
+        <li><span class="tag ok">Selaras</span><p>Realisasi kumulatif di slide <strong>cocok persis</strong> dengan penjumlahan angka bulanan. Target kumulatif selisih maksimal 0,02 karena pembulatan.</p></li>
+        <li><span class="tag chk">Label</span><p>Target Februari terbaca <strong>200,0</strong>, padahal dari kumulatif nilainya <strong>208,06</strong>. Dashboard memakai 208,06.</p></li>
+        <li><span class="tag chk">Cek</span><p>Juli tertulis <strong>235,74 / 63%</strong> di slide Realisasi Revenue dan <strong>229,99 / 61%</strong> di slide Target &amp; Realisasi. Dashboard memakai 229,99.</p></li>
+        <li><span class="tag as">Asumsi</span><p>Prognosa Desember <strong>569,24 (125%)</strong> naik 80% dari prognosa November. Perlu dasar asumsi karena menentukan prognosa setahun.</p></li>
+      </ul>
+    </section>
+  </div>
+
+  <details>
+    <summary>Tabel data</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+
+  <p class="foot">Sumber: slide "Target &amp; Realisasi Revenue Segmen PLN 2026". Data ada di tiga array di awal skrip (MONTHS, TARGET, VALUE) dan siap dijadikan props komponen React.</p>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const MONTHS = ["JAN","FEB","MAR","APR","MEI","JUN","JUL","AGU","SEP","OKT","NOV","DES"];
+const TARGET = [220.00, 208.10, 257.69, 295.04, 265.99, 332.48, 374.05, 374.03, 415.59, 498.73, 457.17, 457.15];
+const TARGET_KUM = [220.00, 428.08, 685.77, 980.81, 1246.80, 1579.28, 1953.33, 2327.36, 2742.95, 3241.68, 3698.85, 4156.00];
+const VALUE  = [233.35, 244.79, 230.48, 291.83, 308.40, 357.15, 229.99, 334.95, 354.75, 399.02, 316.92, 569.24];
+const VALUE_KUM = [233.35, 478.14, 708.62, 1000.45, 1308.85, 1666.00, 1895.99, 2230.94, 2585.69, 2984.71, 3301.63, 3870.87];
+const LAST_ACTUAL = 7; // index AGU; sesudahnya prognosa
+
+/* ================= DERIVED ================= */
+const cT = TARGET_KUM;
+const cV = VALUE_KUM;
+const rows=MONTHS.map((m,i)=>({m,i,t:TARGET[i],v:VALUE[i],ct:cT[i],cv:cV[i],fc:i>LAST_ACTUAL}));
+rows.forEach(r=>{r.p=r.v/r.t*100;r.cp=r.cv/r.ct*100;r.d=r.v-r.t;r.cd=r.cv-r.ct});
+const la=rows[LAST_ACTUAL], dec=rows[11];
+
+const fmt=(n,d=2)=>n.toLocaleString("id-ID",{minimumFractionDigits:d,maximumFractionDigits:d});
+const sgn=n=>(n<0?"−":"+")+fmt(Math.abs(n));
+const st=p=>p>=100?"good":p>=90?"warn":"crit";
+const ico={good:"▲",warn:"●",crit:"▼"};
+const pill=p=>`<span class="pill ${st(p)}">${ico[st(p)]} ${fmt(p,1)}%</span>`;
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+const cssVar=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* ================= BANNER + KPI ================= */
+document.getElementById("bannerText").innerHTML=
+ `Realisasi s.d. ${la.m.toLowerCase().replace(/^./,c=>c.toUpperCase())} mencapai <b>Rp${fmt(la.cv)} M</b> (${fmt(la.cp,1)}% dari target YTD). Prognosa akhir tahun <b>Rp${fmt(dec.cv)} M</b> atau <b>${fmt(dec.cp,1)}%</b> dari RKAP.`;
+document.getElementById("metaActual").textContent=`Realisasi Jan–${cap(la.m)}`;
+document.getElementById("metaFc").textContent=`Prognosa ${cap(rows[LAST_ACTUAL+1].m)}–Des`;
+function cap(s){return s[0]+s.slice(1).toLowerCase()}
+
+const I={
+ chart:`<svg viewBox="0 0 24 24" fill="none" stroke="var(--navy-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><rect x="5" y="11" width="3" height="7" rx="1" fill="var(--target)" stroke="none"/><rect x="10.5" y="7" width="3" height="11" rx="1" fill="var(--actual)" stroke="none"/><rect x="16" y="4" width="3" height="14" rx="1" fill="var(--fc)" stroke="none"/></svg>`,
+ target:`<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9" stroke="var(--target-2)"/><circle cx="12" cy="12" r="5" stroke="var(--actual)"/><circle cx="12" cy="12" r="1.6" fill="var(--fc)" stroke="none"/></svg>`,
+ gap:`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16" stroke="var(--target-2)"/><path d="M4 17h11" stroke="var(--actual)"/><path d="M18 14v6m-3-3h6" stroke="var(--crit)"/></svg>`,
+ cal:`<svg viewBox="0 0 24 24" fill="none" stroke="var(--navy-2)" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4" stroke="var(--good)"/></svg>`
+};
+const hit=rows.slice(0,LAST_ACTUAL+1).filter(r=>r.p>=100).length, nA=LAST_ACTUAL+1;
+document.getElementById("kpis").innerHTML=[
+ {i:I.chart,k:`Realisasi Jan–${cap(la.m)}`,v:`${fmt(la.cv)} <small>M</small>`,d:`${pill(la.cp)}<span>vs target ${fmt(la.ct)}</span>`},
+ {i:I.target,k:"Prognosa 2026",v:`${fmt(dec.cv)} <small>M</small>`,d:`${pill(dec.cp)}<span>vs RKAP ${fmt(dec.ct)}</span>`},
+ {i:I.gap,k:"Gap ke RKAP",v:`${sgn(dec.cd)} <small>M</small>`,d:`<span class="pill ${dec.cd>=0?"good":"crit"}">${dec.cd>=0?"▲ Surplus":"▼ Kurang"}</span><span>harus ditutup Sep–Des</span>`},
+ {i:I.cal,k:"Bulan capai target",v:`${hit} <small>dari ${nA} bulan</small>`,d:`<span class="pill ${hit/nA>=.75?"good":hit/nA>=.5?"warn":"crit"}">${ico[hit/nA>=.75?"good":hit/nA>=.5?"warn":"crit"]} ${Math.round(hit/nA*100)}%</span><span>realisasi bulanan ≥ 100%</span>`}
+].map(x=>`<div class="kpi"><div class="ic" aria-hidden="true">${x.i}</div><div class="k">${x.k}</div><div class="v">${x.v}</div><div class="d">${x.d}</div></div>`).join("");
+
+const firstBelow=rows.find((r,i)=>i>0&&r.cp<100&&rows[i-1].cp>=100);
+document.getElementById("cumInsight").innerHTML=
+ `Kumulatif di atas target sampai <b>${cap(rows[firstBelow.i-1].m)}</b>, lalu di bawah sejak <b>${cap(firstBelow.m)}</b>. Akhir tahun diprognosa <b>${fmt(dec.cp,0)}%</b> dari RKAP.`;
+const worst=[...rows].sort((a,b)=>a.p-b.p).slice(0,3);
+document.getElementById("monInsight").innerHTML=
+ `${hit} dari ${nA} bulan realisasi tembus target. Capaian terendah: ${worst.map(r=>`<b>${cap(r.m)} ${Math.round(r.p)}%</b>`).join(", ")}.`;
+
+/* ================= HELPERS ================= */
+function niceScale(v,steps=4){const raw=v/steps,p=10**Math.floor(Math.log10(raw)),n=raw/p;const s=(n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p;return{max:Math.ceil(v/s)*s,step:s}}
+function tip(box,html,x,y){let t=box.querySelector(".tip");if(!t){t=document.createElement("div");t.className="tip";box.appendChild(t)}
+ t.innerHTML=html;t.hidden=false;const w=t.offsetWidth,bw=box.clientWidth;t.style.left=Math.max(0,Math.min(bw-w,x-w/2))+"px";t.style.top=Math.max(-8,y-t.offsetHeight-14)+"px"}
+const untip=b=>{const t=b.querySelector(".tip");if(t)t.hidden=true};
+function gradients(svg,uid){const d=el("defs",{},svg);
+ [["t","--target","--target-2"],["a","--actual-2","--actual"],["f","--fc","--fc-2"]].forEach(([k,c1,c2])=>{
+  const g=el("linearGradient",{id:uid+k,x1:0,y1:0,x2:0,y2:1},d);el("stop",{offset:0,"stop-color":`var(${c1})`},g);el("stop",{offset:1,"stop-color":`var(${c2})`},g)});
+ return d}
+const topRound=(x,y,w,h,r)=>{r=Math.min(r,w/2,h);return `M${x},${y+h}V${y+r}Q${x},${y} ${x+r},${y}H${x+w-r}Q${x+w},${y} ${x+w},${y+r}V${y+h}Z`};
+function tipHtml(r,mode){const cum=mode==="cum";const t=cum?r.ct:r.t,v=cum?r.cv:r.v,p=cum?r.cp:r.p,d=cum?r.cd:r.d;
+ return `<b>${cap(r.m)} 2026 ${pill(p)}</b>
+ <div class="r"><span><i style="background:var(--target)"></i>Target${cum?" kum.":""}</span><strong>${fmt(t)}</strong></div>
+ <div class="r"><span><i style="background:var(${r.fc?"--fc":"--actual"})"></i>${r.fc?"Prognosa":"Realisasi"}${cum?" kum.":""}</span><strong>${fmt(v)}</strong></div>
+ <div class="sep"></div><div class="r"><span>Selisih</span><strong>${sgn(d)}</strong></div>`}
+
+/* ================= CLUSTERED BAR (deck style, cleaned up) ================= */
+function drawCluster(id,mode){
+ const box=document.getElementById(id);box.querySelector("svg")?.remove();untip(box);
+ const cum=mode==="cum", W=box.clientWidth, H=cum?340:320, m={t:44,r:8,b:34,l:46};
+ const iw=W-m.l-m.r, ih=H-m.t-m.b;
+ const T=rows.map(r=>cum?r.ct:r.t), V=rows.map(r=>cum?r.cv:r.v), P=rows.map(r=>cum?r.cp:r.p);
+ const {max,step}=niceScale(Math.max(...T,...V)*1.04,5);
+ const cw=iw/12, bw=Math.min(22,cw*.3), gap=3, cx=i=>m.l+cw*(i+.5), y=v=>m.t+ih-ih*v/max;
+ const uid=id+"g", svg=el("svg",{viewBox:`0 0 ${W} ${H}`,height:H,role:"img","aria-label":`Pendapatan PLN ${cum?"kumulatif":"stand alone"}: target, realisasi, dan prognosa per bulan`});
+ box.prepend(svg); gradients(svg,uid);
+
+ // highlight last month (deck-style dashed box)
+ const hx=m.l+cw*11+3; el("rect",{x:hx,y:6,width:cw-6,height:H-10,rx:10,fill:"var(--hl)",stroke:"var(--hl-line)","stroke-dasharray":"4 4"},svg);
+ // forecast divider
+ const fx=m.l+cw*(LAST_ACTUAL+1);
+ el("line",{x1:fx,x2:fx,y1:m.t-30,y2:m.t+ih,stroke:"var(--line)","stroke-dasharray":"3 4"},svg);
+ el("text",{x:fx+6,y:m.t-32,class:"svgsmall"},svg).textContent="PROGNOSA →";
+ el("text",{x:fx-6,y:m.t-32,class:"svgsmall","text-anchor":"end"},svg).textContent="← REALISASI";
+
+ for(let v=0;v<=max+1e-6;v+=step){
+  el("line",{x1:m.l,x2:m.l+iw,y1:y(v),y2:y(v),stroke:v?"var(--grid)":"var(--line)"},svg);
+  el("text",{x:m.l-8,y:y(v)+4,"text-anchor":"end",class:"svgaxis"},svg).textContent=v.toLocaleString("id-ID")}
+
+ rows.forEach((r,i)=>{
+  const x0=cx(i)-bw-gap/2, x1=cx(i)+gap/2, yt=y(T[i]), yv=y(V[i]);
+  const g=el("g",{},svg);
+  el("path",{class:"bar",d:topRound(x0,yt,bw,y(0)-yt,4),fill:`url(#${uid}t)`,style:`animation-delay:${i*35}ms`},g);
+  el("path",{class:"bar",d:topRound(x1,yv,bw,y(0)-yv,4),fill:`url(#${uid}${r.fc?"f":"a"})`,style:`animation-delay:${i*35+60}ms`},g);
+  // bracket + % pill
+  const top=Math.min(yt,yv)-8, s=st(P[i]);
+  el("path",{d:`M${x0+2},${top+5}V${top}H${x1+bw-2}V${top+5}`,fill:"none",stroke:`var(--${s})`,"stroke-width":1.5,"stroke-linecap":"round",opacity:.75},g);
+  const label=Math.round(P[i])+"%", pw=Math.max(34,label.length*7+12), py=top-22;
+  el("rect",{x:cx(i)-pw/2,y:py,width:pw,height:18,rx:9,fill:`var(--${s}-bg)`},g);
+  el("text",{x:cx(i),y:py+12.5,"text-anchor":"middle",style:`font:700 11px var(--font-mono);fill:var(--${s})`},g).textContent=label;
+  // month label
+  el("text",{x:cx(i),y:H-12,"text-anchor":"middle",class:"svgtext",style:i===11?"fill:var(--navy-2);font-weight:800":""},svg).textContent=r.m;
+  // hit area
+  const h=el("rect",{class:"hit",x:m.l+cw*i,y:m.t-30,width:cw,height:ih+30,fill:"transparent",tabindex:0,
+   "aria-label":`${cap(r.m)}: target ${fmt(T[i])}, ${r.fc?"prognosa":"realisasi"} ${fmt(V[i])}, capaian ${fmt(P[i],1)} persen`},svg);
+  const on=()=>{g.style.filter="brightness(1.08)";tip(box,tipHtml(r,mode),cx(i),py)}, off=()=>{g.style.filter="";untip(box)};
+  h.addEventListener("pointerenter",on);h.addEventListener("focus",on);h.addEventListener("pointerleave",off);h.addEventListener("blur",off);
+ });
+}
+
+/* ================= VARIANCE ================= */
+function drawVar(){
+ const box=document.getElementById("varChart");box.querySelector("svg")?.remove();untip(box);
+ const W=box.clientWidth, H=280, m={t:22,r:6,b:28,l:6}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+ const mx=Math.max(...rows.map(r=>Math.abs(r.d)))*1.2, cw=iw/12, bw=Math.min(22,cw*.58), cx=i=>m.l+cw*(i+.5), y=v=>m.t+ih/2-(ih/2)*v/mx;
+ const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,height:H,role:"img","aria-label":"Selisih bulanan terhadap target"});box.prepend(svg);
+ const d=el("defs",{},svg);
+ [["vp","var(--pos)"],["vn","var(--neg)"]].forEach(([id,c])=>{const p=el("pattern",{id,width:5,height:5,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},d);el("rect",{width:5,height:5,fill:"var(--surface)"},p);el("rect",{width:2,height:5,fill:c},p)});
+ const big=[...rows].sort((a,b)=>Math.abs(b.d)-Math.abs(a.d)).slice(0,4).map(r=>r.i), all=cw>=40;
+ rows.forEach((r,i)=>{
+  const c=r.d>=0?"var(--pos)":"var(--neg)", y0=y(0), y1=y(r.d), top=Math.min(y0,y1), h=Math.max(1.5,Math.abs(y1-y0));
+  el("rect",{x:cx(i)-bw/2,y:top,width:bw,height:h,rx:3,fill:r.fc?`url(#${r.d>=0?"vp":"vn"})`:c,stroke:r.fc?c:"none","stroke-width":r.fc?1.5:0},svg);
+  if(all||big.includes(i))el("text",{x:cx(i),y:r.d>=0?y1-6:y1+14,"text-anchor":"middle",class:"svgval","font-size":10},svg).textContent=(r.d>=0?"+":"−")+Math.round(Math.abs(r.d));
+  if(cw>=30||i%2===0)el("text",{x:cx(i),y:H-8,"text-anchor":"middle",class:"svgtext","font-size":10.5},svg).textContent=r.m;
+  const hh=el("rect",{class:"hit",x:m.l+cw*i,y:m.t,width:cw,height:ih,fill:"transparent",tabindex:0,"aria-label":`${cap(r.m)}: selisih ${sgn(r.d)}`},svg);
+  const on=()=>tip(box,tipHtml(r,"mon"),cx(i),top), off=()=>untip(box);
+  hh.addEventListener("pointerenter",on);hh.addEventListener("focus",on);hh.addEventListener("pointerleave",off);hh.addEventListener("blur",off);
+ });
+ el("line",{x1:m.l,x2:m.l+iw,y1:y(0),y2:y(0),stroke:"var(--ink-3)"},svg);
+}
+
+/* ================= TABLE ================= */
+document.getElementById("tbl").innerHTML=
+ `<thead><tr><th>Bulan</th><th>Target</th><th>Real./Prog.</th><th>Capaian</th><th>Selisih</th><th>Target kum.</th><th>Real./Prog. kum.</th><th>Capaian kum.</th></tr></thead><tbody>`+
+ rows.map(r=>`<tr class="${r.fc?"fc":""}"><td>${cap(r.m)}${r.fc?" · prognosa":""}</td><td>${fmt(r.t)}</td><td>${fmt(r.v)}</td><td>${fmt(r.p,1)}%</td><td>${sgn(r.d)}</td><td>${fmt(r.ct)}</td><td>${fmt(r.cv)}</td><td>${fmt(r.cp,1)}%</td></tr>`).join("")+
+ `</tbody><tfoot><tr><td>Total 2026</td><td>${fmt(dec.ct)}</td><td>${fmt(dec.cv)}</td><td>${fmt(dec.cp,1)}%</td><td>${sgn(dec.cd)}</td><td></td><td></td><td></td></tr></tfoot>`;
+
+/* ================= RENDER ================= */
+const drawAll=()=>{drawCluster("cumChart","cum");drawCluster("monChart","mon");drawVar()};
+drawAll();
+let lastW=0,rt;new ResizeObserver(e=>{const w=e[0].contentRect.width;if(Math.abs(w-lastW)<2)return;lastW=w;clearTimeout(rt);rt=setTimeout(drawAll,80)}).observe(document.querySelector(".wrap"));
+</script>
