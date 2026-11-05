@@ -11097,7 +11097,7 @@ function applyUtangFilters() {
   if (kpiSaldo) kpiSaldo.textContent = data.kpi.saldo;
 
   const kpiSaldoSub = document.getElementById('kpi-utang-saldo-sub');
-  if (kpiSaldoSub && data.kpi.saldoSub) kpiSaldoSub.textContent = data.kpi.saldoSub;
+  if (kpiSaldoSub && data.kpi.saldoSub) kpiSaldoSub.innerHTML = data.kpi.saldoSub;
 
   const kpiTotal = document.getElementById('kpi-utang-total');
   if (kpiTotal) kpiTotal.textContent = data.kpi.total;
