@@ -4992,7 +4992,7 @@
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(21, 96, 122, 0.1); color: #15607A; font-size: 12px; font-weight: 750; padding: 4px 10px; border-radius: 6px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span id="pln-v1-period-badge">Slide Eksekutif Resmi &middot; W1 Oktober 2026</span>
+              <span id="pln-v1-period-badge">Slide Eksekutif Resmi &middot; W1 November 2026</span>
             </span>
             <span style="font-size: 11.5px; color: #64748B;">Format tabel presentasi monitoring piutang &amp; proses penyelesaian invoice</span>
           </div>
@@ -5001,8 +5001,10 @@
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 11.5px; font-weight: 700; color: #64748B;">Periode:</span>
               <select id="invoice-pln-v1-period" onchange="onInvoicePlnV1PeriodChange(this.value)" style="padding: 6px 12px; font-size: 12px; border-radius: 8px; border: 1.5px solid #CBD5E1; font-weight: 700; color: #0A2540; background: #F8FAFC; outline: none; cursor: pointer;">
-                <option value="W1_OKT" selected>W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
+                <option value="W1_NOV" selected>W1 November 2026 (29 Okt &ndash; 4 Nov)</option>
+                <option value="W1_OKT">W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
                 <option value="W4_SEP">W4 September 2026 (24 &ndash; 30 Sept)</option>
+                <option value="W3_SEP">W3 September 2026 (17 &ndash; 23 Sept)</option>
               </select>
             </div>
             <button class="btn-action" style="padding: 6px 12px; font-size: 12px; background: #FFFFFF; color: #0F172A; border-radius: 8px; border: 1.5px solid #CBD5E1; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;" onclick="printInvoicePlnV1Slide()">
@@ -5038,7 +5040,7 @@
             <!-- Center: Title & Subtitle -->
             <div style="text-align: center; flex: 1;">
               <h1 id="pln-v1-slide-title" style="font-size: 21px; font-weight: 850; color: #15607A; letter-spacing: 0.02em; text-transform: uppercase; margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
-                MONITORING PROGRESS INVOICE PLN W1 OKTOBER 2026
+                MONITORING PROGRESS INVOICE PLN W1 NOVEMBER 2026
               </h1>
               <div style="text-align: right; font-size: 11px; font-weight: 700; color: #0F172A; margin-top: 3px; padding-right: 4px;">
                 *Tahun Terbit Invoice
@@ -5066,8 +5068,8 @@
                 <tr>
                   <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 4px; text-align: center; width: 34px; font-weight: 800;">No</th>
                   <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 220px; font-weight: 800;">Progress</th>
-                  <th id="pln-v1-col-prev" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 24 September &ndash; 30 September 2026</th>
-                  <th id="pln-v1-col-curr" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 1 &ndash; 7 Oktober 2026</th>
+                  <th id="pln-v1-col-prev" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 22 &ndash; 28 Oktober 2026</th>
+                  <th id="pln-v1-col-curr" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 29 Oktober &ndash; 4 November 2026</th>
                   <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 330px; font-weight: 800;">Keterangan</th>
                 </tr>
                 <tr>
@@ -5094,8 +5096,8 @@
             <div style="font-size: 11px; color: #64748B; font-weight: 600;">
               * Angka dalam satuan Milyar Rupiah (Rp M)
             </div>
-            <div style="font-size: 14px; font-weight: 850; color: #0F172A; font-family: 'Inter', -apple-system, sans-serif;">
-              2
+            <div id="pln-v1-page-num" style="font-size: 14px; font-weight: 850; color: #0F172A; font-family: 'Inter', -apple-system, sans-serif;">
+              9
             </div>
           </div>
 
@@ -5128,7 +5130,8 @@
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 11.5px; font-weight: 700; color: #64748B;">Periode:</span>
               <select id="pln-filter-period" onchange="onPlnPeriodChange(this.value)" style="padding: 6px 12px; font-size: 12px; border-radius: 8px; border: 1.5px solid #CBD5E1; font-weight: 700; color: #0A2540; background: #F8FAFC; outline: none; cursor: pointer;">
-                <option value="W1_OKT" selected>W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
+                <option value="W1_NOV" selected>W1 November 2026 (29 Okt &ndash; 4 Nov)</option>
+                <option value="W1_OKT">W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
                 <option value="W4">W4 September 2026 (24 &ndash; 30 Sept)</option>
                 <option value="W3">W3 September 2026 (17 &ndash; 23 Sept)</option>
                 <option value="W2">W2 September 2026 (10 &ndash; 16 Sept)</option>
@@ -5155,7 +5158,7 @@
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1.5px solid #E2E8F0; gap: 16px;">
             <div>
               <h1 id="pln-slide-title-main" style="font-size: 26px; font-weight: 900; color: #0A2540; letter-spacing: -0.01em; margin: 0; text-transform: uppercase;">MONITORING PROGRESS INVOICE PLN</h1>
-              <div id="pln-slide-title-sub" style="font-size: 24px; font-weight: 900; color: #0A2540; margin-top: 2px; text-transform: uppercase;">W1 OKTOBER 2026</div>
+              <div id="pln-slide-title-sub" style="font-size: 24px; font-weight: 900; color: #0A2540; margin-top: 2px; text-transform: uppercase;">W1 NOVEMBER 2026</div>
             </div>
             <!-- Logos Danantara & PLN Icon Plus -->
             <div style="display: flex; align-items: center; gap: 18px;">
@@ -5201,8 +5204,8 @@
                 </svg>
               </div>
               <div>
-                <div style="font-size: 10.5px; font-weight: 800; color: #0A2540; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">TOTAL PIUTANG<br>MINGGU INI</div>
-                <div id="card-pln-piutang-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp930,81 M</div>
+                <div style="font-size: 10.5px; font-weight: 800; color: #0A2540; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">TOTAL PIUTANG<br>MINGGU INI (VIP)</div>
+                <div id="card-pln-piutang-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp1.301,82 M</div>
               </div>
             </div>
 
@@ -5216,8 +5219,8 @@
                 </svg>
               </div>
               <div>
-                <div style="font-size: 10.5px; font-weight: 800; color: #1D4ED8; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">TOTAL PROSES<br>INVOICE</div>
-                <div id="card-pln-proses-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp1.458,11 M</div>
+                <div style="font-size: 10.5px; font-weight: 800; color: #1D4ED8; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">TOTAL PROSES<br>INVOICE (ACCCRUE)</div>
+                <div id="card-pln-proses-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp1.394,02 M</div>
               </div>
             </div>
 
@@ -5231,8 +5234,8 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #0284C7; letter-spacing: 0.02em; text-transform: uppercase;">CASH IN MINGGU INI</div>
-                <div id="card-pln-cashin-week" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp5,45 M</div>
-                <div id="card-pln-cashin-week-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(1 &ndash; 7 Oktober 2026)</div>
+                <div id="card-pln-cashin-week" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp12,64 M</div>
+                <div id="card-pln-cashin-week-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(29 Okt &ndash; 04 Nov 2026)</div>
               </div>
             </div>
 
@@ -5246,8 +5249,8 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #2563EB; letter-spacing: 0.02em; text-transform: uppercase;">CASH IN BULAN INI</div>
-                <div id="card-pln-cashin-month" style="font-size: 21px; font-weight: 850; color: #2563EB; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp5,45 M</div>
-                <div id="card-pln-cashin-month-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(01 &ndash; 7 Okt 2026)</div>
+                <div id="card-pln-cashin-month" style="font-size: 21px; font-weight: 850; color: #2563EB; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp12,64 M</div>
+                <div id="card-pln-cashin-month-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(01 &ndash; 04 November 2026)</div>
               </div>
             </div>
 
@@ -5266,7 +5269,7 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #0369A1; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">GRAND TOTAL<br>PIUTANG</div>
-                <div id="card-pln-grand-total" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp2.388,92 M</div>
+                <div id="card-pln-grand-total" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp2.695,84 M</div>
               </div>
             </div>
           </div>
@@ -5298,11 +5301,11 @@
                     <tr>
                       <th style="padding: 10px 14px; text-align: left; font-weight: 850; color: #0F172A; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #E2E8F0; width: 48%;">KATEGORI</th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="pln-left-tbl-col1-txt" style="background: #0A2540; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">24 &ndash; 30 September 2026</div>
+                        <div id="pln-left-tbl-col1-txt" style="background: #0A2540; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">22 &ndash; 28 Oktober 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="pln-left-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">1 &ndash; 7 Oktober 2026</div>
+                        <div id="pln-left-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">29 Oktober &ndash; 4 November 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                     </tr>
@@ -5316,8 +5319,8 @@
                           <span style="font-weight: 700; color: #0284C7; text-decoration: underline; text-decoration-color: #BAE6FD;">Terbayar</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">110,79</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">5,45</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">21,18</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">12,64</td>
                     </tr>
                     <!-- Row 2: Proses di Keuangan pusat -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showPlnCategoryDetail('keuangan_pusat')" title="Klik untuk rincian Proses di Keuangan pusat">
@@ -5327,8 +5330,8 @@
                           <span style="font-weight: 700; color: #0F172A;">Proses di <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Keuangan pusat</span></span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">7,53</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">54,11</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">84,91</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">25,66</td>
                     </tr>
                     <!-- Row 3: Proses Approval VIP/BPO -->
                     <tr class="pln-interactive-row" onclick="showPlnCategoryDetail('approval_vip')" title="Klik untuk rincian Proses Approval VIP/BPO">
@@ -5338,8 +5341,8 @@
                           <span style="font-weight: 700; color: #0F172A;">Proses Approval VIP/BPO</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">534,54</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">595,43</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">626,73</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">736,52</td>
                     </tr>
                     <!-- Row 4: Proses Upload Dokumen di VIP -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showPlnCategoryDetail('upload_vip')" title="Klik untuk rincian Proses Upload Dokumen di VIP">
@@ -5349,8 +5352,8 @@
                           <span style="font-weight: 700; color: #0F172A;">Proses Upload <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Dokumen</span> di VIP</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">29,27</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">57,73</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">33,55</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">45,34</td>
                     </tr>
                     <!-- Row 5: RTV & Proses di ICON+ -->
                     <tr class="pln-interactive-row" onclick="showPlnCategoryDetail('rtv_icon')" title="Klik untuk rincian RTV & Proses di ICON+">
@@ -5360,16 +5363,16 @@
                           <span style="font-weight: 700; color: #0F172A;">RTV &amp; Proses di ICON+</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">185,18</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">223,54</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">356,70</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">473,27</td>
                     </tr>
                   </tbody>
                   <!-- Footer Total -->
                   <tfoot id="pln-left-tbl-tfoot">
                     <tr style="background: #0A2540; color: #FFFFFF;">
                       <td style="padding: 12px 14px; font-weight: 850; text-align: center; font-size: 12px; letter-spacing: 0.05em; border-bottom-left-radius: 6px;">TOTAL PIUTANG</td>
-                      <td id="pln-left-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">756,51</td>
-                      <td id="pln-left-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">930,81</td>
+                      <td id="pln-left-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">1.101,89</td>
+                      <td id="pln-left-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">1.301,82</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -5401,11 +5404,11 @@
                     <tr>
                       <th style="padding: 10px 14px; text-align: left; font-weight: 850; color: #0F172A; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #E2E8F0; width: 48%;">KATEGORI</th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="pln-right-tbl-col1-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">24 &ndash; 30 September 2026</div>
+                        <div id="pln-right-tbl-col1-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">22 &ndash; 28 Oktober 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="pln-right-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">1 &ndash; 7 Oktober 2026</div>
+                        <div id="pln-right-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">29 Oktober &ndash; 4 November 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                     </tr>
@@ -5433,8 +5436,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">1</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses Service Entry (<span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Dokumen Lengkap</span>)</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">348,37</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">330,67</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">106,63</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">100,49</td>
                     </tr>
                     <!-- B.2: Proses BAST & BAP BPO -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showPlnCategoryDetail('bast_bpo')" title="Klik untuk rincian Proses BAST & BAP BPO">
@@ -5442,8 +5445,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">2</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BAST &amp; BAP BPO</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">173,00</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">169,03</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">159,12</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">143,47</td>
                     </tr>
                     <!-- B.3: Proses BAST & BAP Internal -->
                     <tr class="pln-interactive-row" onclick="showPlnCategoryDetail('bast_internal')" title="Klik untuk rincian Proses BAST & BAP Internal">
@@ -5451,8 +5454,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">3</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BAST &amp; BAP Internal</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">21,09</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">22,68</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">11,76</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">11,33</td>
                     </tr>
                     <!-- B.4: Proses BAKB -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showPlnCategoryDetail('bakb')" title="Klik untuk rincian Proses BAKB">
@@ -5460,8 +5463,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">4</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BAKB</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">116,94</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">116,94</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">398,70</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">353,59</td>
                     </tr>
                     <!-- B.5: Proses BA Prebilling -->
                     <tr class="pln-interactive-row" onclick="showPlnCategoryDetail('prebilling')" title="Klik untuk rincian Proses BA Prebilling">
@@ -5469,16 +5472,16 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">5</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BA Prebilling</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">854,08</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">818,80</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">822,51</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">785,14</td>
                     </tr>
                   </tbody>
                   <!-- Footer Total -->
                   <tfoot id="pln-right-tbl-tfoot">
                     <tr style="background: #0284C7; color: #FFFFFF;">
                       <td style="padding: 12px 14px; font-weight: 850; text-align: center; font-size: 12px; letter-spacing: 0.05em; border-bottom-left-radius: 6px;">TOTAL PROSES INVOICE</td>
-                      <td id="pln-right-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">1.513,48</td>
-                      <td id="pln-right-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">1.458,11</td>
+                      <td id="pln-right-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">1.498,73</td>
+                      <td id="pln-right-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">1.394,02</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -5499,10 +5502,10 @@
               </div>
               <div>
                 <div id="pln-insight-left-main" style="font-weight: 700; color: #1E3A8A; font-size: 13px; line-height: 1.45;">
-                  Total <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Piutang</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Minggu</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Ini</span> mengalami <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">peningkatan</span> 23,04% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 756,51M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 930,81M
+                  Total <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Piutang</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Minggu</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Ini</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">mengalami</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">peningkatan</span> 18,14% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.101,89M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.301,82M
                 </div>
                 <div id="pln-insight-left-sub" style="color: #475569; font-size: 12px; margin-top: 4px; line-height: 1.4;">
-                  <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Verifikasi</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">keuangan</span> 54,11 M
+                  <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Verifikasi</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">keuangan</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 25,66 M
                 </div>
               </div>
             </div>
@@ -5518,15 +5521,15 @@
                 </svg>
               </div>
               <div id="pln-insight-right-main" style="font-weight: 700; color: #1E3A8A; font-size: 13px; line-height: 1.45;">
-                Total Proses Invoice <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> 3,65% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.513,48M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.458,11M
+                Total Proses Invoice <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> 6,99% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.498,73M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.394,02M
               </div>
             </div>
           </div>
 
           <!-- Footer Indicator -->
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 4px; font-size: 11px; color: #94A3B8;">
-            <div id="pln-slide-footer-period">Sumber Data: Laporan Eksekutif Monitoring Progress Invoice PLN &middot; Periode W1 Oktober 2026</div>
-            <div id="pln-slide-footer-page" style="font-weight: 900; font-size: 20px; color: #0284C7; padding: 0 4px; font-family: 'Inter', -apple-system, sans-serif;">2</div>
+            <div id="pln-slide-footer-period">Sumber Data: Laporan Eksekutif Monitoring Progress Invoice PLN &middot; Periode W1 November 2026</div>
+            <div id="pln-slide-footer-page" style="font-weight: 900; font-size: 20px; color: #0284C7; padding: 0 4px; font-family: 'Inter', -apple-system, sans-serif;">11</div>
           </div>
 
         </div> <!-- End pln-view-slide -->
@@ -5854,7 +5857,7 @@
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(21, 96, 122, 0.1); color: #15607A; font-size: 12px; font-weight: 750; padding: 4px 10px; border-radius: 6px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span id="sti-v1-period-badge">Slide Eksekutif Resmi &middot; W1 Oktober 2026</span>
+              <span id="sti-v1-period-badge">Slide Eksekutif Resmi &middot; W1 November 2026</span>
             </span>
             <span style="font-size: 11.5px; color: #64748B;">Monitoring Progress Invoice DIVSTI PLN (Slide Resmi V1)</span>
           </div>
@@ -5863,8 +5866,10 @@
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 11.5px; font-weight: 700; color: #64748B;">Periode:</span>
               <select id="invoice-sti-pln-v1-period" onchange="onInvoiceStiPlnV1PeriodChange(this.value)" style="padding: 6px 12px; font-size: 12px; border-radius: 8px; border: 1.5px solid #CBD5E1; font-weight: 700; color: #0A2540; background: #F8FAFC; outline: none; cursor: pointer;">
-                <option value="W1_OKT" selected>W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
+                <option value="W1_NOV" selected>W1 November 2026 (29 Okt &ndash; 4 Nov)</option>
+                <option value="W1_OKT">W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
                 <option value="W4_SEP">W4 September 2026 (24 &ndash; 30 Sept)</option>
+                <option value="W3_SEP">W3 September 2026 (17 &ndash; 23 Sept)</option>
               </select>
             </div>
             <button class="btn-action" style="padding: 6px 12px; font-size: 12px; background: #FFFFFF; color: #0F172A; border-radius: 8px; border: 1.5px solid #CBD5E1; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;" onclick="printInvoiceStiPlnV1Slide()">
@@ -5900,7 +5905,7 @@
             <!-- Center: Title & Subtitle -->
             <div style="text-align: center; flex: 1;">
               <h1 id="sti-v1-slide-title" style="font-size: 21px; font-weight: 850; color: #15607A; letter-spacing: 0.02em; text-transform: uppercase; margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
-                MONITORING PROGRESS INVOICE DIVSTI PLN W1 OKTOBER 2026
+                MONITORING PROGRESS INVOICE DIVSTI PLN W1 NOVEMBER 2026
               </h1>
               <div style="text-align: right; font-size: 11px; font-weight: 700; color: #0F172A; margin-top: 3px; padding-right: 4px;">
                 *Tahun Terbit Invoice
@@ -5935,8 +5940,8 @@
                 <tr>
                   <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 4px; text-align: center; width: 34px; font-weight: 800;">No</th>
                   <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 220px; font-weight: 800;">Progress</th>
-                  <th id="sti-v1-col-prev" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 24 September &ndash; 30 September 2026</th>
-                  <th id="sti-v1-col-curr" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 1 &ndash; 7 Oktober 2026</th>
+                  <th id="sti-v1-col-prev" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 22 &ndash; 28 Oktober 2026</th>
+                  <th id="sti-v1-col-curr" colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">TANGGAL 29 Oktober &ndash; 4 November 2026</th>
                   <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 330px; font-weight: 800;">Keterangan</th>
                 </tr>
                 <tr>
@@ -5963,8 +5968,8 @@
             <div style="font-size: 11px; color: #64748B; font-weight: 600;">
               * Angka dalam satuan Milyar Rupiah (Rp M)
             </div>
-            <div style="font-size: 14px; font-weight: 850; color: #0F172A; font-family: 'Inter', -apple-system, sans-serif;">
-              7
+            <div id="sti-v1-page-num" style="font-size: 14px; font-weight: 850; color: #0F172A; font-family: 'Inter', -apple-system, sans-serif;">
+              10
             </div>
           </div>
 
@@ -5997,7 +6002,8 @@
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 11.5px; font-weight: 700; color: #64748B;">Periode:</span>
               <select id="sti-filter-period" onchange="onStiPeriodChange(this.value)" style="padding: 6px 12px; font-size: 12px; border-radius: 8px; border: 1.5px solid #CBD5E1; font-weight: 700; color: #0A2540; background: #F8FAFC; outline: none; cursor: pointer;">
-                <option value="W1_OKT" selected>W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
+                <option value="W1_NOV" selected>W1 November 2026 (29 Okt &ndash; 4 Nov 2026)</option>
+                <option value="W1_OKT">W1 Oktober 2026 (1 &ndash; 7 Okt)</option>
                 <option value="W4">W4 September 2026 (24 &ndash; 30 Sept)</option>
                 <option value="W3">W3 September 2026 (17 &ndash; 23 Sept)</option>
                 <option value="W2">W2 September 2026 (10 &ndash; 16 Sept)</option>
@@ -6024,7 +6030,7 @@
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1.5px solid #E2E8F0; gap: 16px;">
             <div>
               <h1 id="sti-slide-title-main" style="font-size: 26px; font-weight: 900; color: #0A2540; letter-spacing: -0.01em; margin: 0; text-transform: uppercase;">MONITORING PROGRESS INVOICE DIVSTI PLN</h1>
-              <div id="sti-slide-title-sub" style="font-size: 24px; font-weight: 900; color: #0A2540; margin-top: 2px; text-transform: uppercase;">W1 OKTOBER 2026</div>
+              <div id="sti-slide-title-sub" style="font-size: 24px; font-weight: 900; color: #0A2540; margin-top: 2px; text-transform: uppercase;">W1 NOVEMBER 2026</div>
             </div>
             <!-- Logos Danantara & PLN Icon Plus -->
             <div style="display: flex; align-items: center; gap: 18px;">
@@ -6071,7 +6077,7 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #0A2540; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">TOTAL PIUTANG<br>MINGGU INI</div>
-                <div id="card-sti-piutang-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp828,30 M</div>
+                <div id="card-sti-piutang-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp1.123,63 M</div>
               </div>
             </div>
 
@@ -6086,7 +6092,7 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #1D4ED8; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">TOTAL PROSES<br>INVOICE</div>
-                <div id="card-sti-proses-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp1.210,07 M</div>
+                <div id="card-sti-proses-w4" style="font-size: 21px; font-weight: 850; color: #0A2540; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp1.089,25 M</div>
               </div>
             </div>
 
@@ -6100,8 +6106,8 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #0284C7; letter-spacing: 0.02em; text-transform: uppercase;">CASH IN MINGGU INI</div>
-                <div id="card-sti-cashin-week" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp5,20 M</div>
-                <div id="card-sti-cashin-week-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(1 &ndash; 7 Oktober 2026)</div>
+                <div id="card-sti-cashin-week" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp11,29 M</div>
+                <div id="card-sti-cashin-week-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(29 Okt &ndash; 04 Nov 2026)</div>
               </div>
             </div>
 
@@ -6115,8 +6121,8 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #2563EB; letter-spacing: 0.02em; text-transform: uppercase;">CASH IN BULAN INI</div>
-                <div id="card-sti-cashin-month" style="font-size: 21px; font-weight: 850; color: #2563EB; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp5,20 M</div>
-                <div id="card-sti-cashin-month-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(01 &ndash; 7 Oktober 2026)</div>
+                <div id="card-sti-cashin-month" style="font-size: 21px; font-weight: 850; color: #2563EB; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp11,29 M</div>
+                <div id="card-sti-cashin-month-sub" style="font-size: 10.5px; color: #64748B; font-style: italic; margin-top: 1px;">(01 &ndash; 04 November 2026)</div>
               </div>
             </div>
 
@@ -6135,7 +6141,7 @@
               </div>
               <div>
                 <div style="font-size: 10.5px; font-weight: 800; color: #0369A1; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3;">GRAND TOTAL<br>PIUTANG</div>
-                <div id="card-sti-grand-total" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp2.038,37 M</div>
+                <div id="card-sti-grand-total" style="font-size: 21px; font-weight: 850; color: #0284C7; margin-top: 3px; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp2.212,88 M</div>
               </div>
             </div>
           </div>
@@ -6167,11 +6173,11 @@
                     <tr>
                       <th style="padding: 10px 14px; text-align: left; font-weight: 850; color: #0F172A; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #E2E8F0; width: 48%;">KATEGORI</th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="sti-left-tbl-col1-txt" style="background: #0A2540; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">24 &ndash; 30 September 2026</div>
+                        <div id="sti-left-tbl-col1-txt" style="background: #0A2540; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">22 &ndash; 28 Oktober 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="sti-left-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">1 &ndash; 7 Oktober 2026</div>
+                        <div id="sti-left-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">29 Oktober &ndash; 4 November 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                     </tr>
@@ -6185,8 +6191,8 @@
                           <span style="font-weight: 700; color: #0284C7; text-decoration: underline; text-decoration-color: #BAE6FD;">Terbayar</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">109,91</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">5,20</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">19,52</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">11,29</td>
                     </tr>
                     <!-- Row 2: Proses di Keuangan pusat -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showStiCategoryDetail('keuangan_pusat')" title="Klik untuk rincian Proses di Keuangan pusat">
@@ -6196,8 +6202,8 @@
                           <span style="font-weight: 700; color: #0F172A;">Proses di <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Keuangan pusat</span></span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">7,30</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">48,21</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">83,57</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">21,80</td>
                     </tr>
                     <!-- Row 3: Proses Approval VIP/BPO -->
                     <tr class="pln-interactive-row" onclick="showStiCategoryDetail('approval_vip')" title="Klik untuk rincian Proses Approval VIP/BPO">
@@ -6207,8 +6213,8 @@
                           <span style="font-weight: 700; color: #0F172A;">Proses Approval VIP/BPO</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">462,36</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">525,89</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">481,55</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">588,83</td>
                     </tr>
                     <!-- Row 4: Proses Upload Dokumen di VIP -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showStiCategoryDetail('upload_vip')" title="Klik untuk rincian Proses Upload Dokumen di VIP">
@@ -6218,8 +6224,8 @@
                           <span style="font-weight: 700; color: #0F172A;">Proses Upload <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Dokumen</span> di VIP</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">28,88</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">57,34</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">29,27</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">41,56</td>
                     </tr>
                     <!-- Row 5: RTV & Proses di ICON+ -->
                     <tr class="pln-interactive-row" onclick="showStiCategoryDetail('rtv_icon')" title="Klik untuk rincian RTV & Proses di ICON+">
@@ -6229,16 +6235,16 @@
                           <span style="font-weight: 700; color: #0F172A;">RTV &amp; Proses di ICON+</span>
                         </div>
                       </td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">163,39</td>
-                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">196,86</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">324,19</td>
+                      <td style="padding: 11px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">450,41</td>
                     </tr>
                   </tbody>
                   <!-- Footer Total -->
                   <tfoot id="sti-left-tbl-tfoot">
                     <tr style="background: #0A2540; color: #FFFFFF;">
                       <td style="padding: 12px 14px; font-weight: 850; text-align: center; font-size: 12px; letter-spacing: 0.05em; border-bottom-left-radius: 6px;">TOTAL PIUTANG</td>
-                      <td id="sti-left-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">661,92</td>
-                      <td id="sti-left-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">828,30</td>
+                      <td id="sti-left-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">918,57</td>
+                      <td id="sti-left-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">1.123,63</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -6270,11 +6276,11 @@
                     <tr>
                       <th style="padding: 10px 14px; text-align: left; font-weight: 850; color: #0F172A; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #E2E8F0; width: 48%;">KATEGORI</th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="sti-right-tbl-col1-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">24 &ndash; 30 September 2026</div>
+                        <div id="sti-right-tbl-col1-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-left-radius: 6px; white-space: nowrap;">22 &ndash; 28 Oktober 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                       <th style="padding: 0; text-align: center; width: 26%; vertical-align: top;">
-                        <div id="sti-right-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">1 &ndash; 7 Oktober 2026</div>
+                        <div id="sti-right-tbl-col2-txt" style="background: #0284C7; color: #FFFFFF; padding: 7px 8px; font-size: 11px; font-weight: 700; border-top-right-radius: 6px; white-space: nowrap;">29 Oktober &ndash; 4 November 2026</div>
                         <div style="background: #E0F2FE; color: #0A2540; padding: 4px 8px; font-size: 10.5px; font-weight: 700;">Total (Rp M)</div>
                       </th>
                     </tr>
@@ -6302,8 +6308,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">1</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses Service Entry (<span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Dokumen Lengkap</span>)</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">320,86</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">299,60</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">105,17</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">99,75</td>
                     </tr>
                     <!-- B.2: Proses BAST & BAP BPO -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showStiCategoryDetail('bast_bpo')" title="Klik untuk rincian Proses BAST & BAP BPO">
@@ -6311,8 +6317,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">2</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BAST &amp; BAP BPO</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">148,67</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">112,20</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">140,52</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">124,87</td>
                     </tr>
                     <!-- B.3: Proses BAST & BAP Internal -->
                     <tr class="pln-interactive-row" onclick="showStiCategoryDetail('bast_internal')" title="Klik untuk rincian Proses BAST & BAP Internal">
@@ -6320,8 +6326,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">3</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BAST &amp; BAP Internal</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">21,09</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">22,68</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">11,76</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">11,33</td>
                     </tr>
                     <!-- B.4: Proses BAKB -->
                     <tr class="pln-interactive-row" style="background: #FAFBFD;" onclick="showStiCategoryDetail('bakb')" title="Klik untuk rincian Proses BAKB">
@@ -6329,8 +6335,8 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">4</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BAKB</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">116,94</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">116,94</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">317,35</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">317,35</td>
                     </tr>
                     <!-- B.5: Proses BA Prebilling -->
                     <tr class="pln-interactive-row" onclick="showStiCategoryDetail('prebilling')" title="Klik untuk rincian Proses BA Prebilling">
@@ -6338,16 +6344,16 @@
                         <span style="font-weight: 700; color: #0F172A; margin-right: 8px;">5</span>
                         <span style="color: #1E293B; font-weight: 600;">Proses BA Prebilling</span>
                       </td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">653,62</td>
-                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">658,65</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">584,07</td>
+                      <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">535,95</td>
                     </tr>
                   </tbody>
                   <!-- Footer Total -->
                   <tfoot id="sti-right-tbl-tfoot">
                     <tr style="background: #0284C7; color: #FFFFFF;">
                       <td style="padding: 12px 14px; font-weight: 850; text-align: center; font-size: 12px; letter-spacing: 0.05em; border-bottom-left-radius: 6px;">TOTAL PROSES INVOICE</td>
-                      <td id="sti-right-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">1.261,19</td>
-                      <td id="sti-right-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">1.210,07</td>
+                      <td id="sti-right-tbl-foot-col1" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace;">1.158,87</td>
+                      <td id="sti-right-tbl-foot-col2" style="padding: 12px 12px; text-align: center; font-weight: 850; font-size: 13px; font-family: var(--font-mono), monospace; border-bottom-right-radius: 6px;">1.089,25</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -6368,11 +6374,9 @@
               </div>
               <div>
                 <div id="sti-insight-left-main" style="font-weight: 700; color: #1E3A8A; font-size: 13px; line-height: 1.45;">
-                  Total <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Piutang</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Minggu</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Ini</span> mengalami <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">peningkatan</span> 25,14% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 661,92 M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 828,30 M
+                  Total <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Piutang</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Minggu</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Ini</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">mengalami</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">peningkatan</span> 22,32% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 918,57M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.123,63M
                 </div>
-                <div id="sti-insight-left-sub" style="color: #475569; font-size: 12px; margin-top: 4px; line-height: 1.4;">
-                  <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Verifikasi</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">keuangan</span> 48,21 M
-                </div>
+                <div id="sti-insight-left-sub" style="color: #475569; font-size: 12px; margin-top: 4px; line-height: 1.4;"></div>
               </div>
             </div>
 
@@ -6387,15 +6391,15 @@
                 </svg>
               </div>
               <div id="sti-insight-right-main" style="font-weight: 700; color: #1E3A8A; font-size: 13px; line-height: 1.45;">
-                Total Proses Invoice <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> 4,05% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.261,19M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.210,07M
+                Total Proses Invoice <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> 6,01% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.158,87M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.089,25M
               </div>
             </div>
           </div>
 
           <!-- Footer Indicator -->
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 4px; font-size: 11px; color: #94A3B8;">
-            <div id="sti-slide-footer-period">Sumber Data: Laporan Eksekutif Monitoring Progress Invoice DIVSTI PLN &middot; Periode W1 Oktober 2026</div>
-            <div id="sti-slide-footer-page" style="font-weight: 900; font-size: 20px; color: #0284C7; padding: 0 4px; font-family: 'Inter', -apple-system, sans-serif;">3</div>
+            <div id="sti-slide-footer-period">Sumber Data: Laporan Eksekutif Monitoring Progress Invoice DIVSTI PLN &middot; Periode W1 November 2026</div>
+            <div id="sti-slide-footer-page" style="font-weight: 900; font-size: 20px; color: #0284C7; padding: 0 4px; font-family: 'Inter', -apple-system, sans-serif;">12</div>
           </div>
 
         </div> <!-- End sti-view-slide -->
@@ -6408,23 +6412,23 @@
           <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px;">
             <div class="kpi-card" style="padding: 16px;">
               <div id="sti-mini-cashin-title" style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase;">CASH IN REALISASI BULANAN</div>
-              <div id="sti-mini-cashin-val" style="font-size: 20px; font-weight: 850; color: #0284C7; font-family: var(--font-mono); margin-top: 4px;">Rp 5,20 M</div>
-              <div id="sti-mini-cashin-sub" style="font-size: 11px; color: #16A34A; margin-top: 3px; font-weight: 600;">Realisasi W1: 5,20 M</div>
+              <div id="sti-mini-cashin-val" style="font-size: 20px; font-weight: 850; color: #0284C7; font-family: var(--font-mono); margin-top: 4px;">Rp 11,29 M</div>
+              <div id="sti-mini-cashin-sub" style="font-size: 11px; color: #16A34A; margin-top: 3px; font-weight: 600;">Realisasi W1: 11,29 M</div>
             </div>
             <div class="kpi-card" style="padding: 16px;">
-              <div id="sti-mini-target-title" style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase;">TARGET CASH IN OKTOBER</div>
+              <div id="sti-mini-target-title" style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase;">TARGET CASH IN NOVEMBER</div>
               <div id="sti-mini-target-val" style="font-size: 20px; font-weight: 850; color: #0F172A; font-family: var(--font-mono); margin-top: 4px;">Rp 1.150,00 M</div>
-              <div id="sti-mini-target-sub" style="font-size: 11px; color: #D97706; margin-top: 3px; font-weight: 600;">Capaian Kumulatif: 0,45%</div>
+              <div id="sti-mini-target-sub" style="font-size: 11px; color: #D97706; margin-top: 3px; font-weight: 600;">Capaian Kumulatif: 0,98%</div>
             </div>
             <div class="kpi-card" style="padding: 16px;">
               <div id="sti-mini-siap-title" style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase;">PIUTANG SIAP PENCAIRAN</div>
-              <div id="sti-mini-siap-val" style="font-size: 20px; font-weight: 850; color: #16A34A; font-family: var(--font-mono); margin-top: 4px;">Rp 48,21 M</div>
+              <div id="sti-mini-siap-val" style="font-size: 20px; font-weight: 850; color: #16A34A; font-family: var(--font-mono); margin-top: 4px;">Rp 21,80 M</div>
               <div id="sti-mini-siap-sub" style="font-size: 11px; color: #64748B; margin-top: 3px;">Keuangan Pusat DIVSTI (Verifikasi Selesai)</div>
             </div>
             <div class="kpi-card" style="padding: 16px;">
               <div id="sti-mini-bottleneck-title" style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase;">BOTTLENECK PIPELINE TERBESAR</div>
-              <div id="sti-mini-bottleneck-val" style="font-size: 20px; font-weight: 850; color: #DC2626; font-family: var(--font-mono); margin-top: 4px;">Rp 658,65 M</div>
-              <div id="sti-mini-bottleneck-sub" style="font-size: 11px; color: #DC2626; margin-top: 3px; font-weight: 600;">BA Prebilling (54,43% Pipeline)</div>
+              <div id="sti-mini-bottleneck-val" style="font-size: 20px; font-weight: 850; color: #DC2626; font-family: var(--font-mono); margin-top: 4px;">Rp 535,95 M</div>
+              <div id="sti-mini-bottleneck-sub" style="font-size: 11px; color: #DC2626; margin-top: 3px; font-weight: 600;">BA Prebilling (49,20% Pipeline)</div>
             </div>
           </div>
 
@@ -6434,12 +6438,12 @@
             <div class="panel-card" style="padding: 20px; background: #FFFFFF; border-radius: 12px; border: 1.5px solid #E2E8F0;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
                 <div>
-                  <div id="sti-analytics-chart1-title" style="font-size: 14px; font-weight: 850; color: #0A2540;">Komparasi Nilai Piutang: 24-30 Sept vs 1-7 Okt 2026</div>
+                  <div id="sti-analytics-chart1-title" style="font-size: 14px; font-weight: 850; color: #0A2540;">Komparasi Nilai Piutang: 22-28 Okt vs 29 Okt-4 Nov 2026</div>
                   <div style="font-size: 11.5px; color: #64748B; margin-top: 2px;">Perbandingan posisi piutang per tahapan DIVSTI PLN (dalam Miliar Rupiah)</div>
                 </div>
                 <div style="display: flex; gap: 10px; font-size: 10.5px; font-weight: 700;">
-                  <span style="display: flex; align-items: center; gap: 4px; color: #0A2540;"><span style="width: 10px; height: 10px; border-radius: 2px; background: #0A2540;"></span> <span id="sti-analytics-chart1-leg1-txt">24-30 Sept</span></span>
-                  <span style="display: flex; align-items: center; gap: 4px; color: #0284C7;"><span style="width: 10px; height: 10px; border-radius: 2px; background: #0284C7;"></span> <span id="sti-analytics-chart1-leg2-txt">1-7 Okt</span></span>
+                  <span style="display: flex; align-items: center; gap: 4px; color: #0A2540;"><span style="width: 10px; height: 10px; border-radius: 2px; background: #0A2540;"></span> <span id="sti-analytics-chart1-leg1-txt">22-28 Okt</span></span>
+                  <span style="display: flex; align-items: center; gap: 4px; color: #0284C7;"><span style="width: 10px; height: 10px; border-radius: 2px; background: #0284C7;"></span> <span id="sti-analytics-chart1-leg2-txt">29 Okt-4 Nov</span></span>
                 </div>
               </div>
               <div id="sti-analytics-chart-bar" style="min-height: 230px;">
@@ -6451,7 +6455,7 @@
             <div class="panel-card" style="padding: 20px; background: #FFFFFF; border-radius: 12px; border: 1.5px solid #E2E8F0;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
                 <div>
-                  <div id="sti-analytics-chart2-title" style="font-size: 14px; font-weight: 850; color: #0284C7;">Struktur Pipeline Penyelesaian Invoice (Rp 1.210,07 M)</div>
+                  <div id="sti-analytics-chart2-title" style="font-size: 14px; font-weight: 850; color: #0284C7;">Struktur Pipeline Penyelesaian Invoice (Rp 1.089,25 M)</div>
                   <div style="font-size: 11.5px; color: #64748B; margin-top: 2px;">Komposisi accrued belum ter-invoice DIVSTI per tahap dokumentasi</div>
                 </div>
                 <span class="kpi-tag" style="background: rgba(2, 132, 199, 0.1); color: #0284C7; font-weight: 800; font-size: 11px; padding: 3px 8px; border-radius: 6px;">Total 5 Tahap</span>
@@ -6466,7 +6470,7 @@
           <div class="panel-card" style="padding: 20px; background: #FFFFFF; border-radius: 12px; border: 1.5px solid #E2E8F0;">
             <div id="sti-analytics-actions-title" style="font-size: 14px; font-weight: 850; color: #0A2540; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" color="#0284C7"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Rekomendasi Strategis &amp; Action Plan Percepatan Pencairan Cash In DIVSTI PLN W1 Oktober 2026
+              Rekomendasi Strategis &amp; Action Plan Percepatan Pencairan Cash In DIVSTI PLN W1 November 2026
             </div>
             <div id="sti-analytics-actions-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
               <!-- Populated dynamically by JS -->
@@ -6483,7 +6487,7 @@
               <div>
                 <div class="data-table-title" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 850; color: #0A2540;">
                   <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #0284C7;"></span>
-                  <span id="sti-regional-title-total">Distribusi Piutang &amp; Status Per Unit / Segmen DIVSTI (Total Rp 828,30 M)</span>
+                  <span id="sti-regional-title-total">Distribusi Piutang &amp; Status Per Unit / Segmen DIVSTI (Total Rp 1.123,63 M)</span>
                 </div>
                 <div style="font-size: 11.5px; color: #64748B; margin-top: 3px;">
                   Monitoring komparasi mingguan, status tahapan proyek TI, dan action plan masing-masing Unit Pengelola DIVSTI
@@ -6515,8 +6519,8 @@
                     <th style="text-align: center; width: 40px;">NO</th>
                     <th>UNIT / SEGMEN PROYEK DIVSTI</th>
                     <th>WILAYAH OPERASI</th>
-                    <th id="sti-reg-th-prev" style="text-align: right;">PIUTANG 24-30 SEPT (RP M)</th>
-                    <th id="sti-reg-th-curr" style="text-align: right;">PIUTANG 1-7 OKT (RP M)</th>
+                    <th id="sti-reg-th-prev" style="text-align: right;">PIUTANG 22-28 OKT (RP M)</th>
+                    <th id="sti-reg-th-curr" style="text-align: right;">PIUTANG 29 OKT-4 NOV (RP M)</th>
                     <th style="text-align: right;">VARIANS (RP M)</th>
                     <th style="text-align: center;">STATUS TAHAPAN</th>
                     <th>ACTION PLAN / PIC</th>
@@ -6528,9 +6532,9 @@
                 <tfoot>
                   <tr style="background: #0A2540; color: #FFFFFF; font-weight: 850;">
                     <td colspan="3" style="padding: 12px 14px; text-align: center;">TOTAL NASIONAL (9 SEGMEN / REGIONAL UTAMA DIVSTI)</td>
-                    <td id="sti-reg-foot-prev" style="padding: 12px 12px; text-align: right; font-family: var(--font-mono);">661,92</td>
-                    <td id="sti-reg-foot-curr" style="padding: 12px 12px; text-align: right; font-family: var(--font-mono);">828,30</td>
-                    <td id="sti-reg-foot-delta" style="padding: 12px 12px; text-align: right; font-family: var(--font-mono); color: #EF4444;">+166,38 (+25,14%)</td>
+                    <td id="sti-reg-foot-prev" style="padding: 12px 12px; text-align: right; font-family: var(--font-mono);">918,57</td>
+                    <td id="sti-reg-foot-curr" style="padding: 12px 12px; text-align: right; font-family: var(--font-mono);">1.123,63</td>
+                    <td id="sti-reg-foot-delta" style="padding: 12px 12px; text-align: right; font-family: var(--font-mono); color: #EF4444;">+205,06 (+22,32%)</td>
                     <td style="text-align: center;">ON PROGRESS</td>
                     <td>Direktorat Keuangan &amp; Divisi STI PLN</td>
                   </tr>
@@ -6607,7 +6611,7 @@
               Penyelesaian Utang Usaha
             </h1>
             <div id="utang-main-subtitle" style="font-size: 13px; color: #64748B;">
-              Realisasi dan estimasi penyelesaian utang usaha periode September 2026
+              Realisasi dan estimasi penyelesaian utang usaha periode W1 November 2026 (s.d 3 November 2026)
             </div>
           </div>
 
@@ -6619,8 +6623,9 @@
               <div style="display: flex; align-items: center; gap: 6px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A2540" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 <select id="utang-filter-period" onchange="onUtangPeriodChange(this.value)" style="border: none; background: transparent; font-size: 13px; font-weight: 700; color: #0A2540; outline: none; cursor: pointer; padding-right: 4px;">
-                  <option value="SEPT2026" selected>September 2026</option>
+                  <option value="W1_NOV" selected>W1 November 2026</option>
                   <option value="W1_OKT">W1 Oktober 2026</option>
+                  <option value="SEPT2026">September 2026</option>
                   <option value="AGU2026">Agustus 2026</option>
                   <option value="JUL2026">Juli 2026</option>
                   <option value="Q22026">Q2 2026</option>
@@ -6670,9 +6675,9 @@
               </svg>
             </div>
             <div>
-              <div style="font-size: 12.5px; font-weight: 600; color: #64748B;">Saldo Utang Usaha</div>
-              <div id="kpi-utang-saldo" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">Rp 343,00 M</div>
-              <div id="kpi-utang-saldo-sub" style="font-size: 11px; color: #94A3B8; margin-top: 2px;">per 30 September 2026</div>
+              <div style="font-size: 12.5px; font-weight: 600; color: #64748B;">Saldo Utang Usaha STI 2025</div>
+              <div id="kpi-utang-saldo" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">Rp 309,84 M</div>
+              <div id="kpi-utang-saldo-sub" style="font-size: 11px; color: #94A3B8; margin-top: 2px;">per 3 November 2026</div>
             </div>
           </div>
 
@@ -6689,7 +6694,7 @@
             </div>
             <div>
               <div style="font-size: 12.5px; font-weight: 600; color: #64748B;">Total Utang Usaha 2025</div>
-              <div id="kpi-utang-total" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">Rp 1.071,32 M</div>
+              <div id="kpi-utang-total" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">Rp 1.045,91 M</div>
               <div style="font-size: 11px; color: transparent; margin-top: 2px;">&nbsp;</div>
             </div>
           </div>
@@ -6704,7 +6709,7 @@
             </div>
             <div>
               <div style="font-size: 12.5px; font-weight: 600; color: #64748B;">Realisasi Terbayar</div>
-              <div id="kpi-utang-terbayar" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">Rp 728,32 M</div>
+              <div id="kpi-utang-terbayar" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">Rp 736,07 M</div>
               <div id="kpi-utang-terbayar-sub" style="font-size: 11px; color: #94A3B8; margin-top: 2px;">dari total utang usaha 2025</div>
             </div>
           </div>
@@ -6716,7 +6721,7 @@
             </div>
             <div>
               <div style="font-size: 12.5px; font-weight: 600; color: #64748B;">Penyerapan Pembayaran</div>
-              <div id="kpi-utang-penyerapan" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">68%</div>
+              <div id="kpi-utang-penyerapan" style="font-size: 22px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em; margin-top: 2px;">70%</div>
               <div id="kpi-utang-penyerapan-sub" style="font-size: 11px; color: #94A3B8; margin-top: 2px;">dari total utang usaha 2025</div>
             </div>
           </div>
@@ -6728,7 +6733,7 @@
             i
           </div>
           <div id="utang-narrative-text" style="font-size: 12.5px; color: #0F172A; line-height: 1.5;">
-            PLN dan PLN Icon Plus telah melakukan rekonsiliasi utang usaha 2025–2026. Dari total <strong>Rp 1.071,32 M</strong>, realisasi terbayar <strong>Rp 728,32 M</strong> (penyerapan <strong>68%</strong>), menyisakan saldo <strong>Rp 343,00 M</strong> per 30 September 2026.
+            PLN dan PLN Icon Plus telah melakukan rekonsiliasi utang usaha 2025–2026. Dari total <strong>Rp 1.045,91 M</strong>, realisasi terbayar baru <strong>Rp 736,07 M</strong> (penyerapan <strong>70%</strong>), menyisakan saldo <strong>Rp 309,84 M</strong> per 3 November 2026.
           </div>
         </div>
 
@@ -6763,10 +6768,10 @@
                   <tr style="background: #0A2540; color: #FFFFFF; font-weight: 800;">
                     <td colspan="2" style="padding: 10px 12px; text-align: center; border: 1px solid #071A2E; letter-spacing: 0.04em;">TOTAL</td>
                     <td id="utang-foot-ako" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">1.266</td>
-                    <td id="utang-foot-total" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">1.071,32</td>
-                    <td id="utang-foot-terbayar" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">728,32</td>
-                    <td id="utang-foot-pct" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">68%</td>
-                    <td id="utang-foot-sisa" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">343,00</td>
+                    <td id="utang-foot-total" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">1.045,91</td>
+                    <td id="utang-foot-terbayar" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">736,07</td>
+                    <td id="utang-foot-pct" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">70%</td>
+                    <td id="utang-foot-sisa" style="padding: 10px 10px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">309,84</td>
                   </tr>
                 </tfoot>
               </table>
@@ -6823,8 +6828,8 @@
                 <tfoot id="utang-tbl2-tfoot">
                   <tr style="background: #0A2540; color: #FFFFFF; font-weight: 800;">
                     <td colspan="2" style="padding: 10px 12px; text-align: center; border: 1px solid #071A2E; letter-spacing: 0.04em;">TOTAL</td>
-                    <td id="utang-foot-ao" style="padding: 10px 12px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">2.388,46</td>
-                    <td id="utang-foot-ako2" style="padding: 10px 12px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">2.234,24</td>
+                    <td id="utang-foot-ao" style="padding: 10px 12px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">2.213,80</td>
+                    <td id="utang-foot-ako2" style="padding: 10px 12px; text-align: center; border: 1px solid #071A2E; font-family: var(--font-mono), monospace;">2.059,52</td>
                   </tr>
                 </tfoot>
               </table>
@@ -6854,7 +6859,7 @@
                     </svg>
                   </div>
                   <div>
-                    <div id="utang-card-ao" style="font-size: 20px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp 2.388,46 M</div>
+                    <div id="utang-card-ao" style="font-size: 20px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp 2.213,80 M</div>
                     <div style="font-size: 11px; color: #64748B; font-weight: 600; margin-top: 2px;">AO (Anggaran Operasi)</div>
                   </div>
                 </div>
@@ -6870,7 +6875,7 @@
                     </svg>
                   </div>
                   <div>
-                    <div id="utang-card-ako" style="font-size: 20px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp 2.234,24 M</div>
+                    <div id="utang-card-ako" style="font-size: 20px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; letter-spacing: -0.02em;">Rp 2.059,52 M</div>
                     <div style="font-size: 11px; color: #64748B; font-weight: 600; margin-top: 2px;">AKO (Anggaran Kas Operasi)</div>
                   </div>
                 </div>
@@ -6883,14 +6888,14 @@
                   <div style="flex: 1; background: #E2E8F0; border-radius: 999px; height: 12px; overflow: hidden;">
                     <div style="background: #0A2540; height: 100%; width: 100%; border-radius: 999px;"></div>
                   </div>
-                  <span id="utang-bar-val-ao" style="font-size: 11.5px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; width: 60px; text-align: right;">2.388,46</span>
+                  <span id="utang-bar-val-ao" style="font-size: 11.5px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; width: 60px; text-align: right;">2.213,80</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                   <span style="font-size: 11.5px; font-weight: 700; color: #0A2540; width: 34px;">AKO</span>
                   <div style="flex: 1; background: #E2E8F0; border-radius: 999px; height: 12px; overflow: hidden;">
-                    <div id="utang-card-bar-ako" style="background: #38BDF8; height: 100%; width: 93.54%; border-radius: 999px; transition: width 0.3s ease;"></div>
+                    <div id="utang-card-bar-ako" style="background: #38BDF8; height: 100%; width: 93.03%; border-radius: 999px; transition: width 0.3s ease;"></div>
                   </div>
-                  <span id="utang-bar-val-ako" style="font-size: 11.5px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; width: 60px; text-align: right;">2.234,24</span>
+                  <span id="utang-bar-val-ako" style="font-size: 11.5px; font-weight: 800; color: #0A2540; font-family: var(--font-mono), monospace; width: 60px; text-align: right;">2.059,52</span>
                 </div>
               </div>
             </div>
@@ -6898,7 +6903,7 @@
             <!-- Ratio Note Bottom Right -->
             <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
               <span id="utang-card-ratio-txt" style="font-size: 11px; color: #64748B; font-weight: 500;">
-                Rasio AKO thd AO: <strong style="color: #0A2540; font-weight: 700;">93,54%</strong> &nbsp;&bull;&nbsp; Selisih Rp 154,22 M
+                Rasio AKO thd AO: <strong style="color: #0A2540; font-weight: 700;">93,03%</strong> &nbsp;&bull;&nbsp; Selisih Rp 154,28 M
               </span>
             </div>
           </div>
@@ -9735,7 +9740,7 @@
       if (subnavPln) subnavPln.classList.add('active');
 
       document.getElementById('top-title').textContent = 'Monitoring Progress Invoice PLN';
-      document.getElementById('top-sub').innerHTML = 'W1 OKTOBER 2026 &middot; EKSEKUTIF SUMMARY MONITORING PIUTANG & PROGRESS INVOICE';
+      document.getElementById('top-sub').innerHTML = 'W1 NOVEMBER 2026 &middot; EKSEKUTIF SUMMARY MONITORING PIUTANG & PROGRESS INVOICE';
       window.location.hash = '#invoice-pln';
       if (typeof renderInvoicePlnView === 'function') renderInvoicePlnView();
     } else if (isStiV1) {
@@ -9758,7 +9763,7 @@
       if (subnavSti) subnavSti.classList.add('active');
 
       document.getElementById('top-title').textContent = 'Monitoring Progress Invoice DIVSTI PLN';
-      document.getElementById('top-sub').innerHTML = 'W1 OKTOBER 2026 &middot; EKSEKUTIF SUMMARY MONITORING PIUTANG & PROGRESS INVOICE DIVSTI';
+      document.getElementById('top-sub').innerHTML = 'W1 NOVEMBER 2026 &middot; EKSEKUTIF SUMMARY MONITORING PIUTANG & PROGRESS INVOICE DIVSTI';
       window.location.hash = '#invoice-sti-pln';
       if (typeof renderInvoiceStiPlnView === 'function') renderInvoiceStiPlnView();
     } else if (isUtang) {
@@ -9770,7 +9775,7 @@
       if (subnavUtang) subnavUtang.classList.add('active');
 
       document.getElementById('top-title').textContent = 'Penyelesaian Utang Usaha';
-      document.getElementById('top-sub').innerHTML = 'Realisasi dan estimasi penyelesaian utang usaha periode September 2026';
+      document.getElementById('top-sub').innerHTML = 'Realisasi dan estimasi penyelesaian utang usaha periode W1 November 2026 (s.d 3 November 2026)';
       window.location.hash = '#utang-usaha';
       if (typeof renderUtangUsahaView === 'function') renderUtangUsahaView();
     } else if (isCashIn) {
@@ -10052,6 +10057,143 @@
 // =========================================================================
 
 window.utangUsahaPeriodsData = {
+  W1_NOV: {
+    periodCode: 'W1_NOV',
+    periodLabel: 'W1 November 2026 (s.d 3 November 2026)',
+    periodBadge: 's.d PERIODE NOVEMBER 2026',
+    kpi: {
+      saldo: 'Rp 309,84 M',
+      saldoSub: 'per 3 November 2026',
+      total: 'Rp 1.045,91 M',
+      terbayar: 'Rp 736,07 M',
+      terbayarSub: 'dari total utang usaha 2025',
+      penyerapan: '70%',
+      penyerapanSub: 'dari total utang usaha 2025'
+    },
+    narrative: 'PLN dan PLN Icon Plus telah melakukan rekonsiliasi utang usaha 2025&ndash;2026. Dari total <strong>Rp 1.045,91 M</strong>, realisasi terbayar baru <strong>Rp 736,07 M</strong> (penyerapan <strong>70%</strong>), menyisakan saldo <strong>Rp 309,84 M</strong> per 3 November 2026.',
+    table1: [
+      { no: 1, key: 'adm_pusat', uraian: 'ADM Pusat', ako: '366', total: '235,14', terbayar: '118,73', pct: '11%', sisa: '116,41', pctNum: 11, totalNum: 235.14, terbayarNum: 118.73, sisaNum: 116.41, akoNum: 366, unit: 'PUSAT', slicePct: '22%' },
+      { no: 2, key: 'adm_unit', uraian: 'ADM Unit', ako: '400', total: '337,78', terbayar: '249,48', pct: '24%', sisa: '88,30', pctNum: 24, totalNum: 337.78, terbayarNum: 249.48, sisaNum: 88.30, akoNum: 400, unit: 'UNIT', slicePct: '32%' },
+      { no: 3, key: 'har_pusat', uraian: 'HAR Pusat', ako: '493', total: '346,40', terbayar: '280,20', pct: '27%', sisa: '66,20', pctNum: 27, totalNum: 346.40, terbayarNum: 280.20, sisaNum: 66.20, akoNum: 493, unit: 'PUSAT', slicePct: '33%' },
+      { no: 4, key: 'har_unit', uraian: 'HAR Unit', ako: '7', total: '126,59', terbayar: '87,66', pct: '69%', sisa: '38,93', pctNum: 69, totalNum: 126.59, terbayarNum: 87.66, sisaNum: 38.93, akoNum: 7, unit: 'UNIT', slicePct: '12%' }
+    ],
+    table1Total: { ako: '1.266', total: '1.045,91', terbayar: '736,07', pct: '70%', sisa: '309,84' },
+    table2: [
+      { no: 1, key: 'adm_pusat', uraian: 'ADM Pusat', ao: '453,27', ako: '419,40', aoNum: 453.27, akoNum: 419.40, unit: 'PUSAT' },
+      { no: 2, key: 'adm_unit', uraian: 'ADM Unit', ao: '837,80', ako: '768,87', aoNum: 837.80, akoNum: 768.87, unit: 'UNIT' },
+      { no: 3, key: 'har_pusat', uraian: 'HAR Pusat', ao: '668,70', ako: '638,58', aoNum: 668.70, akoNum: 638.58, unit: 'PUSAT' },
+      { no: 4, key: 'har_unit', uraian: 'HAR Unit', ao: '254,03', ako: '232,67', aoNum: 254.03, akoNum: 232.67, unit: 'UNIT' }
+    ],
+    table2Total: { ao: '2.213,80', ako: '2.059,52', aoNum: 2213.80, akoNum: 2059.52 },
+    cardEst: {
+      ao: 'Rp 2.213,80 M',
+      ako: 'Rp 2.059,52 M',
+      akoPct: '93.03%',
+      ratioTxt: 'Rasio AKO thd AO: <strong style="color: #0A2540;">93,03%</strong> &nbsp;&bull;&nbsp; Selisih Rp 154,28 M'
+    },
+    miniAnalytics: {
+      saldo: 'Rp 309,84 M',
+      saldoSub: '30% Sisa Kewajiban Belum Terbayar',
+      terbayar: 'Rp 736,07 M',
+      terbayarSub: 'Penyerapan Kumulatif: 70%',
+      ako: 'Rp 1.266 M',
+      akoSub: 'Plafon Kas Operasi Tersedia',
+      ao: 'Rp 2.213,80 M',
+      aoSub: 'AKO 2026: Rp 2.059,52 M'
+    },
+    details: [
+      {
+        no: 1,
+        key: 'adm_pusat',
+        uraian: 'ADM Pusat (Administrasi Kantor Pusat)',
+        ako: '366',
+        total: '235,14',
+        terbayar: '118,73',
+        pct: '11%',
+        sisa: '116,41',
+        statusBadge: '<span class="status-badge" style="background: #FEF3C7; color: #92400E; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px;">REKONSILIASI KANPUS</span>',
+        pic: 'Divisi Keuangan PLN &amp; Icon Plus Pusat &bull; Percepatan BAST BA Rekon Q4'
+      },
+      {
+        no: 2,
+        key: 'adm_unit',
+        uraian: 'ADM Unit (Administrasi Unit Regional/UID/UIW)',
+        ako: '400',
+        total: '337,78',
+        terbayar: '249,48',
+        pct: '24%',
+        sisa: '88,30',
+        statusBadge: '<span class="status-badge" style="background: #DBEAFE; color: #1E40AF; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px;">ON TRACK UNIT</span>',
+        pic: 'MSB Keuangan Unit Induk &bull; Monitoring pembayaran via Cash Pooling'
+      },
+      {
+        no: 3,
+        key: 'har_pusat',
+        uraian: 'HAR Pusat (Pemeliharaan & Jasa Enjiniring Pusat)',
+        ako: '493',
+        total: '346,40',
+        terbayar: '280,20',
+        pct: '27%',
+        sisa: '66,20',
+        statusBadge: '<span class="status-badge" style="background: #DBEAFE; color: #1E40AF; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px;">ON TRACK HAR</span>',
+        pic: 'Divisi Operasi Pemeliharaan &bull; Verifikasi SLA dan berita acara operasional'
+      },
+      {
+        no: 4,
+        key: 'har_unit',
+        uraian: 'HAR Unit (Pemeliharaan Jaringan & Fasilitas Unit)',
+        ako: '7',
+        total: '126,59',
+        terbayar: '87,66',
+        pct: '69%',
+        sisa: '38,93',
+        statusBadge: '<span class="status-badge" style="background: #DCFCE7; color: #166534; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px;">HIGH ABSORPTION (69%)</span>',
+        pic: 'Manager Bagian Pemeliharaan UID &bull; Penuntasan sisa tagihan akhir tahun'
+      }
+    ],
+    modalDetails: {
+      adm_pusat: {
+        title: 'ADM Pusat',
+        total: 'Rp 235,14 M',
+        terbayar: 'Rp 118,73 M',
+        sisa: 'Rp 116,41 M',
+        pct: '11%',
+        ako: 'Rp 366 M',
+        desc: 'Penetapan AKO sebesar Rp 366 Miliar dengan total hutang usaha Rp 235,14 Miliar. Telah terealisasi terbayar sebesar Rp 118,73 Miliar (11% thd total) dengan sisa kewajiban Rp 116,41 Miliar per 3 November 2026.',
+        est: 'Estimasi Tagihan Layanan 2026: AO Rp 453,27 M & AKO Rp 419,40 M.'
+      },
+      adm_unit: {
+        title: 'ADM Unit',
+        total: 'Rp 337,78 M',
+        terbayar: 'Rp 249,48 M',
+        sisa: 'Rp 88,30 M',
+        pct: '24%',
+        ako: 'Rp 400 M',
+        desc: 'Penetapan AKO sebesar Rp 400 Miliar dengan total hutang usaha Rp 337,78 Miliar. Telah terealisasi terbayar sebesar Rp 249,48 Miliar (24% thd total) dengan sisa kewajiban Rp 88,30 Miliar per 3 November 2026.',
+        est: 'Estimasi Tagihan Layanan 2026: AO Rp 837,80 M & AKO Rp 768,87 M.'
+      },
+      har_pusat: {
+        title: 'HAR Pusat',
+        total: 'Rp 346,40 M',
+        terbayar: 'Rp 280,20 M',
+        sisa: 'Rp 66,20 M',
+        pct: '27%',
+        ako: 'Rp 493 M',
+        desc: 'Penetapan AKO sebesar Rp 493 Miliar dengan total hutang usaha Rp 346,40 Miliar. Telah terealisasi terbayar sebesar Rp 280,20 Miliar (27% thd total) dengan sisa kewajiban Rp 66,20 Miliar per 3 November 2026.',
+        est: 'Estimasi Tagihan Layanan 2026: AO Rp 668,70 M & AKO Rp 638,58 M.'
+      },
+      har_unit: {
+        title: 'HAR Unit',
+        total: 'Rp 126,59 M',
+        terbayar: 'Rp 87,66 M',
+        sisa: 'Rp 38,93 M',
+        pct: '69%',
+        ako: 'Rp 7 M',
+        desc: 'Penetapan AKO sebesar Rp 7 Miliar dengan total hutang usaha Rp 126,59 Miliar. Telah terealisasi terbayar sebesar Rp 87,66 Miliar (penyerapan tertinggi: 69%) dengan sisa kewajiban Rp 38,93 Miliar per 3 November 2026.',
+        est: 'Estimasi Tagihan Layanan 2026: AO Rp 254,03 M & AKO Rp 232,67 M.'
+      }
+    }
+  },
   W1_OKT: {
     periodCode: 'W1_OKT',
     periodLabel: 's.d W1 Oktober 2026 (7 Okt)',
@@ -10731,7 +10873,7 @@ window.utangUsahaPeriodsData = {
   }
 };
 
-window.currentUtangPeriod = 'SEPT2026';
+window.currentUtangPeriod = 'W1_NOV';
 window.currentUtangUnit = 'ALL';
 window.currentUtangInnerTab = 'slide';
 
@@ -10750,7 +10892,7 @@ function formatUtangNumber(num) {
 }
 
 function getFilteredUtangData(periodKey, unitVal) {
-  const base = window.utangUsahaPeriodsData[periodKey] || window.utangUsahaPeriodsData['SEPT2026'] || window.utangUsahaPeriodsData['W1_OKT'];
+  const base = window.utangUsahaPeriodsData[periodKey] || window.utangUsahaPeriodsData['W1_NOV'] || window.utangUsahaPeriodsData['SEPT2026'] || window.utangUsahaPeriodsData['W1_OKT'];
   if (!base) return null;
 
   // Clone base data
@@ -10758,6 +10900,7 @@ function getFilteredUtangData(periodKey, unitVal) {
   const unitMeta = UTANG_UNIT_METAS[unitVal] || UTANG_UNIT_METAS['ALL'];
   data.unitKey = unitVal;
   data.unitLabel = unitMeta.label;
+  const baseDateSub = (base.kpi && base.kpi.saldoSub) ? base.kpi.saldoSub : 'per 3 November 2026';
 
   if (unitVal === 'ALL') {
     return data;
@@ -10815,7 +10958,7 @@ function getFilteredUtangData(periodKey, unitVal) {
 
     data.kpi = {
       saldo: `Rp ${formatUtangNumber(totSisa)} M`,
-      saldoSub: `per 30 September 2026 &bull; Kantor Pusat`,
+      saldoSub: `${baseDateSub} &bull; Kantor Pusat`,
       total: `Rp ${formatUtangNumber(totTotal)} M`,
       terbayar: `Rp ${formatUtangNumber(totTerbayar)} M`,
       terbayarSub: `dari total utang Kantor Pusat`,
@@ -10823,7 +10966,7 @@ function getFilteredUtangData(periodKey, unitVal) {
       penyerapanSub: `dari total utang Kantor Pusat`
     };
 
-    data.narrative = `PLN dan PLN Icon Plus telah melakukan rekonsiliasi utang usaha <strong>Kantor Pusat PLN</strong>. Dari total <strong>Rp ${formatUtangNumber(totTotal)} M</strong>, realisasi terbayar <strong>Rp ${formatUtangNumber(totTerbayar)} M</strong> (penyerapan <strong>${totPct}%</strong>), menyisakan saldo <strong>Rp ${formatUtangNumber(totSisa)} M</strong> per September 2026.`;
+    data.narrative = `PLN dan PLN Icon Plus telah melakukan rekonsiliasi utang usaha <strong>Kantor Pusat PLN</strong>. Dari total <strong>Rp ${formatUtangNumber(totTotal)} M</strong>, realisasi terbayar <strong>Rp ${formatUtangNumber(totTerbayar)} M</strong> (penyerapan <strong>${totPct}%</strong>), menyisakan saldo <strong>Rp ${formatUtangNumber(totSisa)} M</strong> ${baseDateSub}.`;
 
     return data;
   }
@@ -10909,7 +11052,7 @@ function getFilteredUtangData(periodKey, unitVal) {
 
   data.kpi = {
     saldo: `Rp ${formatUtangNumber(totSisa)} M`,
-    saldoSub: `per 30 September 2026 &bull; ${unitMeta.label}`,
+    saldoSub: `${baseDateSub} &bull; ${unitMeta.label}`,
     total: `Rp ${formatUtangNumber(totTotal)} M`,
     terbayar: `Rp ${formatUtangNumber(totTerbayar)} M`,
     terbayarSub: `dari total alokasi ${unitMeta.label}`,
@@ -10917,7 +11060,7 @@ function getFilteredUtangData(periodKey, unitVal) {
     penyerapanSub: `dari total alokasi ${unitMeta.label}`
   };
 
-  data.narrative = `PLN dan PLN Icon Plus telah merekonsiliasi utang usaha <strong>${unitMeta.label}</strong>. Dari alokasi total <strong>Rp ${formatUtangNumber(totTotal)} M</strong>, realisasi terbayar <strong>Rp ${formatUtangNumber(totTerbayar)} M</strong> (penyerapan <strong>${totPct}%</strong>), menyisakan saldo terbuka <strong>Rp ${formatUtangNumber(totSisa)} M</strong> per September 2026.`;
+  data.narrative = `PLN dan PLN Icon Plus telah merekonsiliasi utang usaha <strong>${unitMeta.label}</strong>. Dari alokasi total <strong>Rp ${formatUtangNumber(totTotal)} M</strong>, realisasi terbayar <strong>Rp ${formatUtangNumber(totTerbayar)} M</strong> (penyerapan <strong>${totPct}%</strong>), menyisakan saldo terbuka <strong>Rp ${formatUtangNumber(totSisa)} M</strong> ${baseDateSub}.`;
 
   return data;
 }
@@ -10933,7 +11076,7 @@ function onUtangUnitChange(unitVal) {
 }
 
 function applyUtangFilters() {
-  const period = window.currentUtangPeriod || 'SEPT2026';
+  const period = window.currentUtangPeriod || 'W1_NOV';
   const unit = window.currentUtangUnit || 'ALL';
   const data = getFilteredUtangData(period, unit);
   if (!data) return;
@@ -11133,7 +11276,7 @@ function renderUtangDonutChart(data) {
     `;
   });
 
-  const totalDisplay = data.table1Total ? data.table1Total.total : (data.kpi ? data.kpi.total.replace('Rp ', '').replace(' M', '') : '1.071,32');
+  const totalDisplay = data.table1Total ? data.table1Total.total : (data.kpi ? data.kpi.total.replace('Rp ', '').replace(' M', '') : '1.045,91');
 
   const svgHtml = `
     <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="overflow: visible;">
@@ -11152,8 +11295,8 @@ function renderUtangDonutChart(data) {
 }
 
 function showUtangDetail(categoryKey) {
-  const period = window.currentUtangPeriod || 'SEPT2026';
-  const curData = window.utangUsahaPeriodsData[period] || window.utangUsahaPeriodsData['SEPT2026'] || window.utangUsahaPeriodsData['W1_OKT'];
+  const period = window.currentUtangPeriod || 'W1_NOV';
+  const curData = window.utangUsahaPeriodsData[period] || window.utangUsahaPeriodsData['W1_NOV'] || window.utangUsahaPeriodsData['SEPT2026'] || window.utangUsahaPeriodsData['W1_OKT'];
   if (!curData || !curData.modalDetails) return;
 
   const data = curData.modalDetails[categoryKey];
@@ -11184,7 +11327,7 @@ function printUtangUsahaSlide() {
 }
 
 function exportUtangUsahaCsv() {
-  const period = window.currentUtangPeriod || 'SEPT2026';
+  const period = window.currentUtangPeriod || 'W1_NOV';
   const unit = window.currentUtangUnit || 'ALL';
   const curData = getFilteredUtangData(period, unit);
   if (!curData) return;
@@ -11229,10 +11372,10 @@ function exportUtangDetailCsv() { exportUtangUsahaCsv(); }
 function renderUtangUsahaView() {
   const sel = document.getElementById('utang-filter-period');
   if (sel) {
-    if (!sel.value) sel.value = 'SEPT2026';
+    if (!sel.value) sel.value = 'W1_NOV';
     window.currentUtangPeriod = sel.value;
   } else {
-    window.currentUtangPeriod = 'SEPT2026';
+    window.currentUtangPeriod = 'W1_NOV';
   }
   const uSel = document.getElementById('utang-filter-unit');
   if (uSel) {
@@ -60671,11 +60814,169 @@ window.addEventListener('keydown', function(e) {
 
   // =========================================================================
   // MODULE: INVOICE PLN (MONITORING PROGRESS INVOICE PLN - MULTI PERIODE)
-  // Mendukung: W1 OKTOBER 2026 (Resmi), W4 SEPTEMBER 2026, W3, W2, W1_SEP
+  // Mendukung: W1 NOVEMBER 2026 (Resmi), W1 OKTOBER 2026, W4 SEPTEMBER 2026, W3, W2, W1_SEP
   // =========================================================================
-  window.currentPlnPeriod = 'W1_OKT';
+  window.currentPlnPeriod = 'W1_NOV';
 
   window.plnPeriodsData = {
+    'W1_NOV': {
+      periodKey: 'W1_NOV',
+      periodName: 'W1 NOVEMBER 2026',
+      prevDateRange: '22 \u2013 28 Oktober 2026',
+      currDateRange: '29 Oktober \u2013 4 November 2026',
+      prevDateShort: '22-28 Okt',
+      currDateShort: '29 Okt-4 Nov',
+      pageNum: '11',
+      kpis: {
+        totalPiutangWeek: 'Rp1.301,82 M',
+        totalProsesInvoice: 'Rp1.394,02 M',
+        cashinWeek: 'Rp12,64 M',
+        cashinWeekSub: '(29 Okt \u2013 04 Nov 2026)',
+        cashinMonth: 'Rp12,64 M',
+        cashinMonthSub: '(01 \u2013 04 November 2026)',
+        grandTotal: 'Rp2.695,84 M',
+        targetTitle: 'TARGET CASH IN NOVEMBER',
+        targetCashin: 'Rp 1.350,00 M',
+        targetCashinSub: 'Capaian Kumulatif: 0,94%',
+        piutangSiap: 'Rp 25,66 M',
+        piutangSiapSub: 'Keuangan Pusat (Verifikasi Keuangan)',
+        bottleneck: 'Rp 785,14 M',
+        bottleneckSub: 'BA Prebilling (56,32% Pipeline)'
+      },
+      table1: {
+        prevTotal: '1.101,89',
+        currTotal: '1.301,82',
+        delta: '+199,93 M (+18,14%)',
+        rows: [
+          { key: 'terbayar', num: 1, name: 'Terbayar', isLink: true, prev: '21,18', curr: '12,64', delta: '-8,54 M (-40,32%)', deltaColor: '#64748B' },
+          { key: 'keuangan_pusat', num: 2, name: 'Proses di Keuangan pusat', isUnderline: true, prev: '84,91', curr: '25,66', delta: '-59,25 M (-69,78%)', deltaColor: '#16A34A' },
+          { key: 'approval_vip', num: 3, name: 'Proses Approval VIP/BPO', prev: '626,73', curr: '736,52', delta: '+109,79 M (+17,52%)', deltaColor: '#DC2626' },
+          { key: 'upload_vip', num: 4, name: 'Proses Upload Dokumen di VIP', isUnderline: true, prev: '33,55', curr: '45,34', delta: '+11,79 M (+35,14%)', deltaColor: '#DC2626' },
+          { key: 'rtv_icon', num: 5, name: 'RTV & Proses di ICON+', prev: '356,70', curr: '473,27', delta: '+116,57 M (+32,68%)', deltaColor: '#DC2626' }
+        ]
+      },
+      table2: {
+        prevTotal: '1.498,73',
+        currTotal: '1.394,02',
+        delta: '-104,71 M (-6,99%)',
+        sectionA: { name: 'Penerbitan Invoice (Proses VIP)', prev: '-', curr: '-' },
+        sectionB: [
+          { key: 'service_entry', num: 1, name: 'Proses Service Entry (Dokumen Lengkap)', prev: '106,63', curr: '100,49', pct: '7,21%', barPct: 7.21, color: '#38BDF8' },
+          { key: 'bast_bpo', num: 2, name: 'Proses BAST & BAP BPO', prev: '159,12', curr: '143,47', pct: '10,29%', barPct: 10.29, color: '#60A5FA' },
+          { key: 'bast_internal', num: 3, name: 'Proses BAST & BAP Internal', prev: '11,76', curr: '11,33', pct: '0,81%', barPct: 0.81, color: '#BFDBFE' },
+          { key: 'bakb', num: 4, name: 'Proses BAKB', prev: '398,70', curr: '353,59', pct: '25,36%', barPct: 25.36, color: '#93C5FD' },
+          { key: 'prebilling', num: 5, name: 'Proses BA Prebilling', prev: '822,51', curr: '785,14', pct: '56,32%', barPct: 56.32, color: '#0284C7' }
+        ]
+      },
+      bottomInsights: {
+        leftMain: 'Total <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Piutang</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Minggu</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Ini</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">mengalami</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">peningkatan</span> 18,14% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.101,89M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.301,82M',
+        leftSub: '<span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Verifikasi</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">keuangan</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 25,66 M',
+        rightMain: 'Total Proses Invoice <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> 6,99% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.498,73M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.394,02M',
+        footerPeriod: 'Sumber Data: Laporan Eksekutif Monitoring Progress Invoice PLN \u00B7 Periode W1 November 2026'
+      },
+      chart1Data: [
+        { name: 'Proses Approval VIP/BPO', prevVal: 626.73, currVal: 736.52, deltaText: '626,73 M \u2192 736,52 M (+17,5%)', color: '#DC2626' },
+        { name: 'RTV & Proses di ICON+', prevVal: 356.70, currVal: 473.27, deltaText: '356,70 M \u2192 473,27 M (+32,7%)', color: '#DC2626' },
+        { name: 'Proses Upload Dokumen di VIP', prevVal: 33.55, currVal: 45.34, deltaText: '33,55 M \u2192 45,34 M (+35,1%)', color: '#0A2540' },
+        { name: 'Proses di Keuangan pusat', prevVal: 84.91, currVal: 25.66, deltaText: '84,91 M \u2192 25,66 M (-69,8%)', color: '#16A34A' },
+        { name: 'Terbayar', prevVal: 21.18, currVal: 12.64, deltaText: '21,18 M \u2192 12,64 M (-40,3%)', color: '#64748B' }
+      ],
+      chart2Title: 'Struktur Pipeline Penyelesaian Invoice (Rp 1.394,02 M)',
+      recommendations: [
+        {
+          priority: 'PRIORITAS 1: APPROVAL VIP/BPO',
+          val: 'Rp 736,52 M',
+          bg: '#FEF2F2', border: '#FECACA', colorTitle: '#B91C1C', colorVal: '#991B1B', colorDesc: '#7F1D1D',
+          desc: 'Eskalasi verifikasi BPO (MSB = 698,64 M; VP = 30,85 M; EVP = 7,03 M) untuk mempercepat konversi menjadi SPM siap bayar.'
+        },
+        {
+          priority: 'PRIORITAS 2: RTV & PROSES DI ICON+',
+          val: 'Rp 473,27 M',
+          bg: '#EFF6FF', border: '#BFDBFE', colorTitle: '#1D4ED8', colorVal: '#1E40AF', colorDesc: '#1E3A8A',
+          desc: 'Percepatan penyelesaian RTV (296,65 M) dan proses internal ICON+ (176,62 M) pada segmen PLN 1 & PLN 2.'
+        },
+        {
+          priority: 'PRIORITAS 3: PROSES BAKB & PREBILLING',
+          val: 'Rp 1.138,73 M',
+          bg: '#F0FDF4', border: '#BBF7D0', colorTitle: '#15803D', colorVal: '#166534', colorDesc: '#14532D',
+          desc: 'Akselerasi penyelesaian BAKB (353,59 M) dan BA Prebilling (785,14 M) untuk menekan saldo accrue belum ter-invoice.'
+        }
+      ],
+      regionalList: [
+        { no: 1, unit: 'UID Jawa Timur', wilayah: 'Jawa & Madura', prev: 338.20, curr: 398.50, delta: 60.30, status: 'Approval VIP/BPO', pic: 'PLN UID Jatim & SBU JBT', code: 'APPROVAL' },
+        { no: 2, unit: 'UID Jawa Barat', wilayah: 'Jawa & Madura', prev: 239.10, curr: 282.40, delta: 43.30, status: 'Approval VIP/BPO', pic: 'Subholding PLN & SBU JBB', code: 'APPROVAL' },
+        { no: 3, unit: 'UID Jawa Tengah & DIY', wilayah: 'Jawa & Madura', prev: 149.30, curr: 176.20, delta: 26.90, status: 'BA Prebilling', pic: 'PLN UID Jateng & SBU JTG', code: 'PREBILLING' },
+        { no: 4, unit: 'UID Jakarta Raya (Disjaya)', wilayah: 'Jawa & Madura', prev: 129.10, curr: 152.30, delta: 23.20, status: 'Keuangan Pusat', pic: 'PLN Kantor Pusat / Disjaya', code: 'KEUANGAN' },
+        { no: 5, unit: 'UIW Sumatera Utara', wilayah: 'Sumatera', prev: 79.00, curr: 93.40, delta: 14.40, status: 'RTV & ICON+', pic: 'PLN UIW Sumut & SBU SBU', code: 'RTV' },
+        { no: 6, unit: 'UID Bali & Nusa Tenggara', wilayah: 'Bali & Nusa Tenggara', prev: 61.40, curr: 72.10, delta: 10.70, status: 'Service Entry', pic: 'PLN UID Bali & SBU BALI', code: 'SERVICE' },
+        { no: 7, unit: 'UIW Sulselrabar', wilayah: 'Sulawesi & Indonesia Timur', prev: 46.40, curr: 54.60, delta: 8.20, status: 'RTV & ICON+', pic: 'PLN UIW Sulselrabar & SBU SULT', code: 'RTV' },
+        { no: 8, unit: 'UIW Sumsel, Jambi & Bengkulu', wilayah: 'Sumatera', prev: 35.70, curr: 42.10, delta: 6.40, status: 'RTV & ICON+', pic: 'PLN UIW S2JB & SBU SBS', code: 'RTV' },
+        { no: 9, unit: 'Unit Induk Lainnya (Kaltim/Kalbar/dll)', wilayah: 'Kalimantan & Lainnya', prev: 23.69, curr: 30.22, delta: 6.53, status: 'BA Prebilling', pic: 'Kantor Pusat PLN & Seluruh SBU', code: 'PREBILLING' }
+      ],
+      regionalTotal: { prev: '1.101,89', curr: '1.301,82', delta: '+199,93 (+18,14%)' },
+      categories: {
+        terbayar: {
+          title: '1. Terbayar',
+          prev: '21,18 M', curr: '12,64 M', delta: '-8,54 M (-40,32%)',
+          desc: 'Realisasi Cash In minggu pertama November (29 Okt – 4 Nov 2026) sebesar 12,64 M.',
+          action: 'Monitoring pencairan berkas yang telah terverifikasi di Keuangan Pusat PLN sebesar 25,66 M.'
+        },
+        keuangan_pusat: {
+          title: '2. Proses di Keuangan Pusat',
+          prev: '84,91 M', curr: '25,66 M', delta: '-59,25 M (-69,78%)',
+          desc: 'Verifikasi keuangan menurun dari 84,91 M menjadi 25,66 M seiring penyelesaian proses verifikasi di PBH PLN.',
+          action: 'Koordinasi perbendaharaan dengan Keuangan Pusat PLN untuk percepatan transfer pembayaran 25,66 M.'
+        },
+        approval_vip: {
+          title: '3. Proses Approval VIP/BPO',
+          prev: '626,73 M', curr: '736,52 M', delta: '+109,79 M (+17,52%)',
+          desc: 'Komponen piutang terbesar sebesar 736,52 M (Proses Verifikasi MSB = 698,64 M; VP = 30,85 M; EVP = 7,03 M).',
+          action: 'Eskalasi approval berjenjang bersama BPO PLN untuk mempercepat konversi dokumen menjadi siap bayar.'
+        },
+        upload_vip: {
+          title: '4. Proses Upload Dokumen di VIP',
+          prev: '33,55 M', curr: '45,34 M', delta: '+11,79 M (+35,14%)',
+          desc: 'Proses unggah dokumen tagihan di portal VIP meningkat menjadi 45,34 M (PLN 1 = 3,69 M; PLN 2 = 41,65 M).',
+          action: 'Validasi kelengkapan lampiran BAST & faktur pajak oleh PIC SBU agar segera masuk antrian approval BPO.'
+        },
+        rtv_icon: {
+          title: '5. RTV & Proses di ICON+',
+          prev: '356,70 M', curr: '473,27 M', delta: '+116,57 M (+32,68%)',
+          desc: 'Total RTV & Proses di ICON+ sebesar 473,27 M, terdiri dari RTV sebesar 296,65 M dan Proses di ICON+ sebesar 176,62 M.',
+          action: 'Task force khusus pemenuhan revisi RTV dan percepatan verifikasi internal ICON+ untuk re-submit ke VIP PLN.'
+        },
+        service_entry: {
+          title: 'B.1 Proses Service Entry (Dokumen Lengkap)',
+          prev: '106,63 M', curr: '100,49 M', delta: '-6,14 M (-5,76%)',
+          desc: 'Pipeline Service Entry menurun dari 106,63 M menjadi 100,49 M seiring penerbitan SES yang beralih ke tahap penagihan VIP.',
+          action: 'Percepatan penerbitan Service Entry Sheet (SES) pada SAP PLN untuk sisa 100,49 M.'
+        },
+        bast_bpo: {
+          title: 'B.2 Proses BAST & BAP BPO',
+          prev: '159,12 M', curr: '143,47 M', delta: '-15,65 M (-9,84%)',
+          desc: 'Penurunan positif sebesar 15,65 M dari 159,12 M menjadi 143,47 M berkat penyelesaian tanda tangan BAST & BAP BPO.',
+          action: 'Lanjutkan sirkuler tanda tangan digital BAST & BAP bersama BPO PLN.'
+        },
+        bast_internal: {
+          title: 'B.3 Proses BAST & BAP Internal',
+          prev: '11,76 M', curr: '11,33 M', delta: '-0,43 M (-3,66%)',
+          desc: 'Proses BAST & BAP Internal turun dari 11,76 M menjadi 11,33 M (PLN = 0,70 M; PLN 2 = 10,63 M).',
+          action: 'Selesaikan sirkulasi tanda tangan internal maksimal 3 hari kerja.'
+        },
+        bakb: {
+          title: 'B.4 Proses BAKB',
+          prev: '398,70 M', curr: '353,59 M', delta: '-45,11 M (-11,31%)',
+          desc: 'Proses BAKB menurun signifikan sebesar 45,11 M (-11,31%) dari 398,70 M menjadi 353,59 M.',
+          action: 'Kawal pengesahan sisa dokumen BAKB senilai 353,59 M bersama tim legal & komersial PLN.'
+        },
+        prebilling: {
+          title: 'B.5 Proses BA Prebilling',
+          prev: '822,51 M', curr: '785,14 M', delta: '-37,37 M (-4,54%)',
+          desc: 'Penurunan pipeline BA Prebilling sebesar 37,37 M dari 822,51 M menjadi 785,14 M (56,32% dari total proses invoice).',
+          action: 'Akselerasi rekonsiliasi data pemakaian layanan bulanan untuk konversi BA Prebilling ke tahap BAST.'
+        }
+      }
+    },
     'W1_OKT': {
       periodKey: 'W1_OKT',
       periodName: 'W1 OKTOBER 2026',
@@ -61364,7 +61665,7 @@ window.addEventListener('keydown', function(e) {
   };
 
   // Set reactive reference for backward compatibility
-  window.PLN_INVOICE_DATA = window.plnPeriodsData['W1_OKT'];
+  window.PLN_INVOICE_DATA = window.plnPeriodsData['W1_NOV'];
 
   function switchPlnInnerTab(tab) {
     const vSlide = document.getElementById('pln-view-slide');
@@ -61401,7 +61702,7 @@ window.addEventListener('keydown', function(e) {
 
   function onPlnPeriodChange(val) {
     if (!window.plnPeriodsData[val]) {
-      val = 'W1_OKT';
+      val = 'W1_NOV';
     }
     window.currentPlnPeriod = val;
     window.PLN_INVOICE_DATA = window.plnPeriodsData[val];
@@ -61545,11 +61846,13 @@ window.addEventListener('keydown', function(e) {
     const elInsLeftSub = document.getElementById('pln-insight-left-sub');
     const elInsRightMain = document.getElementById('pln-insight-right-main');
     const elFootPeriod = document.getElementById('pln-slide-footer-period');
+    const elFootPage = document.getElementById('pln-slide-footer-page');
 
     if (elInsLeftMain) elInsLeftMain.innerHTML = data.bottomInsights.leftMain;
     if (elInsLeftSub) elInsLeftSub.innerHTML = data.bottomInsights.leftSub;
     if (elInsRightMain) elInsRightMain.innerHTML = data.bottomInsights.rightMain;
     if (elFootPeriod) elFootPeriod.textContent = data.bottomInsights.footerPeriod;
+    if (elFootPage) elFootPage.textContent = data.pageNum || '10';
   }
 
   function renderPlnAnalyticsCharts(data) {
@@ -61729,7 +62032,7 @@ window.addEventListener('keydown', function(e) {
   }
 
   function filterPlnRegionalTable() {
-    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_OKT'];
+    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_NOV'];
     const q = (document.getElementById('pln-reg-search') ? document.getElementById('pln-reg-search').value : '').toLowerCase().trim();
     const st = document.getElementById('pln-reg-status-filter') ? document.getElementById('pln-reg-status-filter').value : 'ALL';
 
@@ -61748,7 +62051,7 @@ window.addEventListener('keydown', function(e) {
   }
 
   function showPlnCategoryDetail(catKey) {
-    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_OKT'];
+    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_NOV'];
     const cat = data.categories ? data.categories[catKey] : null;
     if (!cat) return;
 
@@ -61783,7 +62086,7 @@ window.addEventListener('keydown', function(e) {
   }
 
   function exportInvoicePlnCsv() {
-    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_OKT'];
+    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_NOV'];
     let csv = '\uFEFF';
     csv += `LAPORAN EKSEKUTIF MONITORING PROGRESS INVOICE PLN ${data.periodName}\r\n\r\n`;
     csv += 'METRIK UTAMA (KPI);NILAI (RP)\r\n';
@@ -61827,7 +62130,7 @@ window.addEventListener('keydown', function(e) {
   }
 
   function exportPlnRegionalCsv() {
-    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_OKT'];
+    const data = window.plnPeriodsData[window.currentPlnPeriod] || window.plnPeriodsData['W1_NOV'];
     let csv = '\uFEFF';
     csv += `NO;UNIT_INDUK_PLN;WILAYAH;PIUTANG_${data.prevDateShort.toUpperCase()}_M;PIUTANG_${data.currDateShort.toUpperCase()}_M;DELTA_M;STATUS;PIC_ACTION\r\n`;
     (data.regionalList || []).forEach(r => {
@@ -61857,7 +62160,7 @@ window.addEventListener('keydown', function(e) {
   }
 
   function renderInvoicePlnView() {
-    onPlnPeriodChange(window.currentPlnPeriod || 'W1_OKT');
+    onPlnPeriodChange(window.currentPlnPeriod || 'W1_NOV');
   }
 
   // Aliases for external calls & backward compatibility
@@ -61865,7 +62168,7 @@ window.addEventListener('keydown', function(e) {
   window.switchPlnPeriod = onPlnPeriodChange;
   window.openPlnCategoryModal = showPlnCategoryDetail;
   window.exportPlnSlideSummaryCsv = exportInvoicePlnCsv;
-  window.initPlnSlideDashboard = function() { onPlnPeriodChange('W1_OKT'); };
+  window.initPlnSlideDashboard = function() { onPlnPeriodChange('W1_NOV'); };
 
   // Trigger initial render for PLN Invoice module
   try {
@@ -61876,10 +62179,44 @@ window.addEventListener('keydown', function(e) {
 
 // =========================================================================
 // MODULE: INVOICE PLN V1 (MONITORING PROGRESS INVOICE PLN - SLIDE RESMI)
-// Multi-periode: W1 OKTOBER 2026 (Resmi Sesuai Slide) & W4 SEPTEMBER 2026
+// Multi-periode: W1 NOVEMBER 2026, W1 OKTOBER 2026, W4 & W3 SEPTEMBER 2026
 // =========================================================================
 
 window.invoicePlnV1PeriodsData = {
+  W1_NOV: {
+    periodCode: 'W1_NOV',
+    periodLabel: 'W1 November 2026 (29 Okt – 4 Nov)',
+    slideTitle: 'MONITORING PROGRESS INVOICE PLN W1 NOVEMBER 2026',
+    periodBadge: 'Slide Eksekutif Resmi &middot; W1 November 2026',
+    topSub: 'W1 NOVEMBER 2026 &middot; MONITORING PROGRESS INVOICE PLN (SLIDE RESMI V1)',
+    colPrevTitle: 'TANGGAL 22 &ndash; 28 Oktober 2026',
+    colCurrTitle: 'TANGGAL 29 Oktober &ndash; 4 November 2026',
+    pageNum: '9',
+    repeatTable2Header: true,
+    table1: [
+      { no: 'A', name: 'Total Piutang Minggu Lalu', isBold: true, prev: ['', '3,32', '182,53', '816,60', '1.002,44'], curr: ['', '3,32', '182,56', '916,02', '1.101,89'], ket: '' },
+      { no: '1', name: 'Terbayar', isBold: false, prev: ['', '', '', '21,18', '21,18'], curr: ['', '', '1,57', '11,07', '12,64'], ket: 'Total Cash In = 12,64 M' },
+      { no: '2', name: 'Proses di Keuangan Pusat', isBold: false, prev: ['', '', '2,13', '82,78', '84,91'], curr: ['', '', '13,45', '12,21', '25,66'], ket: 'PBH PLN (Verifikasi Keuangan = 25,66 M)' },
+      { no: '3', name: 'Proses approval VIP/BPO', isBold: false, prev: ['', '0,21', '131,21', '495,31', '626,73'], curr: ['', '0,21', '117,86', '618,44', '736,52'], ket: 'BPO (Proses Verifikasi MSB = 668,90 M; Proses Verifikasi VP = 58,38 M; Proses Verifikasi EVP = 9,24 M)' },
+      { no: '4', name: 'Proses Upload Dokumen di VIP', isBold: false, prev: ['', '', '0,04', '28,50', '28,54'], curr: ['', '-', '0,04', '45,30', '45,34'], ket: 'PLN 1 = 3,69 M; PLN 2 = 41,65 M' },
+      { no: '5', name: 'RTV & Proses di ICON+', isBold: false, prev: ['', '3,10', '49,17', '304,43', '356,70'], curr: ['', '3,10', '49,27', '420,90', '473,27'], ket: 'PLN 1 = 115,36 M; PLN 2 = 357,91 M' },
+      { no: '', name: '5a. RTV', isBold: false, isSubRow: true, prev: ['', '', '44,46', '258,83', '303,29'], curr: ['', '-', '44,55', '257,18', '301,74'], ket: 'PLN 1 = 3,16 M; PLN 2 = 298,58 M' },
+      { no: '', name: '5b. Proses di ICON+', isBold: false, isSubRow: true, prev: ['', '3,10', '4,71', '45,60', '53,42'], curr: ['', '3,10', '4,71', '163,72', '171,54'], ket: 'PLN 1 = 112,20 M; PLN 2 = 59,33 M' },
+      { no: 'B', name: 'Saldo Piutang Minggu Ini', isBold: true, prev: ['', '3,32', '182,56', '911,01', '1.096,89'], curr: ['', '3,32', '180,62', '1.096,85', '1.280,79'], ket: '' },
+      { no: 'C', name: 'Invoice Baru Minggu Ini', isBold: true, prev: ['', '', '', '5,00', '5,00'], curr: ['', '-', '-', '21,03', '21,03'], ket: 'New Invoice = 21,03 M' },
+      { no: '', name: 'Total Piutang Minggu Ini', isHighlight: true, prev: ['', '3,32', '182,56', '916,02', '1.101,89'], curr: ['', '3,32', '180,62', '1.117,88', '1.301,82'], ket: '' }
+    ],
+    table2: [
+      { no: 'A', name: 'Penerbitan Invoice (Proses VIP)', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: 'New Invoice' },
+      { no: 'B', name: 'Proses Invoice', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: '' },
+      { no: '1', name: 'Proses Service Entry', isBold: false, prev: ['', '', '24,01', '82,62', '106,63'], curr: ['', '', '17,85', '82,64', '100,49'], ket: 'PLN 1 = 1,69 M; PLN 2 = 79,31 M; Digitalisasi PLN 1 = 6,07 M; Digitalisasi PLN 2 = 3,53 M' },
+      { no: '2', name: 'Proses BAST & BAP BPO', isBold: false, prev: ['', '', '36,96', '122,16', '159,12'], curr: ['', '', '21,31', '122,16', '143,47'], ket: 'PLN 2 = 143,18 M; Digitalisasi PLN 2 = 0,29 M' },
+      { no: '3', name: 'Proses BAST & BAP Internal', isBold: false, prev: ['', '', '1,80', '9,96', '11,76'], curr: ['', '', '1,80', '9,53', '11,33'], ket: 'PLN 1 = 0,70 M; PLN 2 = 10,63 M' },
+      { no: '4', name: 'Proses BAKB', isBold: false, prev: ['', '', '89,79', '308,91', '398,70'], curr: ['', '', '44,69', '308,91', '353,59'], ket: 'PLN 2 = 353,59 M' },
+      { no: '5', name: 'Proses BA Prebilling', isBold: false, prev: ['', '0,04', '35,52', '786,95', '822,51'], curr: ['', '', '39,41', '745,74', '785,14'], ket: 'PLN = 9,23 M; PLN 1 = 188,01 M; PLN 2 = 431,62 M; Digitalisasi PLN 1 = 21,78 M; Digitalisasi PLN 2 = 129,49 M; POMS = 4,75 M' },
+      { no: '', name: 'Total Proses Invoice', isHighlight: true, prev: ['', '0,04', '188,09', '1.310,60', '1.498,73'], curr: ['', '', '125,05', '1.268,97', '1.394,02'], ket: '' }
+    ]
+  },
   W1_OKT: {
     periodCode: 'W1_OKT',
     periodLabel: 'W1 Oktober 2026 (1 – 7 Okt)',
@@ -61939,14 +62276,44 @@ window.invoicePlnV1PeriodsData = {
       { no: '5', name: 'Proses BA Prebilling', isBold: false, prev: ['', '0,04', '57,92', '796,02', '853,98'], curr: ['', '0,04', '58,02', '796,02', '854,08'], ket: 'PLN = 0,28 M; PLN 1 = 188,47 M; PLN 2 = 427,4 M; Digitalisasi PLN 1 = 36,2 M; Digitalisasi PLN 2 = 197,00 M; POMS = 4,75 M' },
       { no: '', name: 'Total Proses Invoice', isHighlight: true, prev: ['-', '0,07', '229,97', '1.297,51', '1.527,55'], curr: ['-', '0,07', '229,80', '1.283,61', '1.513,48'], ket: '' }
     ]
+  },
+  W3_SEP: {
+    periodCode: 'W3_SEP',
+    periodLabel: 'W3 September 2026 (17 – 23 Sept)',
+    slideTitle: 'MONITORING PROGRESS INVOICE PLN W3 SEPTEMBER 2026',
+    periodBadge: 'Slide Eksekutif Resmi &middot; W3 September 2026',
+    topSub: 'W3 SEPTEMBER 2026 &middot; MONITORING PROGRESS INVOICE PLN (SLIDE RESMI V1)',
+    colPrevTitle: 'TANGGAL 10 September &ndash; 16 September 2026',
+    colCurrTitle: 'TANGGAL 17 September &ndash; 23 September 2026',
+    table1: [
+      { no: 'A', name: 'Total Piutang Minggu Lalu', isBold: true, prev: ['', '8,65', '217,56', '717,60', '943,81'], curr: ['', '8,65', '217,56', '717,60', '943,81'], ket: '' },
+      { no: '1', name: 'Terbayar', isBold: false, prev: ['', '4,31', '14,35', '83,74', '102,40'], curr: ['', '4,31', '18,51', '92,39', '116,92'], ket: 'Total Cash In = 116,92 M' },
+      { no: '2', name: 'Proses di Keuangan Pusat', isBold: false, prev: ['', '0,76', '3,11', '124,23', '128,10'], curr: ['', '0,46', '4,31', '111,94', '115,72'], ket: 'PBH PLN (Verifikasi Keuangan = 115,72 M)' },
+      { no: '3', name: 'Proses approval VIP/BPO', isBold: false, prev: ['', '0,21', '153,02', '301,97', '455,20'], curr: ['', '0,51', '151,06', '326,39', '477,96'], ket: 'BPO (Proses Verifikasi MSB = 405,12 M; VP = 32,50 M; EVP = 40,34 M)' },
+      { no: '4', name: 'Proses Upload Dokumen di VIP', isBold: false, prev: ['', '3,10', '4,76', '19,24', '27,10'], curr: ['', '3,17', '4,76', '20,62', '28,55'], ket: 'PLN 1 = 2,50 M; PLN 2 = 26,05 M' },
+      { no: '5', name: 'RTV & Proses di ICON+', isBold: false, prev: ['', '', '36,96', '192,54', '229,50'], curr: ['', '', '38,91', '177,51', '216,42'], ket: 'PLN 1 = 30,12 M; PLN 2 = 186,30 M' },
+      { no: 'B', name: 'Saldo Piutang Minggu Lalu', isBold: true, prev: ['', '4,15', '199,04', '662,21', '865,40'], curr: ['', '4,15', '199,04', '636,45', '837,93'], ket: '' },
+      { no: 'C', name: 'Invoice Baru Minggu Ini', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: 'New Invoice' },
+      { no: '', name: 'Total Piutang Minggu Ini', isHighlight: true, prev: ['', '4,15', '199,04', '662,21', '865,40'], curr: ['', '4,15', '199,04', '636,45', '837,93'], ket: '' }
+    ],
+    table2: [
+      { no: 'A', name: 'Penerbitan Invoice (Proses VIP)', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: 'New Invoice' },
+      { no: 'B', name: 'Proses Invoice', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: '' },
+      { no: '1', name: 'Proses Service Entry', isBold: false, prev: ['', '0,02', '16,25', '358,83', '375,10'], curr: ['', '0,02', '16,52', '345,99', '362,54'], ket: 'PLN = 20,76 M; PLN 1 = 1,69 M; PLN 2 = 274,83 M; Digitalisasi PLN 1 = 8,76 M; Digitalisasi PLN 2 = 41,27 M; Perbendaharaan dan Pajak = 1,04 M' },
+      { no: '2', name: 'Proses BAST & BAP BPO', isBold: false, prev: ['', '', '47,66', '125,34', '173,00'], curr: ['', '', '47,66', '125,34', '173,00'], ket: 'PLN 2 = 172,10 M; Digitalisasi PLN 2 = 0,90 M' },
+      { no: '3', name: 'Proses BAST & BAP Internal', isBold: false, prev: ['', '', '7,10', '13,98', '21,09'], curr: ['', '', '7,10', '13,98', '21,09'], ket: 'PLN = 5,3 M; PLN 1 = 0,69 M; PLN 2 = 15,1 M' },
+      { no: '4', name: 'Proses BAKB', isBold: false, prev: ['', '', '100,76', '16,18', '116,94'], curr: ['', '', '100,76', '16,18', '116,94'], ket: 'PLN 2 = 116,94 M' },
+      { no: '5', name: 'Proses BA Prebilling', isBold: false, prev: ['', '0,04', '57,92', '798,01', '855,97'], curr: ['', '0,04', '57,92', '796,02', '853,98'], ket: 'PLN = 0,28 M; PLN 1 = 188,47 M; PLN 2 = 427,4 M; Digitalisasi PLN 1 = 36,2 M; Digitalisasi PLN 2 = 197,00 M; POMS = 4,75 M' },
+      { no: '', name: 'Total Proses Invoice', isHighlight: true, prev: ['-', '0,07', '229,69', '1.312,34', '1.542,10'], curr: ['-', '0,07', '229,97', '1.297,51', '1.527,55'], ket: '' }
+    ]
   }
 };
 
-window.currentPlnV1Period = 'W1_OKT';
+window.currentPlnV1Period = 'W1_NOV';
 
 function onInvoicePlnV1PeriodChange(val) {
   window.currentPlnV1Period = val;
-  const data = window.invoicePlnV1PeriodsData[val] || window.invoicePlnV1PeriodsData['W1_OKT'];
+  const data = window.invoicePlnV1PeriodsData[val] || window.invoicePlnV1PeriodsData['W1_NOV'];
 
   // Update Slide Title
   const titleEl = document.getElementById('pln-v1-slide-title');
@@ -61967,6 +62334,10 @@ function onInvoicePlnV1PeriodChange(val) {
   const colCurr = document.getElementById('pln-v1-col-curr');
   if (colCurr) colCurr.innerHTML = data.colCurrTitle;
 
+  // Update Page Number
+  const pageEl = document.getElementById('pln-v1-page-num');
+  if (pageEl) pageEl.textContent = data.pageNum || '2';
+
   // Render Table Rows
   renderInvoicePlnV1Table(data);
 }
@@ -61979,7 +62350,9 @@ function renderInvoicePlnV1Table(data) {
     let trStyle = "background: #FFFFFF;";
     let tdNumStyle = "border: 1px solid #CBD5E1; padding: 5px 4px; text-align: right;";
     let tdNoStyle = "border: 1px solid #CBD5E1; padding: 5px 4px; text-align: center;";
-    let tdNameStyle = "border: 1px solid #CBD5E1; padding: 5px 8px;";
+    let tdNameStyle = row.isSubRow
+      ? "border: 1px solid #CBD5E1; padding: 5px 8px 5px 22px;"
+      : "border: 1px solid #CBD5E1; padding: 5px 8px;";
     let tdKetStyle = "border: 1px solid #CBD5E1; padding: 5px 8px; font-size: 11px;";
 
     if (row.isHighlight) {
@@ -62021,13 +62394,42 @@ function renderInvoicePlnV1Table(data) {
   }
 
   // 2. Section Divider: PROGRESS PENYELESAIAN INVOICE
-  html += `
-    <tr style="background: #15607A; color: #FFFFFF; font-weight: 850;">
-      <td colspan="13" style="border: 1px solid #CBD5E1; padding: 7px 10px; text-align: left; font-size: 12px; letter-spacing: 0.04em; color: #FFFFFF; text-transform: uppercase;">
-        PROGRESS PENYELESAIAN INVOICE
-      </td>
-    </tr>
-  `;
+  if (data.repeatTable2Header) {
+    html += `
+      <tr style="background: #FFFFFF;">
+        <td colspan="13" style="border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; padding: 12px 4px 6px 4px; text-align: left; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; color: #0F3F5C; text-transform: uppercase;">
+          PROGRESS PENYELESAIAN INVOICE
+        </td>
+      </tr>
+      <tr>
+        <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 4px; text-align: center; width: 34px; font-weight: 800;">No</th>
+        <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 220px; font-weight: 800;">Progress</th>
+        <th colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">${data.colPrevTitle}</th>
+        <th colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">${data.colCurrTitle}</th>
+        <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 330px; font-weight: 800;">Keterangan</th>
+      </tr>
+      <tr>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 44px; font-weight: 750;">2023</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 52px; font-weight: 750;">2024</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 62px; font-weight: 750;">2025</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 750;">2026</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 800;">Total</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 44px; font-weight: 750;">2023</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 52px; font-weight: 750;">2024</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 62px; font-weight: 750;">2025</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 750;">2026</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 800;">Total</th>
+      </tr>
+    `;
+  } else {
+    html += `
+      <tr style="background: #15607A; color: #FFFFFF; font-weight: 850;">
+        <td colspan="13" style="border: 1px solid #CBD5E1; padding: 7px 10px; text-align: left; font-size: 12px; letter-spacing: 0.04em; color: #FFFFFF; text-transform: uppercase;">
+          PROGRESS PENYELESAIAN INVOICE
+        </td>
+      </tr>
+    `;
+  }
 
   // 3. Table 2: Progress Penyelesaian Invoice
   if (data.table2) {
@@ -62040,8 +62442,8 @@ function renderInvoicePlnV1Table(data) {
 }
 
 function exportInvoicePlnV1Csv() {
-  const curPeriod = window.currentPlnV1Period || 'W1_OKT';
-  const data = window.invoicePlnV1PeriodsData[curPeriod] || window.invoicePlnV1PeriodsData['W1_OKT'];
+  const curPeriod = window.currentPlnV1Period || 'W1_NOV';
+  const data = window.invoicePlnV1PeriodsData[curPeriod] || window.invoicePlnV1PeriodsData['W1_NOV'];
   let csv = `${data.slideTitle}\n`;
   csv += `Periode;${data.periodLabel}\n`;
   csv += `Tanggal Export;${new Date().toLocaleString('id-ID')}\n\n`;
@@ -62078,18 +62480,52 @@ function printInvoicePlnV1Slide() {
 function renderInvoicePlnV1View() {
   const sel = document.getElementById('invoice-pln-v1-period');
   if (sel) {
-    if (!sel.value) sel.value = window.currentPlnV1Period || 'W1_OKT';
+    if (!sel.value) sel.value = window.currentPlnV1Period || 'W1_NOV';
     else window.currentPlnV1Period = sel.value;
   }
-  onInvoicePlnV1PeriodChange(window.currentPlnV1Period || 'W1_OKT');
+  onInvoicePlnV1PeriodChange(window.currentPlnV1Period || 'W1_NOV');
 }
 
 // =========================================================================
 // MODULE: INVOICE STI PLN V1 (MONITORING PROGRESS INVOICE DIVSTI PLN - SLIDE RESMI)
-// Multi-periode: W1 OKTOBER 2026 (Resmi Sesuai Slide) & W4 SEPTEMBER 2026
+// Multi-periode: W1 NOVEMBER 2026, W1 OKTOBER 2026 & W4/W3 SEPTEMBER 2026
 // =========================================================================
 
 window.invoiceStiPlnV1PeriodsData = {
+  W1_NOV: {
+    periodCode: 'W1_NOV',
+    periodLabel: 'W1 November 2026 (29 Okt – 4 Nov)',
+    slideTitle: 'MONITORING PROGRESS INVOICE DIVSTI PLN W1 NOVEMBER 2026',
+    periodBadge: 'Slide Eksekutif Resmi &middot; W1 November 2026',
+    topSub: 'W1 NOVEMBER 2026 &middot; MONITORING PROGRESS INVOICE DIVSTI PLN (SLIDE RESMI V1)',
+    colPrevTitle: 'TANGGAL 22 &ndash; 28 Oktober 2026',
+    colCurrTitle: 'TANGGAL 29 Oktober &ndash; 4 November 2026',
+    pageNum: '10',
+    repeatTable2Header: true,
+    table1: [
+      { no: 'A', name: 'Total Piutang Minggu Lalu', isBold: true, prev: ['', '3,32', '178,15', '680,45', '861,91'], curr: ['', '3,32', '178,15', '737,11', '918,57'], ket: '' },
+      { no: '1', name: 'Terbayar', isBold: false, prev: ['', '', '', '18,52', '18,52'], curr: ['', '', '1,57', '9,72', '11,29'], ket: 'Cash In = 11,29 M' },
+      { no: '2', name: 'Proses di Keuangan Pusat', isBold: false, prev: ['', '', '2,13', '81,43', '83,57'], curr: ['', '', '13,07', '8,72', '21,80'], ket: 'PBH PLN (Verifikasi Keuangan = 21,80 M)' },
+      { no: '3', name: 'Proses approval VIP/BPO', isBold: false, prev: ['', '0,21', '127,03', '354,31', '481,55'], curr: ['', '0,21', '114,06', '474,55', '588,83'], ket: 'BPO (Proses Verifikasi MSB = 556,52 M; Proses Verifikasi VP = 25,27 M; Proses Verifikasi EVP = 7,03 M)' },
+      { no: '4', name: 'Proses Upload Dokumen di VIP', isBold: false, prev: ['', '', '', '24,76', '24,76'], curr: ['', '-', '-', '41,56', '41,56'], ket: 'PLN 1 = 3,69 M; PLN 2 = 37,87 M' },
+      { no: '5', name: 'RTV & Proses di ICON+', isBold: false, prev: ['', '3,10', '48,98', '272,10', '324,18'], curr: ['', '3,10', '49,08', '398,23', '450,41'], ket: 'PLN 1 = 115,36 M; PLN 2 = 335,05 M' },
+      { no: '', name: '5a. RTV', isBold: false, isSubRow: true, prev: ['', '', '44,46', '233,24', '277,69'], curr: ['', '-', '44,55', '234,67', '279,22'], ket: 'PLN 1 = 3,16 M; PLN 2 = 276,06 M' },
+      { no: '', name: '5b. Proses di ICON+', isBold: false, isSubRow: true, prev: ['', '3,10', '4,53', '38,86', '46,49'], curr: ['', '3,10', '4,53', '163,56', '171,19'], ket: 'PLN 1 = 112,20 M; PLN 2 = 58,98 M' },
+      { no: 'B', name: 'Saldo Piutang Minggu Ini', isBold: true, prev: ['', '3,32', '178,15', '732,60', '914,06'], curr: ['', '3,32', '176,21', '923,07', '1.102,60'], ket: '' },
+      { no: 'C', name: 'Invoice Baru Minggu Ini', isBold: true, prev: ['', '', '', '4,51', '4,51'], curr: ['', '-', '-', '21,03', '21,03'], ket: 'New Invoice = 21,03 M' },
+      { no: '', name: 'Total Piutang Minggu Ini', isHighlight: true, prev: ['', '3,32', '178,15', '737,11', '918,57'], curr: ['', '3,32', '176,21', '944,10', '1.123,63'], ket: '' }
+    ],
+    table2: [
+      { no: 'A', name: 'Penerbitan Invoice (Proses VIP)', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: 'New Invoice' },
+      { no: 'B', name: 'Proses Invoice', isBold: true, prev: ['', '', '', '', ''], curr: ['', '', '', '', ''], ket: '' },
+      { no: '1', name: 'Proses Service Entry', isBold: false, prev: ['', '', '23,68', '82,49', '106,17'], curr: ['', '', '17,24', '82,50', '99,75'], ket: 'PLN 1 = 1,69 M; PLN 2 = 79,00 M; Digitalisasi PLN 1 = 6,07 M; Digitalisasi PLN 2 = 3,53 M' },
+      { no: '2', name: 'Proses BAST & BAP BPO', isBold: false, prev: ['', '', '36,71', '103,81', '140,52'], curr: ['', '', '21,05', '103,81', '124,87'], ket: 'PLN 2 = 124,58 M; Digitalisasi PLN 2 = 0,29 M' },
+      { no: '3', name: 'Proses BAST & BAP Internal', isBold: false, prev: ['', '', '1,80', '9,96', '11,76'], curr: ['', '', '1,80', '9,53', '11,33'], ket: 'PLN = 0,70 M; PLN 2 = 10,63 M' },
+      { no: '4', name: 'Proses BAKB', isBold: false, prev: ['', '', '8,44', '308,91', '317,35'], curr: ['', '', '8,44', '308,91', '317,35'], ket: 'PLN 2 = 317,35 M' },
+      { no: '5', name: 'Proses BA Prebilling', isBold: false, prev: ['', '0,04', '35,52', '548,50', '584,07'], curr: ['', '', '27,44', '508,51', '535,95'], ket: 'PLN = 9,23 M; PLN 1 = 188,01 M; PLN 2 = 244,11 M; Digitalisasi PLN 1 = 21,78 M; Digitalisasi PLN 2 = 67,81 M; POMS = 4,75M' },
+      { no: '', name: 'Total Proses Invoice', isHighlight: true, prev: ['', '0,04', '106,16', '1.053,67', '1.159,87'], curr: ['', '', '75,99', '1.013,26', '1.089,25'], ket: '' }
+    ]
+  },
   W1_OKT: {
     periodCode: 'W1_OKT',
     periodLabel: 'W1 Oktober 2026 (1 – 7 Okt)',
@@ -62149,14 +62585,44 @@ window.invoiceStiPlnV1PeriodsData = {
       { no: '5', name: 'Proses BA Prebilling', isBold: false, prev: ['-', '0,04', '57,92', '595,66', '653,62'], curr: ['-', '0,04', '57,92', '595,66', '653,62'], ket: 'PLN = 0,28 M; PLN 1 = 188,47 M; PLN 2 = 303,34 M; Digitalisasi PLN 1 = 36,20 M; Digitalisasi PLN 2 = 120,60 M; POMS = 4,75 M' },
       { no: '', name: 'Total Proses Invoice', isHighlight: true, prev: ['-', '0,04', '224,45', '1.050,36', '1.274,85'], curr: ['-', '0,04', '224,45', '1.036,69', '1.261,19'], ket: '' }
     ]
+  },
+  W3_SEP: {
+    periodCode: 'W3_SEP',
+    periodLabel: 'W3 September 2026 (17 – 23 Sept)',
+    slideTitle: 'MONITORING PROGRESS INVOICE DIVSTI PLN W3 SEPTEMBER 2026',
+    periodBadge: 'Slide Eksekutif Resmi &middot; W3 September 2026',
+    topSub: 'W3 SEPTEMBER 2026 &middot; MONITORING PROGRESS INVOICE DIVSTI PLN (SLIDE RESMI V1)',
+    colPrevTitle: 'TANGGAL 10 September &ndash; 16 September 2026',
+    colCurrTitle: 'TANGGAL 17 September &ndash; 23 September 2026',
+    table1: [
+      { no: 'A', name: 'Total Piutang Minggu Lalu', isBold: true, prev: ['-', '8,65', '213,80', '643,85', '866,30'], curr: ['-', '8,65', '213,80', '643,85', '866,30'], ket: '-' },
+      { no: '1', name: 'Terbayar', isBold: false, prev: ['-', '4,31', '14,35', '83,74', '102,40'], curr: ['-', '4,31', '18,51', '92,39', '116,42'], ket: 'Total Cash In = 116,42 M' },
+      { no: '2', name: 'Proses di Keuangan Pusat', isBold: false, prev: ['-', '0,76', '3,11', '118,50', '122,37'], curr: ['-', '0,46', '4,31', '111,25', '114,83'], ket: 'PBH PLN (Verifikasi Keuangan = 114,83 M)' },
+      { no: '3', name: 'Proses approval VIP/BPO', isBold: false, prev: ['-', '0,21', '149,19', '285,10', '434,50'], curr: ['-', '0,51', '149,19', '298,34', '448,03'], ket: 'BPO (Proses Verifikasi MSB = 358,52 M; Proses Verifikasi VP = 89,51 M)' },
+      { no: '4', name: 'Proses Upload Dokumen di VIP', isBold: false, prev: ['-', '3,10', '4,53', '19,10', '26,73'], curr: ['-', '3,17', '4,53', '20,46', '28,16'], ket: 'PLN 1 = 2,50 M; PLN 2 = 25,66 M' },
+      { no: '5', name: 'RTV & Proses di ICON+', isBold: false, prev: ['-', '-', '36,50', '142,80', '179,30'], curr: ['-', '-', '37,25', '129,91', '167,16'], ket: 'PLN 1 = 30,12 M; PLN 2 = 137,04 M' },
+      { no: 'B', name: 'Saldo Piutang Minggu Ini', isBold: true, prev: ['-', '4,15', '195,28', '590,40', '789,83'], curr: ['-', '4,15', '195,28', '558,96', '758,18'], ket: '-' },
+      { no: 'C', name: 'Invoice Baru Minggu Ini', isBold: true, prev: ['-', '-', '-', '-', '-'], curr: ['-', '-', '-', '-', '-'], ket: 'New Invoice' },
+      { no: '', name: 'Total Piutang Minggu Ini', isHighlight: true, prev: ['-', '4,15', '195,28', '590,40', '789,83'], curr: ['-', '4,15', '195,28', '558,96', '758,18'], ket: '-' }
+    ],
+    table2: [
+      { no: 'A', name: 'Penerbitan Invoice (Proses VIP)', isBold: true, prev: ['-', '-', '-', '-', '-'], curr: ['-', '-', '-', '-', '-'], ket: 'New Invoice' },
+      { no: 'B', name: 'Proses Invoice', isBold: true, prev: ['-', '-', '-', '-', '-'], curr: ['-', '-', '-', '-', '-'], ket: '-' },
+      { no: '1', name: 'Proses Service Entry', isBold: false, prev: ['-', '-', '15,42', '325,10', '340,52'], curr: ['-', '-', '15,42', '319,11', '334,53'], ket: 'PLN = 20,28 M; PLN 1 = 1,69 M; PLN 2 = 274,33 M; Digitalisasi PLN 1 = 8,76 M; Digitalisasi PLN 2 = 15,81 M' },
+      { no: '2', name: 'Proses BAST & BAP BPO', isBold: false, prev: ['-', '-', '43,25', '105,42', '148,67'], curr: ['-', '-', '43,25', '105,42', '148,67'], ket: 'PLN 2 = 147,78 M; Digitalisasi PLN 2 = 0,89 M' },
+      { no: '3', name: 'Proses BAST & BAP Internal', isBold: false, prev: ['-', '-', '7,10', '13,98', '21,09'], curr: ['-', '-', '7,10', '13,98', '21,09'], ket: 'PLN = 5,3 M; PLN 1 = 0,69 M; PLN 2 = 15,1 M' },
+      { no: '4', name: 'Proses BAKB', isBold: false, prev: ['-', '-', '100,76', '16,18', '116,94'], curr: ['-', '-', '100,76', '16,18', '116,94'], ket: 'PLN 2 = 116,94 M' },
+      { no: '5', name: 'Proses BA Prebilling', isBold: false, prev: ['-', '0,04', '57,92', '598,10', '656,06'], curr: ['-', '0,04', '57,92', '595,66', '653,62'], ket: 'PLN = 0,28 M; PLN 1 = 188,47 M; PLN 2 = 303,34 M; Digitalisasi PLN 1 = 36,20 M; Digitalisasi PLN 2 = 120,60 M; POMS = 4,75 M' },
+      { no: '', name: 'Total Proses Invoice', isHighlight: true, prev: ['-', '0,04', '224,45', '1.058,78', '1.283,27'], curr: ['-', '0,04', '224,45', '1.050,36', '1.274,85'], ket: '' }
+    ]
   }
 };
 
-window.currentStiPlnV1Period = 'W1_OKT';
+window.currentStiPlnV1Period = 'W1_NOV';
 
 function onInvoiceStiPlnV1PeriodChange(val) {
   window.currentStiPlnV1Period = val;
-  const data = window.invoiceStiPlnV1PeriodsData[val] || window.invoiceStiPlnV1PeriodsData['W1_OKT'];
+  const data = window.invoiceStiPlnV1PeriodsData[val] || window.invoiceStiPlnV1PeriodsData['W1_NOV'];
 
   // Update Slide Title
   const titleEl = document.getElementById('sti-v1-slide-title');
@@ -62177,6 +62643,10 @@ function onInvoiceStiPlnV1PeriodChange(val) {
   const colCurr = document.getElementById('sti-v1-col-curr');
   if (colCurr) colCurr.innerHTML = data.colCurrTitle;
 
+  // Update Page Number
+  const pageEl = document.getElementById('sti-v1-page-num');
+  if (pageEl) pageEl.textContent = data.pageNum || '7';
+
   // Render Table Rows
   renderInvoiceStiPlnV1Table(data);
 }
@@ -62189,7 +62659,9 @@ function renderInvoiceStiPlnV1Table(data) {
     let trStyle = "background: #FFFFFF;";
     let tdNumStyle = "border: 1px solid #CBD5E1; padding: 5px 4px; text-align: right;";
     let tdNoStyle = "border: 1px solid #CBD5E1; padding: 5px 4px; text-align: center;";
-    let tdNameStyle = "border: 1px solid #CBD5E1; padding: 5px 8px;";
+    let tdNameStyle = row.isSubRow
+      ? "border: 1px solid #CBD5E1; padding: 5px 8px 5px 22px;"
+      : "border: 1px solid #CBD5E1; padding: 5px 8px;";
     let tdKetStyle = "border: 1px solid #CBD5E1; padding: 5px 8px; font-size: 11px;";
 
     if (row.isHighlight) {
@@ -62231,13 +62703,42 @@ function renderInvoiceStiPlnV1Table(data) {
   }
 
   // 2. Section Divider: PROGRESS PENYELESAIAN INVOICE
-  html += `
-    <tr style="background: #15607A; color: #FFFFFF; font-weight: 850;">
-      <td colspan="13" style="border: 1px solid #CBD5E1; padding: 7px 10px; text-align: left; font-size: 12px; letter-spacing: 0.04em; color: #FFFFFF; text-transform: uppercase;">
-        PROGRESS PENYELESAIAN INVOICE
-      </td>
-    </tr>
-  `;
+  if (data.repeatTable2Header) {
+    html += `
+      <tr style="background: #FFFFFF;">
+        <td colspan="13" style="border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; padding: 12px 4px 6px 4px; text-align: left; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; color: #0F3F5C; text-transform: uppercase;">
+          PROGRESS PENYELESAIAN INVOICE
+        </td>
+      </tr>
+      <tr>
+        <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 4px; text-align: center; width: 34px; font-weight: 800;">No</th>
+        <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 220px; font-weight: 800;">Progress</th>
+        <th colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">${data.colPrevTitle}</th>
+        <th colspan="5" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; font-weight: 800; letter-spacing: 0.02em;">${data.colCurrTitle}</th>
+        <th rowspan="2" style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 7px 8px; text-align: center; width: 330px; font-weight: 800;">Keterangan</th>
+      </tr>
+      <tr>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 44px; font-weight: 750;">2023</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 52px; font-weight: 750;">2024</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 62px; font-weight: 750;">2025</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 750;">2026</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 800;">Total</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 44px; font-weight: 750;">2023</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 52px; font-weight: 750;">2024</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 62px; font-weight: 750;">2025</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 750;">2026</th>
+        <th style="background: #15607A; color: #FFFFFF; border: 1px solid #CBD5E1; padding: 5px 3px; text-align: center; width: 66px; font-weight: 800;">Total</th>
+      </tr>
+    `;
+  } else {
+    html += `
+      <tr style="background: #15607A; color: #FFFFFF; font-weight: 850;">
+        <td colspan="13" style="border: 1px solid #CBD5E1; padding: 7px 10px; text-align: left; font-size: 12px; letter-spacing: 0.04em; color: #FFFFFF; text-transform: uppercase;">
+          PROGRESS PENYELESAIAN INVOICE
+        </td>
+      </tr>
+    `;
+  }
 
   // 3. Table 2: Progress Penyelesaian Invoice
   if (data.table2) {
@@ -62250,8 +62751,8 @@ function renderInvoiceStiPlnV1Table(data) {
 }
 
 function exportInvoiceStiPlnV1Csv() {
-  const curPeriod = window.currentStiPlnV1Period || 'W1_OKT';
-  const data = window.invoiceStiPlnV1PeriodsData[curPeriod] || window.invoiceStiPlnV1PeriodsData['W1_OKT'];
+  const curPeriod = window.currentStiPlnV1Period || 'W1_NOV';
+  const data = window.invoiceStiPlnV1PeriodsData[curPeriod] || window.invoiceStiPlnV1PeriodsData['W1_NOV'];
   let csv = `${data.slideTitle}\n`;
   csv += `Periode;${data.periodLabel}\n`;
   csv += `Tanggal Export;${new Date().toLocaleString('id-ID')}\n\n`;
@@ -62288,18 +62789,181 @@ function printInvoiceStiPlnV1Slide() {
 function renderInvoiceStiPlnV1View() {
   const sel = document.getElementById('invoice-sti-pln-v1-period');
   if (sel) {
-    if (!sel.value) sel.value = window.currentStiPlnV1Period || 'W1_OKT';
+    if (!sel.value) sel.value = window.currentStiPlnV1Period || 'W1_NOV';
     else window.currentStiPlnV1Period = sel.value;
   }
-  onInvoiceStiPlnV1PeriodChange(window.currentStiPlnV1Period || 'W1_OKT');
+  onInvoiceStiPlnV1PeriodChange(window.currentStiPlnV1Period || 'W1_NOV');
 }
 
   // MODULE: INVOICE STI PLN (MONITORING PROGRESS INVOICE DIVSTI PLN - MULTI PERIODE)
-  // Mendukung: W1 OKTOBER 2026 (Resmi Sesuai Slide Gambar), W4 SEPTEMBER 2026, W3, W2, W1_SEP
+  // Mendukung: W1 NOVEMBER 2026 (Resmi Sesuai Slide Gambar), W1 OKTOBER 2026, W4 SEPTEMBER 2026, W3, W2, W1_SEP
   // =========================================================================
-  window.currentStiPeriod = 'W1_OKT';
+  window.currentStiPeriod = 'W1_NOV';
 
   window.stiPlnPeriodsData = {
+    'W1_NOV': {
+      periodKey: 'W1_NOV',
+      periodName: 'W1 NOVEMBER 2026',
+      prevDateRange: '22 \u2013 28 Oktober 2026',
+      currDateRange: '29 Oktober \u2013 4 November 2026',
+      prevDateShort: '22-28 Okt',
+      currDateShort: '29 Okt-4 Nov',
+      kpis: {
+        totalPiutangWeek: 'Rp1.123,63 M',
+        totalProsesInvoice: 'Rp1.089,25 M',
+        cashinWeek: 'Rp11,29 M',
+        cashinWeekSub: '(29 Okt \u2013 04 Nov 2026)',
+        cashinMonth: 'Rp11,29 M',
+        cashinMonthSub: '(01 \u2013 04 November 2026)',
+        grandTotal: 'Rp2.212,88 M',
+        targetTitle: 'TARGET CASH IN NOVEMBER',
+        targetCashin: 'Rp 1.250,00 M',
+        targetCashinSub: 'Capaian Kumulatif: 0,90%',
+        piutangSiap: 'Rp 21,80 M',
+        piutangSiapSub: 'Keuangan Pusat DIVSTI (Verifikasi Selesai)',
+        bottleneck: 'Rp 535,95 M',
+        bottleneckSub: 'BA Prebilling (49,20% Pipeline)'
+      },
+      table1: {
+        prevTotal: '918,57',
+        currTotal: '1.123,63',
+        delta: '+205,06 M (+22,32%)',
+        rows: [
+          { key: 'terbayar', num: 1, name: 'Terbayar', isLink: true, prev: '19,52', curr: '11,29', delta: '-8,23 M (-42,16%)', deltaColor: '#64748B' },
+          { key: 'keuangan_pusat', num: 2, name: 'Proses di Keuangan pusat', isUnderline: true, prev: '83,57', curr: '21,80', delta: '-61,77 M (-73,91%)', deltaColor: '#16A34A' },
+          { key: 'approval_vip', num: 3, name: 'Proses Approval VIP/BPO', prev: '481,55', curr: '588,83', delta: '+107,28 M (+22,28%)', deltaColor: '#DC2626' },
+          { key: 'upload_vip', num: 4, name: 'Proses Upload Dokumen di VIP', isUnderline: true, prev: '29,27', curr: '41,56', delta: '+12,29 M (+41,99%)', deltaColor: '#DC2626' },
+          { key: 'rtv_icon', num: 5, name: 'RTV & Proses di ICON+', prev: '324,19', curr: '450,41', delta: '+126,22 M (+38,93%)', deltaColor: '#DC2626' }
+        ]
+      },
+      table2: {
+        prevTotal: '1.158,87',
+        currTotal: '1.089,25',
+        delta: '-69,62 M (-6,01%)',
+        sectionA: { name: 'Penerbitan Invoice (Proses VIP)', prev: '-', curr: '-' },
+        sectionB: [
+          { key: 'service_entry', num: 1, name: 'Proses Service Entry (Dokumen Lengkap)', prev: '105,17', curr: '99,75', pct: '9,16%', barPct: 9.16, color: '#38BDF8' },
+          { key: 'bast_bpo', num: 2, name: 'Proses BAST & BAP BPO', prev: '140,52', curr: '124,87', pct: '11,46%', barPct: 11.46, color: '#60A5FA' },
+          { key: 'bast_internal', num: 3, name: 'Proses BAST & BAP Internal', prev: '11,76', curr: '11,33', pct: '1,04%', barPct: 1.04, color: '#BFDBFE' },
+          { key: 'bakb', num: 4, name: 'Proses BAKB', prev: '317,35', curr: '317,35', pct: '29,13%', barPct: 29.13, color: '#93C5FD' },
+          { key: 'prebilling', num: 5, name: 'Proses BA Prebilling', prev: '584,07', curr: '535,95', pct: '49,20%', barPct: 49.20, color: '#0284C7' }
+        ]
+      },
+      bottomInsights: {
+        leftMain: 'Total <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Piutang</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Minggu</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">Ini</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">mengalami</span> <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">peningkatan</span> 22,32% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 918,57M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.123,63M',
+        leftSub: '',
+        rightMain: 'Total Proses Invoice <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menurun</span> 6,01% <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">dari</span> 1.158,87M <span style="text-decoration: underline; text-decoration-color: #CBD5E1;">menjadi</span> 1.089,25M',
+        footerPeriod: 'Sumber Data: Laporan Eksekutif Monitoring Progress Invoice DIVSTI PLN \u00B7 Periode W1 November 2026',
+        footerPage: '12'
+      },
+      chart1Data: [
+        { name: '1. Terbayar', prevVal: 19.52, currVal: 11.29, deltaText: '-8,23 M (-42,16%)', color: '#64748B' },
+        { name: '2. Keuangan Pusat', prevVal: 83.57, currVal: 21.80, deltaText: '-61,77 M (-73,91%)', color: '#16A34A' },
+        { name: '3. Approval VIP/BPO', prevVal: 481.55, currVal: 588.83, deltaText: '+107,28 M (+22,28%)', color: '#DC2626' },
+        { name: '4. Upload Dok VIP', prevVal: 29.27, currVal: 41.56, deltaText: '+12,29 M (+41,99%)', color: '#DC2626' },
+        { name: '5. RTV & ICON+', prevVal: 324.19, currVal: 450.41, deltaText: '+126,22 M (+38,93%)', color: '#DC2626' }
+      ],
+      chart2Title: 'Struktur Pipeline Penyelesaian Invoice DIVSTI (Rp 1.089,25 M)',
+      recommendations: [
+        { priority: 'PRIORITAS 1: PENCAIRAN KAS', val: 'Rp 21,80 M', colorTitle: '#16A34A', colorVal: '#15803D', colorDesc: '#166534', bg: '#F0FDF4', border: '#86EFAC', desc: 'Kawal harian SP2D / antrian bayar di Keuangan Pusat DIVSTI PLN sebesar Rp 21,80 M untuk konversi instan menjadi Cash In tunai di W2 November.' },
+        { priority: 'PRIORITAS 2: APPROVAL VIP/BPO & RTV', val: 'Rp 588,83 M', colorTitle: '#DC2626', colorVal: '#B91C1C', colorDesc: '#991B1B', bg: '#FEF2F2', border: '#FCA5A5', desc: 'Porsi terbesar piutang berada di Approval VIP/BPO (Rp 588,83 M) dan RTV & Proses di ICON+ (Rp 450,41 M). Agendakan clearing meeting bilateral harian dengan user DIVSTI PLN.' },
+        { priority: 'PRIORITAS 3: UNLOCK ACCRUED BILLING', val: 'Rp 535,95 M', colorTitle: '#0284C7', colorVal: '#0369A1', colorDesc: '#075985', bg: '#F0F9FF', border: '#BAE6FD', desc: 'Konversi BA Prebilling (Rp 535,95 M), BAKB (Rp 317,35 M), dan Service Entry (Rp 99,75 M) menjadi penagihan resmi untuk mengamankan target Cash In November.' }
+      ],
+      regionalTotal: { prev: '918,57', curr: '1.123,63', delta: '+205,06 (+22,32%)' },
+      regionalList: [
+        { no: 1, unit: 'DIVSTI Regional Jawa Bagian Barat', wilayah: 'DKI Jakarta, Jawa Barat, Banten', prev: 253.10, curr: 309.55, delta: 56.45, status: 'Approval VIP/BPO', code: 'APPROVAL', pic: 'DIVSTI Pusat & SBU JBB' },
+        { no: 2, unit: 'DIVSTI Regional Jawa Bagian Timur', wilayah: 'Jawa Timur & Madura', prev: 201.48, curr: 246.65, delta: 45.17, status: 'RTV & ICON+', code: 'RTV', pic: 'DIVSTI Regional Jatim & SBU JBT' },
+        { no: 3, unit: 'DIVSTI Kantor Pusat / Korporat', wilayah: 'Kantor Pusat PLN & Anak Usaha', prev: 164.45, curr: 202.95, delta: 38.50, status: 'Approval VIP/BPO', code: 'APPROVAL', pic: 'Keuangan Pusat DIVSTI & Head Office' },
+        { no: 4, unit: 'DIVSTI Regional Jawa Bagian Tengah', wilayah: 'Jawa Tengah & D.I. Yogyakarta', prev: 108.40, curr: 133.55, delta: 25.15, status: 'BA Prebilling', code: 'PREBILLING', pic: 'DIVSTI Jateng & SBU JTG' },
+        { no: 5, unit: 'DIVSTI Regional Sumatera Bagian Utara', wilayah: 'Aceh, Sumut, Riau, Kepri', prev: 64.10, curr: 78.80, delta: 14.70, status: 'Approval VIP/BPO', code: 'APPROVAL', pic: 'DIVSTI Sumut & SBU SBU' },
+        { no: 6, unit: 'DIVSTI Regional Bali & Nusa Tenggara', wilayah: 'Bali, NTB, NTT', prev: 46.35, curr: 56.70, delta: 10.35, status: 'Service Entry', code: 'SERVICE', pic: 'DIVSTI Bali Nusra & SBU BALI' },
+        { no: 7, unit: 'DIVSTI Regional Sulawesi & Indonesia Timur', wilayah: 'Sulselrabar, Suluttenggo, Maluku, Papua', prev: 36.22, curr: 44.35, delta: 8.13, status: 'RTV & ICON+', code: 'RTV', pic: 'DIVSTI Sulselrabar & SBU SULT' },
+        { no: 8, unit: 'DIVSTI Regional Sumatera Bagian Selatan', wilayah: 'Sumsel, Jambi, Bengkulu, Lampung, Babel', prev: 27.47, curr: 33.80, delta: 6.33, status: 'Keuangan Pusat', code: 'KEUANGAN', pic: 'DIVSTI S2JB & SBU SBS' },
+        { no: 9, unit: 'DIVSTI Regional Kalimantan & Unit Lainnya', wilayah: 'Kalbar, Kalselteng, Kaltimtara', prev: 17.00, curr: 17.28, delta: 0.28, status: 'BA Prebilling', code: 'PREBILLING', pic: 'DIVSTI Kaltimra & Seluruh SBU' }
+      ],
+      categories: {
+        terbayar: {
+          title: '1. Terbayar (Cash In)',
+          prev: '19,52 M',
+          curr: '11,29 M',
+          delta: '-8,23 M (-42,16%)',
+          desc: 'Realisasi penagihan dan pelunasan piutang DIVSTI PLN yang telah diterima pada rekening bank operasional Icon Plus periode 29 Oktober \u2013 4 November 2026 sebesar Rp 11,29 M.',
+          action: 'Rekonsiliasi rekening koran dan pembukuan penerimaan kas awal November 2026 bersama divisi perbendaharaan.'
+        },
+        keuangan_pusat: {
+          title: '2. Proses di Keuangan Pusat',
+          prev: '83,57 M',
+          curr: '21,80 M',
+          delta: '-61,77 M (-73,91%)',
+          desc: 'Tagihan DIVSTI yang telah selesai verifikasi dan berada di Keuangan Pusat sebesar Rp 21,80 M (turun dari Rp 83,57 M minggu lalu seiring pencairan dan pergeseran batch verifikasi).',
+          action: 'Kawal harian penerbitan SP2D / transfer bank dengan Keuangan Pusat DIVSTI PLN agar dana Rp 21,80 M segera cair.'
+        },
+        approval_vip: {
+          title: '3. Proses Approval VIP/BPO',
+          prev: '481,55 M',
+          curr: '588,83 M',
+          delta: '+107,28 M (+22,28%)',
+          desc: 'Porsi piutang terbesar DIVSTI PLN (Rp 588,83 M / 52,4% dari total piutang minggu ini). Terjadi peningkatan +107,28 M (+22,28%) dari Rp 481,55 M akibat masuknya tagihan termin baru ke antrian approval VIP/BPO.',
+          action: 'Eskalasi ke jajaran pimpinan DIVSTI PLN dan jadwalkan clearing harian untuk percepatan approval digital berkas di portal VIP.'
+        },
+        upload_vip: {
+          title: '4. Proses Upload Dokumen di VIP',
+          prev: '29,27 M',
+          curr: '41,56 M',
+          delta: '+12,29 M (+41,99%)',
+          desc: 'Peningkatan sebesar +12,29 M (+41,99%) dari Rp 29,27 M menjadi Rp 41,56 M untuk berkas tagihan proyek DIVSTI yang sedang dalam tahap pengunggahan dokumen kelengkapan digital ke portal VIP.',
+          action: 'Pastikan kesiapan tim penagihan untuk menyelesaikan upload dokumen BAST/BAP agar segera masuk ke antrian Approval VIP/BPO.'
+        },
+        rtv_icon: {
+          title: '5. RTV & Proses di ICON+',
+          prev: '324,19 M',
+          curr: '450,41 M',
+          delta: '+126,22 M (+38,93%)',
+          desc: 'Berkas tagihan DIVSTI yang berstatus Return to Vendor (RTV) atau dalam proses kelengkapan administrasi di internal ICON+ meningkat dari Rp 324,19 M menjadi Rp 450,41 M (+38,93%).',
+          action: 'Gelar konsinyir berkas RTV internal bersama tim Project Delivery dan Sales untuk perbaikan cepat dan re-submit ke sistem VIP PLN.'
+        },
+        service_entry: {
+          title: 'B.1 Proses Service Entry (Dokumen Lengkap)',
+          prev: '105,17 M',
+          curr: '99,75 M',
+          delta: '-5,42 M (-5,15%)',
+          desc: 'Dokumen teknis DIVSTI lengkap yang sedang diproses penerbitan SES (Service Entry Sheet) pada modul SAP PLN turun dari Rp 105,17 M menjadi Rp 99,75 M seiring penyelesaian SES.',
+          action: 'Kawal approver SES di masing-masing regional DIVSTI agar siap dikonversi menjadi penerbitan invoice resmi di VIP.'
+        },
+        bast_bpo: {
+          title: 'B.2 Proses BAST & BAP BPO',
+          prev: '140,52 M',
+          curr: '124,87 M',
+          delta: '-15,65 M (-11,14%)',
+          desc: 'Penurunan 15,65 M (-11,14%) dari Rp 140,52 M menjadi Rp 124,87 M menunjukkan progres penandatanganan Berita Acara bersama tim BPO DIVSTI PLN.',
+          action: 'Lanjutkan koordinasi dengan PIC BPO untuk menuntaskan sisa Rp 124,87 M menjadi tahapan Service Entry.'
+        },
+        bast_internal: {
+          title: 'B.3 Proses BAST & BAP Internal',
+          prev: '11,76 M',
+          curr: '11,33 M',
+          delta: '-0,43 M (-3,66%)',
+          desc: 'Administrasi internal penandatanganan berkas BAST & BAP proyek DIVSTI oleh manajemen ICON+ turun dari Rp 11,76 M menjadi Rp 11,33 M.',
+          action: 'Monitoring sirkuler penandatanganan dokumen internal ICON+ agar selesai dalam 1-2 hari kerja.'
+        },
+        bakb: {
+          title: 'B.4 Proses BAKB',
+          prev: '317,35 M',
+          curr: '317,35 M',
+          delta: '0,00 M (0,00%)',
+          desc: 'Proses Berita Acara Kesepakatan Bersama (BAKB) bernilai Rp 317,35 M (29,13% dari total proses invoice).',
+          action: 'Akselerasi finalisasi naskah BAKB bersama tim komersial dan user DIVSTI PLN agar segera masuk ke tahapan BAST/BAP.'
+        },
+        prebilling: {
+          title: 'B.5 Proses BA Prebilling',
+          prev: '584,07 M',
+          curr: '535,95 M',
+          delta: '-48,12 M (-8,24%)',
+          desc: 'Tahapan proses invoice terbesar sebesar Rp 535,95 M (49,20% dari total Rp 1.089,25 M), mengalami penurunan signifikan 48,12 M (-8,24%) dari Rp 584,07 M karena telah naik ke tahap dokumen penagihan berikutnya.',
+          action: 'Dorong verifikasi rekonsiliasi teknis lapangan untuk mempercepat konversi BA Prebilling menjadi BAST/BAP.'
+        }
+      }
+    },
     'W1_OKT': {
       periodKey: 'W1_OKT',
       periodName: 'W1 OKTOBER 2026',
@@ -62912,7 +63576,7 @@ function renderInvoiceStiPlnV1View() {
   };
 
   // Expose global active data pointer
-  window.STI_PLN_INVOICE_DATA = window.stiPlnPeriodsData['W1_OKT'];
+  window.STI_PLN_INVOICE_DATA = window.stiPlnPeriodsData['W1_NOV'];
 
   function switchStiInnerTab(tab) {
     const vSlide = document.getElementById('sti-view-slide');
@@ -62949,7 +63613,7 @@ function renderInvoiceStiPlnV1View() {
 
   function onStiPeriodChange(val) {
     if (!window.stiPlnPeriodsData[val]) {
-      val = 'W1_OKT';
+      val = 'W1_NOV';
     }
     window.currentStiPeriod = val;
     window.STI_PLN_INVOICE_DATA = window.stiPlnPeriodsData[val];
@@ -63065,20 +63729,19 @@ function renderInvoiceStiPlnV1View() {
       `;
 
       if (data.table2.sectionB) {
-        html2 += data.table2.sectionB.map(st => {
+        html2 += data.table2.sectionB.map((st, idx) => {
+          const bg = (idx % 2 === 1) ? 'background: #FAFBFD;' : '';
+          const fmtName = st.name
+            .replace(/Dokumen Lengkap/g, m => `<span style="text-decoration: underline; text-decoration-color: #CBD5E1;">${m}</span>`)
+            .replace(/Prebilling/g, m => `<span style="text-decoration: underline; text-decoration-color: #CBD5E1;">${m}</span>`);
           return `
-            <tr class="pln-interactive-row" onclick="showStiCategoryDetail('${st.key}')" title="Klik untuk rincian ${st.name}">
-              <td style="padding: 9px 14px; border-bottom: 1px solid #F1F5F9;">
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                  <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-weight: 850; color: #64748B; font-size: 11px;">B.${st.num}</span>
-                    <span style="font-weight: 700; color: #0F172A; font-size: 11.5px;">${st.name}</span>
-                  </div>
-                  <span style="font-size: 10px; font-weight: 800; color: #0284C7; background: #E0F2FE; padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono);">${st.pct}</span>
-                </div>
+            <tr class="pln-interactive-row" style="${bg}" onclick="showStiCategoryDetail('${st.key}')" title="Klik untuk rincian ${st.name}">
+              <td style="padding: 8px 14px 8px 34px; border-bottom: 1px solid #F1F5F9;">
+                <span style="font-weight: 700; color: #475569; margin-right: 10px;">${st.num}</span>
+                <span style="font-weight: 600; color: #0F172A;">${fmtName}</span>
               </td>
-              <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">${st.prev}</td>
-              <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">${st.curr}</td>
+              <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">${st.prev}</td>
+              <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9; font-family: var(--font-mono), monospace;">${st.curr}</td>
             </tr>
           `;
         }).join('');
@@ -63097,11 +63760,13 @@ function renderInvoiceStiPlnV1View() {
     const elInsLeftSub = document.getElementById('sti-insight-left-sub');
     const elInsRightMain = document.getElementById('sti-insight-right-main');
     const elFootPeriod = document.getElementById('sti-slide-footer-period');
+    const elFootPage = document.getElementById('sti-slide-footer-page');
 
     if (elInsLeftMain) elInsLeftMain.innerHTML = data.bottomInsights.leftMain;
     if (elInsLeftSub) elInsLeftSub.innerHTML = data.bottomInsights.leftSub;
     if (elInsRightMain) elInsRightMain.innerHTML = data.bottomInsights.rightMain;
     if (elFootPeriod) elFootPeriod.textContent = data.bottomInsights.footerPeriod;
+    if (elFootPage && data.bottomInsights.footerPage) elFootPage.textContent = data.bottomInsights.footerPage;
   }
 
   function renderStiAnalyticsCharts(data) {
@@ -63281,7 +63946,7 @@ function renderInvoiceStiPlnV1View() {
   }
 
   function filterStiRegionalTable() {
-    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_OKT'];
+    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_NOV'];
     const q = (document.getElementById('sti-reg-search') ? document.getElementById('sti-reg-search').value : '').toLowerCase().trim();
     const st = document.getElementById('sti-reg-status-filter') ? document.getElementById('sti-reg-status-filter').value : 'ALL';
 
@@ -63300,7 +63965,7 @@ function renderInvoiceStiPlnV1View() {
   }
 
   function showStiCategoryDetail(catKey) {
-    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_OKT'];
+    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_NOV'];
     const cat = data.categories ? data.categories[catKey] : null;
     if (!cat) return;
 
@@ -63335,7 +64000,7 @@ function renderInvoiceStiPlnV1View() {
   }
 
   function exportInvoiceStiPlnCsv() {
-    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_OKT'];
+    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_NOV'];
     let csv = '\uFEFF';
     csv += `LAPORAN EKSEKUTIF MONITORING PROGRESS INVOICE DIVSTI PLN ${data.periodName}\r\n\r\n`;
     csv += 'METRIK UTAMA (KPI);NILAI (RP)\r\n';
@@ -63379,7 +64044,7 @@ function renderInvoiceStiPlnV1View() {
   }
 
   function exportStiRegionalCsv() {
-    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_OKT'];
+    const data = window.stiPlnPeriodsData[window.currentStiPeriod] || window.stiPlnPeriodsData['W1_NOV'];
     let csv = '\uFEFF';
     csv += `NO;UNIT_SEGMEN_DIVSTI;WILAYAH;PIUTANG_${data.prevDateShort.toUpperCase()}_M;PIUTANG_${data.currDateShort.toUpperCase()}_M;DELTA_M;STATUS;PIC_ACTION\r\n`;
     (data.regionalList || []).forEach(r => {
@@ -63409,7 +64074,7 @@ function renderInvoiceStiPlnV1View() {
   }
 
   function renderInvoiceStiPlnView() {
-    onStiPeriodChange(window.currentStiPeriod || 'W1_OKT');
+    onStiPeriodChange(window.currentStiPeriod || 'W1_NOV');
   }
 
   // Aliases for external calls & backward compatibility
@@ -63417,7 +64082,7 @@ function renderInvoiceStiPlnV1View() {
   window.switchStiPeriod = onStiPeriodChange;
   window.openStiCategoryModal = showStiCategoryDetail;
   window.exportStiSlideSummaryCsv = exportInvoiceStiPlnCsv;
-  window.initStiSlideDashboard = function() { onStiPeriodChange('W1_OKT'); };
+  window.initStiSlideDashboard = function() { onStiPeriodChange('W1_NOV'); };
 
   // Trigger initial render for STI PLN Invoice module
   try {
