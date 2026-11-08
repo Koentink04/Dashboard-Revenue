@@ -1159,9 +1159,10 @@
 
     /* Toast Notification */
     .toast {
-      position: fixed; bottom: 24px; right: 24px; background: var(--navy-deep); color: #fff;
-      padding: 12px 20px; border-radius: 12px; font-size: 12px; font-weight: 700;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 163, 224, 0.4);
+      position: fixed; bottom: 24px; right: 24px; background: #FFFFFF; color: #0A2540;
+      padding: 12px 20px; border-radius: 10px; font-size: 12px; font-weight: 700;
+      box-shadow: 0 10px 25px -5px rgba(10, 37, 64, 0.15); border: 1px solid #E2E8F0;
+      border-left: 4px solid #00A3E0;
       display: flex; align-items: center; gap: 9px; z-index: 9999;
       transform: translateY(100px); opacity: 0; transition: all 0.25s ease;
     }
@@ -3580,7 +3581,7 @@
             </div>
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <!-- Quick Cutoff Selector Buttons -->
-              <div style="display: inline-flex; background: #F1F5F9; border-radius: 6px; padding: 2px; border: 1px solid #CBD5E1;" title="Pilih Cut-off Tanggal NR">
+              <div style="display: inline-flex; background: #F1F5F9; border-radius: 6px; padding: 2px; border: 1px solid #CBD5E1;" >
                 <button type="button" id="btn-wf-cutoff-15" onclick="setWfCutoff('15-okt')" style="padding: 4px 10px; font-size: 10.5px; font-weight: 700; border: none; border-radius: 4px; background: #00A3E0; color: #fff; cursor: pointer; transition: all 0.2s;">15 Okt</button>
                 <button type="button" id="btn-wf-cutoff-31" onclick="setWfCutoff('31-okt')" style="padding: 4px 10px; font-size: 10.5px; font-weight: 700; border: none; border-radius: 4px; background: transparent; color: #475569; cursor: pointer; transition: all 0.2s;">31 Okt</button>
                 <button type="button" id="btn-wf-cutoff-21" onclick="setWfCutoff('21-okt')" style="padding: 4px 10px; font-size: 10.5px; font-weight: 700; border: none; border-radius: 4px; background: transparent; color: #475569; cursor: pointer; transition: all 0.2s;">21 Okt</button>
@@ -3600,8 +3601,8 @@
               <span style="color: #64748B;">&middot; <span id="prog-wf-info-src">Data NR FIX (Tgl 15) & NR Dlm Pekerjaan</span></span>
             </div>
             <div style="display: flex; gap: 12px; font-weight: 700;">
-              <span style="color: #D97706;" title="NR Dalam Pekerjaan">NR Dlm: <span id="prog-wf-info-nrdlm">+0,21 T (Rp 207,28 M)</span></span>
-              <span style="color: #059669;" title="NR FIX Invoice Terbit">NR FIX: <span id="prog-wf-info-nrfix">+0,02 T (Rp 22,27 M)</span></span>
+              <span style="color: #D97706;" >NR Dlm: <span id="prog-wf-info-nrdlm">+0,21 T (Rp 207,28 M)</span></span>
+              <span style="color: #059669;" >NR FIX: <span id="prog-wf-info-nrfix">+0,02 T (Rp 22,27 M)</span></span>
             </div>
           </div>
         </div>
@@ -55679,8 +55680,6 @@ window.addEventListener('keydown', function(e) {
     activeProgCutoff = val;
     updateCutoffButtons(val);
     renderPrognosaWaterfallAsIs();
-    const info = NR_CUTOFF_DATA[val] || NR_CUTOFF_DATA['15-okt'];
-    showToast(`Cut-off Tanggal NR aktif: ${info.dateLabel}`);
   }
 
   function setWfCutoff(val) {
@@ -55937,7 +55936,7 @@ window.addEventListener('keydown', function(e) {
         <!-- Bar 1: Realisasi Lalu -->
         <g style="cursor: pointer;">
           <rect x="60" y="${y1}" width="55" height="${h1}" rx="4" fill="url(#wf-grad-realisasi)">
-            <title>Realisasi ${realLaluLabel}: ${fmtT(realisasiLaluT)} (Rp ${fmtM(realLaluM)})</title>
+            
           </rect>
           <text x="87.5" y="${Math.max(16, y1 - 6)}" font-size="11" font-weight="800" fill="#0284C7" text-anchor="middle">${fmtT(realisasiLaluT)}</text>
         </g>
@@ -55945,7 +55944,7 @@ window.addEventListener('keydown', function(e) {
         <!-- Bar 2: CO Recurring -->
         <g style="cursor: pointer;">
           <rect x="155" y="${y2}" width="55" height="${h2}" rx="3" fill="url(#wf-grad-co)">
-            <title>Carry Over Recurring: +${fmtT(coT)} (Rp ${fmtM(coM)})</title>
+            
           </rect>
           <text x="182.5" y="${Math.max(16, y2 - 6)}" font-size="10.5" font-weight="800" fill="#1D4ED8" text-anchor="middle">+${fmtT(coT)}</text>
         </g>
@@ -55954,12 +55953,12 @@ window.addEventListener('keydown', function(e) {
         <g style="cursor: pointer;">
           ${(nrDlmT > 0) ? `
             <rect x="250" y="${y3}" width="55" height="${h3}" rx="3" fill="url(#wf-grad-nrp)">
-              <title>NR Dalam Pekerjaan (${cutoffData.dateLabel}): +${fmtT(nrDlmT)} (Rp ${fmtM(nrDlmM)})&#10;${sbuCutoff.note || ''}</title>
+              
             </rect>
             <text x="277.5" y="${Math.max(16, y3 - 6)}" font-size="10.5" font-weight="800" fill="#D97706" text-anchor="middle">+${fmtT(nrDlmT)}</text>
           ` : `
             <rect x="250" y="${conn2_3_y - 2}" width="55" height="4" rx="2" fill="#CBD5E1">
-              <title>NR Dalam Pekerjaan (${cutoffData.dateLabel}): 0 T (Rp 0 M)&#10;Status: Seluruh paket telah terbit menjadi Invoice NR FIX per 31 Okt</title>
+              
             </rect>
             <text x="277.5" y="${Math.max(16, conn2_3_y - 8)}" font-size="10.5" font-weight="800" fill="#64748B" text-anchor="middle">0 T</text>
           `}
@@ -55976,7 +55975,7 @@ window.addEventListener('keydown', function(e) {
         <!-- Bar 5: Prognosa AS IS -->
         <g style="cursor: pointer;">
           <rect x="440" y="${y5}" width="55" height="${h5}" rx="4" fill="url(#wf-grad-asis)">
-            <title>Prognosa AS IS: ${fmtT(totalAsIs)} (${cutoffData.dateLabel})</title>
+            
           </rect>
           <text x="467.5" y="${Math.max(16, y5 - 6)}" font-size="11" font-weight="800" fill="#0A2540" text-anchor="middle">${fmtT(totalAsIs)}</text>
         </g>
@@ -56268,10 +56267,6 @@ window.addEventListener('keydown', function(e) {
     }
 
     renderPrognosaView();
-    const periodInfo = MONTH_META[period] || MONTH_META[9];
-    const periodLabel = periodInfo ? `${periodInfo.short} 2026` : `Bulan ${period}`;
-    const statusNote = (pNum >= 11) ? ' (Status: Prognosa)' : '';
-    showToast(`Filter diterapkan: Periode ${periodLabel}${statusNote} &middot; ${sbu === 'ALL' ? 'Semua SBU' : sbu} &middot; ${bidang === 'ALL' ? 'Semua Bidang' : bidang}`);
   }
 
   // --- Table 1: Exception ---
