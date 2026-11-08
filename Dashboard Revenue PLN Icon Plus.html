@@ -55710,6 +55710,7 @@ window.addEventListener('keydown', function(e) {
     const container = document.getElementById('prog-wf-asis-container');
     if (!container) return;
 
+    // 1. Ambil Parameter Aktif dari Filter Bar
     const selPeriodEl = document.getElementById('pln-prog-filter-period');
     const period = selPeriodEl ? parseInt(selPeriodEl.value) || 9 : 9;
     const selSbuEl = document.getElementById('pln-prog-filter-sbu');
@@ -55722,148 +55723,263 @@ window.addEventListener('keydown', function(e) {
     updateCutoffButtons(cutoff);
 
     const cutoffData = NR_CUTOFF_DATA[cutoff] || NR_CUTOFF_DATA['15-okt'];
-    const sbuCutoff = (cutoffData.bySbu && cutoffData.bySbu[sbuKey]) ? cutoffData.bySbu[sbuKey] : (cutoffData.bySbu['ALL'] || { nrDlm: 0, nrFix: 0 });
+    const sbuCutoff = (cutoffData.bySbu && cutoffData.bySbu[sbuKey])
+      ? cutoffData.bySbu[sbuKey]
+      : (cutoffData.bySbu['ALL'] || { nrDlm: 0, nrFix: 0 });
 
-    // 1. Nilai Realisasi Lalu (Satuan Triliun / T)
+    const monthMeta = MONTH_META[period] || MONTH_META[9];
+
+    // 2. Tentukan Angka 5 Bar Berdasarkan Periode dan Cut-Off
     let realisasiLaluT = 2.23;
     let realLaluM = 2230.94;
     let realLaluLabel = 'sd Agust';
 
+    let coT = 0.21;
+    let coM = 207.43;
+
+    let nrDlmT = 0.18;
+    let nrDlmM = 180.00;
+
+    let nrFixT = -0.02;
+    let nrFixM = -20.00;
+    let nrFixLabel = 'NR FIX';
+
+    let totalAsIs = 2.60;
+
+    // ==========================================
+    // LOGIKA PER BULAN (SEMPURNA & KONSISTEN)
+    // ==========================================
     if (period <= 9) {
+      // --- PERIODE SEPTEMBER 2026 (Baseline Penajaman) ---
+      realLaluLabel = 'sd Agust';
       if (sbuKey === 'ALL') {
         realisasiLaluT = 2.23;
         realLaluM = 2230.94;
+        coT = 0.21;
+        coM = 207.43;
+
+        if (cutoff === '15-okt') {
+          nrDlmT = 0.18;
+          nrDlmM = 180.00;
+          nrFixT = -0.02;
+          nrFixM = -20.00;
+          nrFixLabel = 'NR FIX Koreksi';
+          totalAsIs = 2.60; // 2.23 + 0.21 + 0.18 - 0.02 = 2.60 T
+        } else {
+          // Cutoff 31 Okt / 21 Okt
+          nrDlmT = 0.00;
+          nrDlmM = 0.00;
+          nrFixT = 0.16;
+          nrFixM = 160.00;
+          nrFixLabel = 'NR FIX Realisasi';
+          totalAsIs = 2.60; // 2.23 + 0.21 + 0 + 0.16 = 2.60 T
+        }
       } else {
         const sReal = (REALISASI_DATA[sbuKey] || {}).months || {};
         realLaluM = sReal[8] || 0;
         realisasiLaluT = realLaluM / 1000;
+        const sbuGrid = SBU_DATAGRID_DATA.find(x => x.code === sbuKey);
+        coM = sbuGrid ? sbuGrid.co : 0;
+        coT = coM / 1000;
+        nrDlmM = (cutoff === '15-okt') ? sbuCutoff.nrDlm : 0;
+        nrDlmT = nrDlmM / 1000;
+        nrFixM = sbuCutoff.nrFix;
+        nrFixT = nrFixM / 1000;
+        totalAsIs = Number((realisasiLaluT + coT + nrDlmT + nrFixT).toFixed(2));
       }
-      realLaluLabel = 'sd Agust';
-    } else {
-      // Untuk periode Okt (10), Nov (11), Des (12), realisasi lalu adalah s.d September 2026 (2,54 T)
+    } else if (period === 10) {
+      // --- PERIODE OKTOBER 2026 ---
+      realLaluLabel = 'sd Sept';
       if (sbuKey === 'ALL') {
         realisasiLaluT = 2.54;
         realLaluM = 2539.06;
+        coT = 0.20;
+        coM = 201.40;
+
+        if (cutoff === '15-okt') {
+          nrDlmM = 207.28;
+          nrDlmT = 0.21;
+          nrFixM = 22.27;
+          nrFixT = 0.02;
+          nrFixLabel = 'NR FIX Tgl 15';
+          totalAsIs = 2.97; // 2.54 + 0.20 + 0.21 + 0.02 = 2.97 T
+        } else {
+          // Cutoff 31 Okt / 21 Okt
+          nrDlmM = 0.00;
+          nrDlmT = 0.00;
+          nrFixM = 219.88;
+          nrFixT = 0.22;
+          nrFixLabel = 'NR FIX Tgl 31';
+          totalAsIs = 2.96; // 2.54 + 0.20 + 0 + 0.22 = 2.96 T (Rp 2.960,34 M)
+        }
       } else {
         const sReal = (REALISASI_DATA[sbuKey] || {}).months || {};
         realLaluM = sReal[9] || 0;
         realisasiLaluT = realLaluM / 1000;
+        const sbuGrid = SBU_DATAGRID_DATA.find(x => x.code === sbuKey);
+        coM = sbuGrid ? sbuGrid.co : 0;
+        coT = coM / 1000;
+        nrDlmM = (cutoff === '15-okt') ? sbuCutoff.nrDlm : 0;
+        nrDlmT = nrDlmM / 1000;
+        nrFixM = sbuCutoff.nrFix;
+        nrFixT = nrFixM / 1000;
+        nrFixLabel = (cutoff === '15-okt') ? 'NR FIX Tgl 15' : 'NR FIX Tgl 31';
+        totalAsIs = Number((realisasiLaluT + coT + nrDlmT + nrFixT).toFixed(2));
       }
-      realLaluLabel = 'sd Sept';
-    }
+    } else if (period === 11) {
+      // --- PERIODE NOVEMBER 2026 (Bulan Berjalan) ---
+      realLaluLabel = 'sd Okt';
+      if (sbuKey === 'ALL') {
+        realisasiLaluT = 2.96;
+        realLaluM = 2960.34;
+        coT = 0.22;
+        coM = 218.17;
 
-    // 2. Carry Over Recurring (Satuan Triliun / T)
-    let coT = 0.21;
-    let coM = 207.43;
-    if (sbuKey === 'ALL') {
-      if (cutoff === '15-okt') {
-        coT = 0.21;
-        coM = 207.43;
+        if (cutoff === '15-okt') {
+          nrDlmM = 55.81; // Target NR Nov
+          nrDlmT = 0.05;
+          nrFixM = 0.00;
+          nrFixT = 0.00;
+          nrFixLabel = 'NR Realisasi';
+          totalAsIs = 3.23; // 2.96 + 0.22 + 0.05 + 0 = 3.23 T (Rp 3.234,32 M)
+        } else {
+          // Cutoff 31 Okt / 21 Okt
+          nrDlmM = 0.00;
+          nrDlmT = 0.00;
+          nrFixM = 55.81; // Prognosa NR Nov
+          nrFixT = 0.05;
+          nrFixLabel = 'Prognosa NR';
+          totalAsIs = 3.23; // 2.96 + 0.22 + 0 + 0.05 = 3.23 T (Rp 3.234,32 M)
+        }
       } else {
-        // Cutoff 31 Okt / 21 Okt
-        coT = 0.20;
-        coM = 201.40;
+        const progRealOktM = (PROGNOSA_REALISASI_DATA[sbuKey] && PROGNOSA_REALISASI_DATA[sbuKey].months[10])
+          ? PROGNOSA_REALISASI_DATA[sbuKey].months[10].valM
+          : 0;
+        realLaluM = progRealOktM;
+        realisasiLaluT = realLaluM / 1000;
+        const sbuNovProg = PROGNOSA_SBU_REVENUE_DATA.find(x => x.code === sbuKey);
+        const progNrNov = sbuNovProg ? sbuNovProg.nrNov : 0;
+        const progRealNov = (PROGNOSA_REALISASI_DATA[sbuKey] && PROGNOSA_REALISASI_DATA[sbuKey].months[11])
+          ? PROGNOSA_REALISASI_DATA[sbuKey].months[11].valM
+          : 0;
+        nrDlmM = (cutoff === '15-okt') ? progNrNov : 0;
+        nrDlmT = nrDlmM / 1000;
+        nrFixM = (cutoff === '15-okt') ? 0 : progNrNov;
+        nrFixT = nrFixM / 1000;
+        coM = Math.max(0, progRealNov - realLaluM - progNrNov);
+        coT = coM / 1000;
+        nrFixLabel = (cutoff === '15-okt') ? 'NR Realisasi' : 'Prognosa NR';
+        totalAsIs = Number((progRealNov / 1000).toFixed(2));
       }
     } else {
-      const sbuGrid = SBU_DATAGRID_DATA.find(x => x.code === sbuKey);
-      coM = sbuGrid ? sbuGrid.co : 0;
-      coT = coM / 1000;
+      // --- PERIODE DESEMBER 2026 (Akhir Tahun RKAP) ---
+      realLaluLabel = 'sd Nov';
+      if (sbuKey === 'ALL') {
+        realisasiLaluT = 3.23;
+        realLaluM = 3234.32;
+        coT = 0.22;
+        coM = 218.18;
+        nrDlmM = 0.00;
+        nrDlmT = 0.00;
+        nrFixM = 526.65; // Prognosa NR Dec
+        nrFixT = 0.53;
+        nrFixLabel = 'Prognosa NR Dec';
+        totalAsIs = 3.98; // 3.23 + 0.22 + 0.53 = 3.98 T (Rp 3.979,15 M)
+      } else {
+        const progRealNovM = (PROGNOSA_REALISASI_DATA[sbuKey] && PROGNOSA_REALISASI_DATA[sbuKey].months[11])
+          ? PROGNOSA_REALISASI_DATA[sbuKey].months[11].valM
+          : 0;
+        realLaluM = progRealNovM;
+        realisasiLaluT = realLaluM / 1000;
+        const sbuDecProg = PROGNOSA_SBU_REVENUE_DATA.find(x => x.code === sbuKey);
+        const progNrDec = sbuDecProg ? sbuDecProg.nrDec : 0;
+        const progRealDec = (PROGNOSA_REALISASI_DATA[sbuKey] && PROGNOSA_REALISASI_DATA[sbuKey].months[12])
+          ? PROGNOSA_REALISASI_DATA[sbuKey].months[12].valM
+          : 0;
+        nrDlmM = 0;
+        nrDlmT = 0;
+        nrFixM = progNrDec;
+        nrFixT = nrFixM / 1000;
+        coM = Math.max(0, progRealDec - realLaluM - progNrDec);
+        coT = coM / 1000;
+        nrFixLabel = 'Prognosa NR Dec';
+        totalAsIs = Number((progRealDec / 1000).toFixed(2));
+      }
     }
 
-    // 3. NR Dlm Pekerjaan (Satuan Triliun / T)
-    const nrDlmM = sbuCutoff.nrDlm;
-    const nrDlmT = nrDlmM / 1000;
-
-    // 4. NR FIX (Satuan Triliun / T)
-    let nrFixM = sbuCutoff.nrFix;
-    let nrFixT = nrFixM / 1000;
-    // Pada periode September baseline, NR FIX bertindak sebagai koreksi -0,02 T
-    if (period <= 9 && sbuKey === 'ALL' && cutoff === '15-okt') {
-      nrFixT = -0.02;
-    }
-
-    // 5. Total Prognosa AS IS
-    let totalAsIs = 0;
-    if (period <= 9 && sbuKey === 'ALL') {
-      totalAsIs = (cutoff === '15-okt') ? 2.60 : 2.65;
-    } else if (period >= 10 && sbuKey === 'ALL') {
-      totalAsIs = (cutoff === '15-okt') ? 2.98 : 2.96;
-    } else {
-      totalAsIs = Number((realisasiLaluT + coT + nrDlmT + nrFixT).toFixed(2));
-    }
-
-    // Helper format Triliun
+    // 3. Helper Formatters
     const fmtT = v => Number(Math.abs(v)).toFixed(2).replace('.', ',') + ' T';
     const fmtM = v => Number(v).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' M';
 
-    // Update Tag di header kartu
+    // 4. Update Header Tag & Subtitle
     const tagEl = document.getElementById('prog-wf-asis-tag');
     if (tagEl) {
       tagEl.textContent = `Total AS IS: ${totalAsIs.toFixed(2).replace('.', ',')} T`;
     }
 
-    // Update Subtitle kartu
     const subEl = document.getElementById('prog-wf-asis-sub');
     if (subEl) {
-      const monthName = (MONTH_META[period] || MONTH_META[9]).name;
-      subEl.textContent = `Jembatan pembentukan pendapatan Cut-off ${cutoffData.shortLabel} (${sbuKey === 'ALL' ? 'Total Konsolidasi' : sbuKey}) s.d Prognosa AS IS ${monthName}`;
+      const sbuName = (sbuKey === 'ALL') ? 'Total Konsolidasi' : sbuKey;
+      subEl.textContent = `Jembatan pembentukan pendapatan Periode ${monthMeta.name} 2026 \u00B7 Cut-off ${cutoffData.shortLabel} (${sbuName}) s.d Prognosa AS IS`;
     }
 
-    // Update Breakdown Capsule Info
+    // 5. Update Breakdown Capsule Info di Bawah Grafik
     const infoDateEl = document.getElementById('prog-wf-info-date');
     if (infoDateEl) infoDateEl.textContent = cutoffData.dateLabel;
     const infoSrcEl = document.getElementById('prog-wf-info-src');
-    if (infoSrcEl) infoSrcEl.textContent = cutoffData.sourceName;
+    if (infoSrcEl) {
+      infoSrcEl.textContent = (cutoff === '15-okt')
+        ? 'Data NR FIX (Tgl 15) & NR Dlm Pekerjaan'
+        : 'Data NR FIX (Sheet: TANGGAL 31 / Realisasi Penuh)';
+    }
     const infoDlmEl = document.getElementById('prog-wf-info-nrdlm');
     if (infoDlmEl) {
-      infoDlmEl.textContent = `${nrDlmT > 0 ? '+' : ''}${fmtT(nrDlmT)} (Rp ${fmtM(nrDlmM)})`;
+      infoDlmEl.textContent = (nrDlmT > 0) ? `+${fmtT(nrDlmT)} (Rp ${fmtM(nrDlmM)})` : `0 T (Rp 0 M)`;
       infoDlmEl.style.color = (nrDlmT > 0) ? '#D97706' : '#64748B';
     }
     const infoFixEl = document.getElementById('prog-wf-info-nrfix');
     if (infoFixEl) {
-      infoFixEl.textContent = `${nrFixT >= 0 ? '+' : ''}${fmtT(nrFixT)} (Rp ${fmtM(nrFixM)})`;
-      infoFixEl.style.color = (nrFixT >= 0) ? '#059669' : '#DC2626';
+      const signFix = (nrFixT > 0) ? '+' : (nrFixT < 0 ? '-' : '');
+      infoFixEl.textContent = (nrFixT !== 0) ? `${signFix}${fmtT(nrFixT)} (Rp ${fmtM(nrFixM)})` : `0 T (Rp 0 M)`;
+      infoFixEl.style.color = (nrFixT > 0) ? '#059669' : (nrFixT < 0 ? '#DC2626' : '#64748B');
     }
 
-    // Hitung posisi Y SVG (viewBox: 0 0 540 260)
-    // Sumbu Y: 0 T = y 190; 4 T = y 30. (40 px per 1 T)
-    // Dynamic max scale jika SBU kecil
+    // 6. Hitung Koordinat SVG Waterfall (viewBox: 0 0 540 260)
     let yMax = 4.0;
     if (sbuKey !== 'ALL') {
       const maxNeeded = Math.max(realisasiLaluT, totalAsIs, (realisasiLaluT + coT + nrDlmT + Math.max(0, nrFixT)));
       if (maxNeeded > 0) {
-        yMax = Math.max(0.5, Math.ceil(maxNeeded * 1.3 * 2) / 2);
+        yMax = Math.max(0.5, Math.ceil(maxNeeded * 1.35 * 2) / 2);
       }
     }
     const yBaseline = 190;
     const pxPerT = (yBaseline - 30) / yMax;
     const getY = v => yBaseline - (v * pxPerT);
 
-    // Koordinat 5 Bar
-    // Bar 1: Realisasi
+    // Bar 1: Realisasi Lalu
     const y1 = getY(realisasiLaluT);
     const h1 = Math.max(2, yBaseline - y1);
 
-    // Bar 2: CO Recurring (floating di atas Bar 1)
+    // Bar 2: CO Recurring
     const baseCo = realisasiLaluT;
     const topCo = baseCo + coT;
     const y2 = getY(topCo);
     const h2 = Math.max(6, Math.abs(getY(baseCo) - y2));
 
-    // Bar 3: NR Dlm Pekerjaan (floating di atas Bar 2)
+    // Bar 3: NR Dlm Pekerjaan
     const baseNrDlm = topCo;
     const topNrDlm = baseNrDlm + nrDlmT;
     const y3 = getY(topNrDlm);
     const h3 = (nrDlmT > 0) ? Math.max(6, Math.abs(getY(baseNrDlm) - y3)) : 0;
 
-    // Bar 4: NR FIX (floating di atas Bar 3)
+    // Bar 4: NR FIX
     const baseNrFix = topNrDlm;
-    const topNrFix = baseNrFix + nrFixT;
     const isFixNeg = nrFixT < 0;
+    const topNrFix = baseNrFix + nrFixT;
     const y4 = isFixNeg ? getY(baseNrFix) : getY(topNrFix);
-    const h4 = Math.max(4, Math.abs(getY(baseNrFix) - getY(topNrFix)));
+    const h4 = (nrFixT !== 0) ? Math.max(4, Math.abs(getY(baseNrFix) - getY(topNrFix))) : 0;
 
-    // Bar 5: Prognosa AS IS (dari 0 ke totalAsIs)
+    // Bar 5: Prognosa AS IS
     const y5 = getY(totalAsIs);
     const h5 = Math.max(2, yBaseline - y5);
 
@@ -55871,9 +55987,20 @@ window.addEventListener('keydown', function(e) {
     const conn1_2_y = y1;
     const conn2_3_y = y2;
     const conn3_4_y = (nrDlmT > 0) ? y3 : y2;
-    const conn4_5_y = isFixNeg ? getY(topNrFix) : y4;
+    const conn4_5_y = isFixNeg ? getY(topNrFix) : ((nrFixT !== 0) ? y4 : conn3_4_y);
 
-    // Generate SVG string
+    // Label formatters for Bar 4
+    let bar4LabelText = '0 T';
+    let bar4LabelColor = '#64748B';
+    if (nrFixT > 0) {
+      bar4LabelText = `+${fmtT(nrFixT)}`;
+      bar4LabelColor = '#059669';
+    } else if (nrFixT < 0) {
+      bar4LabelText = `-${fmtT(nrFixT)}`;
+      bar4LabelColor = '#DC2626';
+    }
+
+    // 7. Render SVG Markup
     container.innerHTML = `
       <svg viewBox="0 0 540 260" style="width: 100%; height: auto; display: block;" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -55934,49 +56061,42 @@ window.addEventListener('keydown', function(e) {
         </g>
 
         <!-- Bar 1: Realisasi Lalu -->
-        <g style="cursor: pointer;">
-          <rect x="60" y="${y1}" width="55" height="${h1}" rx="4" fill="url(#wf-grad-realisasi)">
-            
-          </rect>
+        <g>
+          <rect x="60" y="${y1}" width="55" height="${h1}" rx="4" fill="url(#wf-grad-realisasi)" />
           <text x="87.5" y="${Math.max(16, y1 - 6)}" font-size="11" font-weight="800" fill="#0284C7" text-anchor="middle">${fmtT(realisasiLaluT)}</text>
         </g>
 
         <!-- Bar 2: CO Recurring -->
-        <g style="cursor: pointer;">
-          <rect x="155" y="${y2}" width="55" height="${h2}" rx="3" fill="url(#wf-grad-co)">
-            
-          </rect>
+        <g>
+          <rect x="155" y="${y2}" width="55" height="${h2}" rx="3" fill="url(#wf-grad-co)" />
           <text x="182.5" y="${Math.max(16, y2 - 6)}" font-size="10.5" font-weight="800" fill="#1D4ED8" text-anchor="middle">+${fmtT(coT)}</text>
         </g>
 
         <!-- Bar 3: NR Dlm Pekerjaan -->
-        <g style="cursor: pointer;">
+        <g>
           ${(nrDlmT > 0) ? `
-            <rect x="250" y="${y3}" width="55" height="${h3}" rx="3" fill="url(#wf-grad-nrp)">
-              
-            </rect>
+            <rect x="250" y="${y3}" width="55" height="${h3}" rx="3" fill="url(#wf-grad-nrp)" />
             <text x="277.5" y="${Math.max(16, y3 - 6)}" font-size="10.5" font-weight="800" fill="#D97706" text-anchor="middle">+${fmtT(nrDlmT)}</text>
           ` : `
-            <rect x="250" y="${conn2_3_y - 2}" width="55" height="4" rx="2" fill="#CBD5E1">
-              
-            </rect>
+            <rect x="250" y="${conn2_3_y - 2}" width="55" height="4" rx="2" fill="#CBD5E1" />
             <text x="277.5" y="${Math.max(16, conn2_3_y - 8)}" font-size="10.5" font-weight="800" fill="#64748B" text-anchor="middle">0 T</text>
           `}
         </g>
 
-        <!-- Bar 4: NR FIX -->
-        <g style="cursor: pointer;">
-          <rect x="345" y="${y4}" width="55" height="${h4}" rx="3" fill="${isFixNeg ? 'url(#wf-grad-nrfix-neg)' : 'url(#wf-grad-nrfix-pos)'}">
-            <title>NR FIX (${cutoffData.dateLabel}): ${nrFixT >= 0 ? '+' : ''}${fmtT(nrFixT)} (Rp ${fmtM(nrFixM)})&#10;${sbuCutoff.note || ''}</title>
-          </rect>
-          <text x="372.5" y="${Math.max(16, y4 - 6)}" font-size="10" font-weight="800" fill="${isFixNeg ? '#DC2626' : '#059669'}" text-anchor="middle">${nrFixT >= 0 ? '+' : ''}${fmtT(nrFixT)}</text>
+        <!-- Bar 4: NR FIX / Prognosa NR -->
+        <g>
+          ${(nrFixT !== 0) ? `
+            <rect x="345" y="${y4}" width="55" height="${h4}" rx="3" fill="${isFixNeg ? 'url(#wf-grad-nrfix-neg)' : 'url(#wf-grad-nrfix-pos)'}" />
+            <text x="372.5" y="${Math.max(16, y4 - 6)}" font-size="10.5" font-weight="800" fill="${bar4LabelColor}" text-anchor="middle">${bar4LabelText}</text>
+          ` : `
+            <rect x="345" y="${conn3_4_y - 2}" width="55" height="4" rx="2" fill="#CBD5E1" />
+            <text x="372.5" y="${Math.max(16, conn3_4_y - 8)}" font-size="10.5" font-weight="800" fill="#64748B" text-anchor="middle">0 T</text>
+          `}
         </g>
 
         <!-- Bar 5: Prognosa AS IS -->
-        <g style="cursor: pointer;">
-          <rect x="440" y="${y5}" width="55" height="${h5}" rx="4" fill="url(#wf-grad-asis)">
-            
-          </rect>
+        <g>
+          <rect x="440" y="${y5}" width="55" height="${h5}" rx="4" fill="url(#wf-grad-asis)" />
           <text x="467.5" y="${Math.max(16, y5 - 6)}" font-size="11" font-weight="800" fill="#0A2540" text-anchor="middle">${fmtT(totalAsIs)}</text>
         </g>
 
@@ -55991,8 +56111,8 @@ window.addEventListener('keydown', function(e) {
           <text x="277.5" y="210">NR Dlm</text>
           <text x="277.5" y="222" fill="#94A3B8" font-size="8.5">Pekerjaan</text>
 
-          <text x="372.5" y="210">NR FIX</text>
-          <text x="372.5" y="222" fill="#94A3B8" font-size="8.5">${cutoff === '15-okt' ? 'Tgl 15' : 'Tgl 31'}</text>
+          <text x="372.5" y="210">${nrFixLabel.split(' ')[0] || 'NR FIX'}</text>
+          <text x="372.5" y="222" fill="#94A3B8" font-size="8.5">${nrFixLabel.split(' ').slice(1).join(' ') || (cutoff === '15-okt' ? 'Tgl 15' : 'Tgl 31')}</text>
 
           <text x="467.5" y="210" fill="#0A2540" font-weight="800">Prognosa</text>
           <text x="467.5" y="222" fill="#0A2540" font-weight="800">AS IS</text>
