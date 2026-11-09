@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
@@ -3132,12 +3132,12 @@
             <span class="kpi-title">REVENUE AS IS</span>
           </div>
           <div class="kpi-value-row">
-            <span class="kpi-value" id="kpi-real-val">0,30</span>
+            <span class="kpi-value" id="kpi-real-val">2.960,34</span>
             <span class="kpi-unit">M</span>
           </div>
           <div class="kpi-sub-row">
-            <span class="kpi-tag" id="kpi-real-pct-tag" style="background: rgba(0, 163, 224, 0.14); color: var(--cyan-deep); border: 1px solid rgba(0, 163, 224, 0.3);">0% Target</span>
-            <span class="kpi-desc" id="kpi-real-desc">Win Rate 17% dari Opp</span>
+            <span class="kpi-tag" id="kpi-real-pct-tag" style="background: rgba(0, 163, 224, 0.14); color: var(--cyan-deep); border: 1px solid rgba(0, 163, 224, 0.3);">71,2% Target</span>
+            <span class="kpi-desc" id="kpi-real-desc">Realisasi sd Akhir Okt 2026</span>
           </div>
         </div>
 
@@ -3367,8 +3367,8 @@
                 </div>
               </div>
               <div class="funnel-value">
-                <div class="funnel-amt" id="funnel-real-val">0,00 M</div>
-                <div class="funnel-pct" id="funnel-real-pct">Win Rate: 0%</div>
+                <div class="funnel-amt" id="funnel-real-val">2.960,34 M</div>
+                <div class="funnel-pct" id="funnel-real-pct">71,2% Target RKAP</div>
               </div>
             </div>
 
@@ -8963,11 +8963,11 @@
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; color: var(--cyan-deep); text-transform: uppercase;">3. REVENUE AS IS</span>
               <div style="display: flex; gap: 5px;">
-                <span class="kpi-tag" id="tag-preview-real" style="background: rgba(0, 163, 224, 0.12); color: var(--cyan-deep);">86% Target</span>
+                <span class="kpi-tag" id="tag-preview-real" style="background: rgba(0, 163, 224, 0.12); color: var(--cyan-deep);">71,2% Target</span>
                 <span class="kpi-tag" style="background: #E2E8F0; color: var(--sub);">Reminder</span>
               </div>
             </div>
-            <div style="font-size: 26px; font-weight: 800; color: var(--cyan-deep);" id="val-annual-real">159,33 <span style="font-size: 13.5px; font-weight: 700; color: var(--cyan);">M</span></div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--cyan-deep);" id="val-annual-real">2.960,34 <span style="font-size: 13.5px; font-weight: 700; color: var(--cyan);">M</span></div>
             <div style="font-size: 10px; color: var(--sub); margin-top: 6px;">Akumulasi BAST/BASO tervalidasi 1 tahun &middot; Input ditutup</div>
           </div>
 
@@ -9705,7 +9705,7 @@
       useDirect: true,
       target: 4156.00, // Mengacu pada sheet 'TARGET KUM & SA', kolom TARGET RKAP baris TOTAL (4.156,00 M)
       opp: 1.80,
-      real: 0.30,
+      real: 2960.34, // Realisasi Revenue s.d Akhir Oktober 2026 (Sheet TARGET VS REALISASI & Sheet TANGGAL 31: 2.960,34 M)
       mostLikely: 1.60,
       cash: 0.10,
       wait: 0.20,
@@ -9733,12 +9733,12 @@
               m.proc = 0;
             });
           }
-          if (!parsed.annual || parsed.annual.real === 159.33 || parsed.annual.opp === 272.80 || !parsed.annual.target || parsed.annual.target < 4000) {
+          if (!parsed.annual || parsed.annual.real < 100 || parsed.annual.real === 159.33 || parsed.annual.opp === 272.80 || !parsed.annual.target || parsed.annual.target < 4000) {
             parsed.annual = {
               useDirect: true,
               target: (parsed.annual && parsed.annual.target && parsed.annual.target >= 4000) ? parsed.annual.target : 4156.00,
               opp: (parsed.annual && parsed.annual.opp) ? parsed.annual.opp : 1.80,
-              real: (parsed.annual && parsed.annual.real) ? parsed.annual.real : 0.40,
+              real: 2960.34, // Realisasi Revenue s.d Akhir Oktober 2026
               mostLikely: (parsed.annual && parsed.annual.mostLikely) ? parsed.annual.mostLikely : 1.60,
               cash: (parsed.annual && parsed.annual.cash) ? parsed.annual.cash : 0.10,
               wait: (parsed.annual && parsed.annual.wait) ? parsed.annual.wait : 0.30,
@@ -58259,11 +58259,18 @@ window.addEventListener('keydown', function(e) {
     });
 
     // Target 1 Tahun RKAP dari Sheet TARGET KUM & SA (kolom Target RKAP baris TOTAL: 4.156,00 M)
-    const yearTargetJt = Math.round((appData.annual && appData.annual.target ? appData.annual.target : 4156.00) * 1000);
+    const activeSbuKey = (typeof plnActiveSbu !== 'undefined' && plnActiveSbu && plnActiveSbu !== 'TOTAL') ? plnActiveSbu : 'ALL';
+    const sbuTargetRkap = (TARGET_KUM_DATA[activeSbuKey] && TARGET_KUM_DATA[activeSbuKey].rkap) ? TARGET_KUM_DATA[activeSbuKey].rkap : 4156.00;
+    const yearTargetJt = Math.round(sbuTargetRkap * 1000);
     const yearOppJt = sumFullJt;
     const yearCashJt = sumCashJt;
     const yearWaitJt = sumWaitJt;
-    const yearRealJt = (yearCashJt + yearWaitJt) > 0 ? (yearCashJt + yearWaitJt) : sumTahapJt;
+
+    // Realisasi Revenue s.d Akhir Oktober 2026 (Sheet TARGET VS REALISASI & Sheet TANGGAL 31: 2.960,34 M)
+    const sbuRealData = (REALISASI_DATA && REALISASI_DATA[activeSbuKey]) ? REALISASI_DATA[activeSbuKey] : REALISASI_DATA['ALL'];
+    const realOctM = (sbuRealData && sbuRealData.months && sbuRealData.months[10]) ? sbuRealData.months[10] : 2960.34;
+    const yearRealJt = Math.round(realOctM * 1000);
+
     const yearMostLikelyJt = (appData.annual && appData.annual.mostLikely !== undefined)
       ? Math.round(appData.annual.mostLikely * 1000)
       : (sumWbsJt > 0 ? sumWbsJt : Math.round(yearOppJt * 0.85));
@@ -58271,7 +58278,7 @@ window.addEventListener('keydown', function(e) {
     // Keep appData.annual in sync
     if (!appData.annual) appData.annual = {};
     appData.annual.opp = parseFloat((yearOppJt / 1000).toFixed(2));
-    appData.annual.real = parseFloat((yearRealJt / 1000).toFixed(2));
+    appData.annual.real = realOctM;
     appData.annual.mostLikely = parseFloat((yearMostLikelyJt / 1000).toFixed(2));
     appData.annual.cash = parseFloat((yearCashJt / 1000).toFixed(2));
     appData.annual.wait = parseFloat((yearWaitJt / 1000).toFixed(2));
@@ -58292,15 +58299,14 @@ window.addEventListener('keydown', function(e) {
     const elOppDesc = document.getElementById('kpi-opp-desc');
     if (elOppDesc) elOppDesc.textContent = rekap.length + ' CR / JR terdaftar';
 
-    // 3. Revenue As Is 1 Tahun
-    const achievePct = yearTargetJt ? Math.round((yearRealJt / yearTargetJt) * 100) : 0;
-    const oppWinRate = yearOppJt ? Math.round((yearRealJt / yearOppJt) * 100) : 0;
+    // 3. Revenue As Is 1 Tahun (Realisasi s.d Akhir Oktober 2026)
+    const achievePctNum = yearTargetJt ? ((yearRealJt / yearTargetJt) * 100).toFixed(1).replace('.', ',') : '0,0';
     const elRealVal = document.getElementById('kpi-real-val');
     if (elRealVal) elRealVal.textContent = jtToM(yearRealJt);
     const elRealTag = document.getElementById('kpi-real-pct-tag');
-    if (elRealTag) elRealTag.textContent = achievePct + '% Target';
+    if (elRealTag) elRealTag.textContent = achievePctNum + '% Target';
     const elRealDesc = document.getElementById('kpi-real-desc');
-    if (elRealDesc) elRealDesc.textContent = 'Win Rate ' + oppWinRate + '% dari Opp';
+    if (elRealDesc) elRealDesc.textContent = 'Realisasi sd Akhir Okt 2026';
 
     // 4. Revenue MostLikely 1 Tahun
     const mostLikelyOppRatio = yearOppJt ? Math.round((yearMostLikelyJt / yearOppJt) * 100) : 0;
@@ -58349,10 +58355,11 @@ window.addEventListener('keydown', function(e) {
     const elTgtPct = document.getElementById('funnel-target-pct');
     if (elTgtPct) elTgtPct.textContent = (yearTargetJt ? ((yearOppJt / yearTargetJt) * 100).toFixed(1) : '0') + '% Target RKAP';
 
+    const achievePctInt = yearTargetJt ? Math.round((yearRealJt / yearTargetJt) * 100) : 0;
     const elRealBar = document.getElementById('funnel-real-bar');
-    if (elRealBar) elRealBar.style.width = Math.min(100, Math.max(4, oppWinRate)) + '%';
+    if (elRealBar) elRealBar.style.width = Math.min(100, Math.max(4, achievePctInt)) + '%';
     const elRealPct = document.getElementById('funnel-real-pct');
-    if (elRealPct) elRealPct.textContent = 'Win Rate: ' + oppWinRate + '% dari Opp';
+    if (elRealPct) elRealPct.textContent = achievePctNum + '% Target RKAP';
 
     const cashFromOpp = yearOppJt ? Math.round((yearCashJt / yearOppJt) * 100) : 0;
     const elCashBar = document.getElementById('funnel-cash-bar');
@@ -59993,7 +60000,7 @@ window.addEventListener('keydown', function(e) {
         <span class="trend-stat-val" style="color: var(--navy);">${fmtPlnNum(rkapVal)} M</span>
       </div>
       <div class="trend-stat">
-        <span class="trend-stat-label">REVENUE AS IS (S.D AGS)</span>
+        <span class="trend-stat-label">REVENUE AS IS (S.D OKT)</span>
         <span class="trend-stat-val" style="color: #1F4E79;">${fmtPlnNum(realAsIs)} M</span>
       </div>
       <div class="trend-stat">
