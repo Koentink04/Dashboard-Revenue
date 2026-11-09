@@ -3630,101 +3630,8 @@
             <span class="kpi-tag" id="prog-wf-ml-tag" style="background: #ECFDF5; color: #047857; font-weight: 800; font-size: 11px;">Most Likely: 3.415,00 M</span>
           </div>
 
-          <!-- SVG Chart Waterfall Most Likely -->
-          <div style="position: relative; width: 100%; overflow: hidden;">
-            <svg viewBox="0 0 540 260" style="width: 100%; height: auto; display: block;" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="wf-grad-ml-asis" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#0A2540" />
-                  <stop offset="100%" stop-color="#1E3A8A" />
-                </linearGradient>
-                <linearGradient id="wf-grad-exception" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F59E0B" />
-                  <stop offset="100%" stop-color="#B45309" />
-                </linearGradient>
-                <linearGradient id="wf-grad-baa" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#10B981" />
-                  <stop offset="100%" stop-color="#059669" />
-                </linearGradient>
-                <linearGradient id="wf-grad-pa" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#8B5CF6" />
-                  <stop offset="100%" stop-color="#6D28D9" />
-                </linearGradient>
-                <linearGradient id="wf-grad-mostlikely" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#059669" />
-                  <stop offset="100%" stop-color="#064E3B" />
-                </linearGradient>
-              </defs>
-
-              <!-- Gridlines Horizontal Y (0 s.d 4.000 M) -->
-              <g stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3">
-                <line x1="45" y1="30" x2="520" y2="30" />
-                <line x1="45" y1="70" x2="520" y2="70" />
-                <line x1="45" y1="110" x2="520" y2="110" />
-                <line x1="45" y1="150" x2="520" y2="150" />
-                <line x1="45" y1="190" x2="520" y2="190" stroke="#94A3B8" stroke-dasharray="none" />
-              </g>
-
-              <!-- Y Axis Labels -->
-              <g font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">
-                <text x="38" y="34">4.000 M</text>
-                <text x="38" y="74">3.000 M</text>
-                <text x="38" y="114">2.000 M</text>
-                <text x="38" y="154">1.000 M</text>
-                <text x="38" y="194">0 M</text>
-              </g>
-
-              <!-- Connector Dashed Lines between Bars -->
-              <g stroke="#94A3B8" stroke-width="1" stroke-dasharray="2 2">
-                <!-- Bar 1 top to Bar 2 bottom: y = 86 -->
-                <line x1="115" y1="86" x2="155" y2="86" />
-                <!-- Bar 2 top to Bar 3 bottom: y = 72.8 -->
-                <line x1="210" y1="72.8" x2="250" y2="72.8" />
-                <!-- Bar 3 top to Bar 4 bottom: y = 64.4 -->
-                <line x1="305" y1="64.4" x2="345" y2="64.4" />
-                <!-- Bar 4 top to Bar 5 top: y = 53.2 -->
-                <line x1="400" y1="53.2" x2="440" y2="53.2" />
-              </g>
-
-              <!-- Bar 1: AS IS (0 -> 2.600 M | top=86, h=104) -->
-              <rect x="60" y="86" width="55" height="104" rx="4" fill="url(#wf-grad-ml-asis)" />
-              <text x="87.5" y="79" font-size="10" font-weight="800" fill="#0A2540" text-anchor="middle">2.600 M</text>
-
-              <!-- Bar 2: Exception (+330 M | float 2600->2930 | top=72.8, visual h=15) -->
-              <rect x="155" y="71" width="55" height="15" rx="3" fill="url(#wf-grad-exception)" />
-              <text x="182.5" y="64" font-size="9.5" font-weight="800" fill="#B45309" text-anchor="middle">+330 M</text>
-
-              <!-- Bar 3: BAA Open (+210 M | float 2930->3140 | top=64.4, visual h=12) -->
-              <rect x="250" y="59" width="55" height="12" rx="3" fill="url(#wf-grad-baa)" />
-              <text x="277.5" y="52" font-size="9.5" font-weight="800" fill="#059669" text-anchor="middle">+210 M</text>
-
-              <!-- Bar 4: PA Open (+275 M | float 3140->3415 | top=53.2, visual h=14) -->
-              <rect x="345" y="45" width="55" height="14" rx="3" fill="url(#wf-grad-pa)" />
-              <text x="372.5" y="38" font-size="9.5" font-weight="800" fill="#6D28D9" text-anchor="middle">+275 M</text>
-
-              <!-- Bar 5: Prognosa Most Likely (0 -> 3.415 M | top=53.2, h=136.8) -->
-              <rect x="440" y="53.2" width="55" height="136.8" rx="4" fill="url(#wf-grad-mostlikely)" />
-              <text x="467.5" y="46" font-size="10" font-weight="800" fill="#047857" text-anchor="middle">3.415 M</text>
-
-              <!-- X Axis Category Labels -->
-              <g font-size="9.5" font-weight="700" fill="#475569" text-anchor="middle">
-                <text x="87.5" y="210">AS IS</text>
-                <text x="87.5" y="222" fill="#94A3B8" font-size="8.5">Dasar</text>
-
-                <text x="182.5" y="210">Exception</text>
-                <text x="182.5" y="222" fill="#94A3B8" font-size="8.5">Potensi</text>
-
-                <text x="277.5" y="210">BAA Open</text>
-                <text x="277.5" y="222" fill="#94A3B8" font-size="8.5">Penyelesaian</text>
-
-                <text x="372.5" y="210">PA Open</text>
-                <text x="372.5" y="222" fill="#94A3B8" font-size="8.5">Aktivasi</text>
-
-                <text x="467.5" y="210" fill="#047857" font-weight="800">Most Likely</text>
-                <text x="467.5" y="222" fill="#047857" font-weight="800">Target Akhir</text>
-              </g>
-            </svg>
-          </div>
+          <!-- Dynamic SVG Chart Container Waterfall 2 Most Likely -->
+          <div id="prog-wf-ml-container" style="position: relative; width: 100%; overflow: hidden;"></div>
 
           <!-- Legend Bar Most Likely -->
           <div style="display: flex; justify-content: center; gap: 14px; margin-top: 8px; font-size: 10px; color: var(--sub); flex-wrap: wrap;">
@@ -8780,6 +8687,207 @@
         </div>
       </div>
 
+      <!-- ROW 2B: MASTER PARAMETER MITIGASI MOST LIKELY (EXCEPTION, BAA OPEN, PA OPEN) PER PERIODE & CUT-OFF -->
+      <div class="panel-card" style="margin-bottom: 22px; border: 1.5px solid rgba(16, 185, 129, 0.35); box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #E2E8F0; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="font-size: 15px; font-weight: 800; color: #065F46; display: flex; align-items: center; gap: 8px;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #ECFDF5; border-radius: 8px; color: #059669;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              </span>
+              Master Parameter Mitigasi Most Likely (Exception, BAA Open & PA Open)
+            </div>
+            <div style="font-size: 11.5px; color: var(--sub); margin-top: 3px;">
+              Kelola dan perbarui nilai potensi penambahan Exception, BAA Open, dan PA Open per <strong>periode bulan</strong> dan <strong>tanggal cut-off input</strong> untuk membentuk proyeksi <strong>Prognosa Most Likely</strong>.
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span class="kpi-tag" style="background: #ECFDF5; color: #047857; font-weight: 700;">Satuan: Miliar Rupiah (M)</span>
+            <button type="button" class="btn-secondary" style="font-size: 11.5px; padding: 6px 12px; display: flex; align-items: center; gap: 5px;" onclick="resetMasterMlFactorsToDefault()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              Reset Mitigasi ke Default
+            </button>
+            <button type="button" class="btn-action" style="background: linear-gradient(135deg, #059669, #10B981); font-size: 12px; padding: 8px 16px; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);" onclick="saveMasterMostLikelyFactors()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Simpan Parameter Most Likely
+            </button>
+          </div>
+        </div>
+
+        <!-- FORM FILTER & INPUT PARAMETER MOST LIKELY -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 18px;">
+          <div style="display: grid; grid-template-columns: 190px 250px 1fr; gap: 14px; margin-bottom: 14px; align-items: end;">
+            <!-- 1. Pilihan Periode Bulan -->
+            <div>
+              <label style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; color: #1E293B; margin-bottom: 6px; text-transform: uppercase;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Periode Bulan:
+              </label>
+              <select id="m_ml_period_sel" class="form-select" onchange="onMasterMlPeriodOrCutoffChange()" style="width: 100%; padding: 8px 10px; font-size: 13px; font-weight: 700; border: 1.5px solid #CBD5E1; border-radius: 8px; background: #fff; color: #0F172A;">
+                <option value="1">Januari 2026</option>
+                <option value="2">Februari 2026</option>
+                <option value="3">Maret 2026</option>
+                <option value="4">April 2026</option>
+                <option value="5">Mei 2026</option>
+                <option value="6">Juni 2026</option>
+                <option value="7">Juli 2026</option>
+                <option value="8">Agustus 2026</option>
+                <option value="9">September 2026</option>
+                <option value="10" selected>Oktober 2026</option>
+                <option value="11">November 2026</option>
+                <option value="12">Desember 2026</option>
+              </select>
+            </div>
+
+            <!-- 2. Pilihan Tanggal Cut-off / Input -->
+            <div>
+              <label style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; color: #1E293B; margin-bottom: 6px; text-transform: uppercase;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00A3E0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Tanggal Input / Cut-Off:
+              </label>
+              <div style="display: flex; gap: 6px;">
+                <select id="m_ml_cutoff_sel" class="form-select" onchange="onMasterMlCutoffSelectChange()" style="flex: 1; padding: 8px 10px; font-size: 13px; font-weight: 700; border: 1.5px solid #CBD5E1; border-radius: 8px; background: #fff; color: #0F172A;">
+                  <option value="15-okt">15 Oktober 2026 (Tgl 15)</option>
+                  <option value="31-okt">31 Oktober 2026 (Tgl 31)</option>
+                  <option value="21-okt">21 Oktober 2026 (Tgl 21)</option>
+                  <option value="default">Default Periode Bulanan</option>
+                  <option value="custom">+ Input Cut-off Baru...</option>
+                </select>
+                <input type="text" id="m_ml_cutoff_custom_input" placeholder="Tgl Cut-off Kustom" style="display: none; flex: 1; padding: 8px 10px; font-size: 12px; font-weight: 700; border: 1.5px solid #3B82F6; border-radius: 8px; background: #EFF6FF; color: #1E40AF;" oninput="masterAutoCalcMostLikely()">
+              </div>
+            </div>
+
+            <!-- 3. Keterangan / Catatan -->
+            <div>
+              <label style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; color: #1E293B; margin-bottom: 6px; text-transform: uppercase;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                Keterangan / Catatan Mitigasi:
+              </label>
+              <input type="text" id="m_ml_note_input" placeholder="Contoh: Percepatan penyelesaian mitigasi cut-off 15 Okt 2026" class="form-input" style="width: 100%; padding: 8px 12px; font-size: 12.5px; border: 1.5px solid #CBD5E1; border-radius: 8px; background: #fff;">
+            </div>
+          </div>
+
+          <!-- INPUT NOMINAL: EXCEPTION, BAA OPEN, PA OPEN -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px;">
+            <!-- Exception Potensi -->
+            <div style="background: #FFFBEB; border: 1.5px solid #F59E0B; border-radius: 10px; padding: 12px 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <label style="font-size: 11px; font-weight: 800; color: #B45309; text-transform: uppercase;">
+                  1. Exception Potensi (M)
+                </label>
+                <span class="kpi-tag" style="background: #FEEBC8; color: #B45309; font-size: 9.5px; font-weight: 800;">Bar 2 Waterfall</span>
+              </div>
+              <div style="position: relative;">
+                <input type="number" step="0.01" id="m_ml_val_exception" oninput="masterAutoCalcMostLikely()" class="form-input" style="width: 100%; padding: 8px 30px 8px 10px; font-size: 16px; font-weight: 800; border: 1.5px solid #FCD34D; border-radius: 8px; background: #fff; color: #B45309;">
+                <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-weight: 800; font-size: 12px; color: #D97706;">M</span>
+              </div>
+              <div style="font-size: 10px; color: #92400E; margin-top: 4px;">Potensi percepatan penyelesaian exception / dispute</div>
+            </div>
+
+            <!-- BAA Open Penyelesaian -->
+            <div style="background: #ECFDF5; border: 1.5px solid #10B981; border-radius: 10px; padding: 12px 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <label style="font-size: 11px; font-weight: 800; color: #047857; text-transform: uppercase;">
+                  2. BAA Open Penyelesaian (M)
+                </label>
+                <span class="kpi-tag" style="background: #D1FAE5; color: #047857; font-size: 9.5px; font-weight: 800;">Bar 3 Waterfall</span>
+              </div>
+              <div style="position: relative;">
+                <input type="number" step="0.01" id="m_ml_val_baa" oninput="masterAutoCalcMostLikely()" class="form-input" style="width: 100%; padding: 8px 30px 8px 10px; font-size: 16px; font-weight: 800; border: 1.5px solid #34D399; border-radius: 8px; background: #fff; color: #047857;">
+                <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-weight: 800; font-size: 12px; color: #059669;">M</span>
+              </div>
+              <div style="font-size: 10px; color: #065F46; margin-top: 4px;">Penyelesaian administrasi berita acara aktivasi (BAA)</div>
+            </div>
+
+            <!-- PA Open Aktivasi -->
+            <div style="background: #FAF5FF; border: 1.5px solid #8B5CF6; border-radius: 10px; padding: 12px 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <label style="font-size: 11px; font-weight: 800; color: #6D28D9; text-transform: uppercase;">
+                  3. PA Open Aktivasi (M)
+                </label>
+                <span class="kpi-tag" style="background: #EDE9FE; color: #6D28D9; font-size: 9.5px; font-weight: 800;">Bar 4 Waterfall</span>
+              </div>
+              <div style="position: relative;">
+                <input type="number" step="0.01" id="m_ml_val_pa" oninput="masterAutoCalcMostLikely()" class="form-input" style="width: 100%; padding: 8px 30px 8px 10px; font-size: 16px; font-weight: 800; border: 1.5px solid #C4B5FD; border-radius: 8px; background: #fff; color: #6D28D9;">
+                <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-weight: 800; font-size: 12px; color: #7C3AED;">M</span>
+              </div>
+              <div style="font-size: 10px; color: #5B21B6; margin-top: 4px;">Akselerasi aktivasi project delivery & penerbitan PA</div>
+            </div>
+          </div>
+
+          <!-- LIVE PREVIEW FORMULA PEMBENTUK MOST LIKELY -->
+          <div style="background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <div style="text-align: center;">
+                <div style="font-size: 9.5px; font-weight: 700; color: #64748B;">AS IS Dasar</div>
+                <div id="m_ml_preview_asis" style="font-size: 13.5px; font-weight: 800; color: #0A2540;">2.600,00 M</div>
+              </div>
+              <span style="font-size: 15px; font-weight: 800; color: #94A3B8;">+</span>
+              <div style="text-align: center;">
+                <div style="font-size: 9.5px; font-weight: 700; color: #B45309;">Exception</div>
+                <div id="m_ml_preview_exc" style="font-size: 13.5px; font-weight: 800; color: #B45309;">+330,00 M</div>
+              </div>
+              <span style="font-size: 15px; font-weight: 800; color: #94A3B8;">+</span>
+              <div style="text-align: center;">
+                <div style="font-size: 9.5px; font-weight: 700; color: #047857;">BAA Open</div>
+                <div id="m_ml_preview_baa" style="font-size: 13.5px; font-weight: 800; color: #047857;">+210,00 M</div>
+              </div>
+              <span style="font-size: 15px; font-weight: 800; color: #94A3B8;">+</span>
+              <div style="text-align: center;">
+                <div style="font-size: 9.5px; font-weight: 700; color: #6D28D9;">PA Open</div>
+                <div id="m_ml_preview_pa" style="font-size: 13.5px; font-weight: 800; color: #6D28D9;">+275,00 M</div>
+              </div>
+              <span style="font-size: 15px; font-weight: 800; color: #94A3B8;">=</span>
+              <div style="text-align: center; background: #ECFDF5; padding: 4px 10px; border-radius: 6px; border: 1px solid #A7F3D0;">
+                <div style="font-size: 9.5px; font-weight: 700; color: #065F46;">Total Potensi</div>
+                <div id="m_ml_preview_total_potensi" style="font-size: 13.5px; font-weight: 800; color: #059669;">+815,00 M</div>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px; font-weight: 800; color: #065F46;">&rarr;</span>
+              <div style="background: linear-gradient(135deg, #059669, #047857); color: #fff; padding: 6px 14px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);">
+                <div style="font-size: 9.5px; font-weight: 700; opacity: 0.9; text-transform: uppercase;">Hasil Most Likely:</div>
+                <div id="m_ml_preview_result" style="font-size: 17px; font-weight: 800; letter-spacing: -0.01em;">3.415,00 M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABEL REKAPITULASI MASTER PARAMETER MITIGASI MOST LIKELY -->
+        <div style="border: 1px solid #E2E8F0; border-radius: 10px; overflow: hidden;">
+          <div style="background: #F1F5F9; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #CBD5E1;">
+            <div style="font-size: 12.5px; font-weight: 800; color: #1E293B; display: flex; align-items: center; gap: 6px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              Daftar Konfigurasi Parameter Mitigasi per Bulan & Cut-off
+            </div>
+            <span id="m_ml_table_badge" class="kpi-tag" style="background: #E2E8F0; color: #334155; font-weight: 700; font-size: 10.5px;">6 Entri Terdaftar</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="master-table" style="margin: 0; min-width: 900px; font-size: 12px;">
+              <thead>
+                <tr style="background: #F8FAFC;">
+                  <th style="width: 45px; text-align: center;">No</th>
+                  <th style="width: 140px;">Periode Bulan</th>
+                  <th style="width: 160px;">Tanggal Cut-off / Input</th>
+                  <th class="num" style="color: #0A2540;">AS IS Dasar (M)</th>
+                  <th class="num" style="color: #B45309;">Exception (M)</th>
+                  <th class="num" style="color: #047857;">BAA Open (M)</th>
+                  <th class="num" style="color: #6D28D9;">PA Open (M)</th>
+                  <th class="num" style="color: #059669; font-weight: 800;">Total Potensi (+M)</th>
+                  <th class="num" style="color: #064E3B; font-weight: 800; background: #F0FDF4;">Most Likely (M)</th>
+                  <th>Keterangan / Status</th>
+                  <th style="width: 90px; text-align: center;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="master-ml-factors-tbody">
+                <!-- Rendered dynamically by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <!-- ROW 3: TABEL RINCIAN MASTER PARAMETER PER SEGMEN / SBU -->
       <div class="data-table-wrap">
         <div class="data-table-head" style="justify-content: space-between;">
@@ -9611,6 +9719,86 @@
     ]
   };
 
+  const DEFAULT_MOSTLIKELY_FACTORS = {
+    '9_default': {
+      month: 9,
+      cutoff: 'default',
+      cutoffLabel: 'Baseline Sep 2026',
+      exception: 330.00,
+      baaOpen: 210.00,
+      paOpen: 275.00,
+      note: 'Mitigasi Baseline Penajaman Sep 2026',
+      updatedAt: '30 Sep 2026 17:00 WIB',
+      pic: 'dodik.gunawan'
+    },
+    '10_15-okt': {
+      month: 10,
+      cutoff: '15-okt',
+      cutoffLabel: '15 Oktober 2026 (Tgl 15)',
+      exception: 330.00,
+      baaOpen: 210.00,
+      paOpen: 275.00,
+      note: 'Cut-off Tgl 15 Oktober 2026',
+      updatedAt: '15 Okt 2026 17:00 WIB',
+      pic: 'dodik.gunawan'
+    },
+    '10_31-okt': {
+      month: 10,
+      cutoff: '31-okt',
+      cutoffLabel: '31 Oktober 2026 (Akhir Bulan)',
+      exception: 330.00,
+      baaOpen: 210.00,
+      paOpen: 275.00,
+      note: 'Cut-off 31 Oktober 2026 (Realisasi sd Akhir Okt)',
+      updatedAt: '31 Okt 2026 17:00 WIB',
+      pic: 'dodik.gunawan'
+    },
+    '10_21-okt': {
+      month: 10,
+      cutoff: '21-okt',
+      cutoffLabel: '21 Oktober 2026 (Tgl 21)',
+      exception: 330.00,
+      baaOpen: 210.00,
+      paOpen: 275.00,
+      note: 'Cut-off Tgl 21 Oktober 2026',
+      updatedAt: '21 Okt 2026 17:00 WIB',
+      pic: 'dodik.gunawan'
+    },
+    '10_default': {
+      month: 10,
+      cutoff: 'default',
+      cutoffLabel: 'Default Bulan Oktober',
+      exception: 330.00,
+      baaOpen: 210.00,
+      paOpen: 275.00,
+      note: 'Default Potensi Mitigasi Oktober 2026',
+      updatedAt: '01 Okt 2026 09:00 WIB',
+      pic: 'dodik.gunawan'
+    },
+    '11_default': {
+      month: 11,
+      cutoff: 'default',
+      cutoffLabel: 'Default Prognosa Nov 2026',
+      exception: 300.00,
+      baaOpen: 200.00,
+      paOpen: 245.00,
+      note: 'Prognosa Mitigasi Bulan Berjalan Nov 2026',
+      updatedAt: '01 Nov 2026 09:00 WIB',
+      pic: 'dodik.gunawan'
+    },
+    '12_default': {
+      month: 12,
+      cutoff: 'default',
+      cutoffLabel: 'Default Akhir Tahun Des 2026',
+      exception: 250.00,
+      baaOpen: 180.00,
+      paOpen: 210.00,
+      note: 'Prognosa Mitigasi Penutupan Tahun Des 2026',
+      updatedAt: '01 Nov 2026 09:00 WIB',
+      pic: 'dodik.gunawan'
+    }
+  };
+
   const DEFAULT_PROGNOSA_LOGS = [
     {
       id: 'LOG-20260928-091522',
@@ -9714,6 +9902,7 @@
     targetKumSa: DEFAULT_TARGET_KUM_SA,
     prognosa: DEFAULT_PROGNOSA,
     prognosaLogs: DEFAULT_PROGNOSA_LOGS,
+    mostLikelyFactors: DEFAULT_MOSTLIKELY_FACTORS,
     months: DEFAULT_MONTHS
   };
 
@@ -9751,6 +9940,9 @@
           }
           if (!parsed.prognosaLogs || !Array.isArray(parsed.prognosaLogs) || parsed.prognosaLogs.length === 0) {
             parsed.prognosaLogs = JSON.parse(JSON.stringify(DEFAULT_PROGNOSA_LOGS));
+          }
+          if (!parsed.mostLikelyFactors) {
+            parsed.mostLikelyFactors = JSON.parse(JSON.stringify(DEFAULT_MOSTLIKELY_FACTORS));
           }
           if (!parsed.targetKumSa) {
             parsed.targetKumSa = JSON.parse(JSON.stringify(DEFAULT_TARGET_KUM_SA));
@@ -56112,6 +56304,218 @@ window.addEventListener('keydown', function(e) {
     `;
   }
 
+    function getAsIsBaselineForWaterfall(period, cutoff) {
+    const p = parseInt(period) || 9;
+    if (p <= 9) {
+      return 2600.00;
+    } else if (p === 10) {
+      if (cutoff === '15-okt') return 2970.01;
+      if (cutoff === '21-okt') return 2969.34;
+      return 2960.34;
+    } else if (p === 11) {
+      return 3234.32;
+    } else {
+      return 3979.15;
+    }
+  }
+
+  function getMostLikelyFactors(month, cutoff) {
+    if (!appData.mostLikelyFactors) {
+      appData.mostLikelyFactors = JSON.parse(JSON.stringify(DEFAULT_MOSTLIKELY_FACTORS));
+    }
+    const p = parseInt(month) || 9;
+    const key = p + '_' + cutoff;
+    if (appData.mostLikelyFactors[key]) {
+      return appData.mostLikelyFactors[key];
+    }
+    const defKey = p + '_default';
+    if (appData.mostLikelyFactors[defKey]) {
+      return appData.mostLikelyFactors[defKey];
+    }
+    // Fallback baseline
+    return {
+      month: p,
+      cutoff: cutoff || 'default',
+      cutoffLabel: cutoff || 'Default',
+      exception: 330.00,
+      baaOpen: 210.00,
+      paOpen: 275.00,
+      note: 'Baseline Standar 2026',
+      updatedAt: '-',
+      pic: 'system'
+    };
+  }
+
+  function renderPrognosaWaterfallMostLikely() {
+    const container = document.getElementById('prog-wf-ml-container');
+    if (!container) return;
+
+    // 1. Ambil Parameter Aktif dari Filter
+    const selPeriodEl = document.getElementById('pln-prog-filter-period');
+    const period = selPeriodEl ? parseInt(selPeriodEl.value) || 9 : 9;
+    const isOctober = (period === 10);
+    const cutoffSel = document.getElementById('pln-prog-filter-cutoff');
+    const cutoff = isOctober ? (cutoffSel ? cutoffSel.value : (activeProgCutoff || '15-okt')) : 'default';
+
+    // 2. Ambil AS IS Dasar dan Faktor Mitigasi dari Master
+    const asIsM = getAsIsBaselineForWaterfall(period, cutoff);
+    const factors = getMostLikelyFactors(period, cutoff);
+    const excM = factors.exception;
+    const baaM = factors.baaOpen;
+    const paM = factors.paOpen;
+    const totalPotensiM = excM + baaM + paM;
+    const mostLikelyM = Number((asIsM + totalPotensiM).toFixed(2));
+
+    const fmtM = v => Number(v).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' M';
+    const fmtMShort = v => {
+      const n = Number(v);
+      return (n % 1 === 0) ? n.toLocaleString('id-ID') + ' M' : n.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' M';
+    };
+
+    // 3. Update Tag Header Waterfall 2
+    const mlTag = document.getElementById('prog-wf-ml-tag');
+    if (mlTag) mlTag.textContent = 'Most Likely: ' + fmtM(mostLikelyM);
+
+    // 4. Hitung Skala & Koordinat SVG Waterfall
+    let yMaxM = 4000;
+    if (mostLikelyM > 3800) {
+      yMaxM = Math.ceil((mostLikelyM * 1.15) / 1000) * 1000;
+    }
+    const yBaseline = 190;
+    const pxPerM = (yBaseline - 30) / yMaxM;
+    const getY = v => yBaseline - (v * pxPerM);
+
+    // Bar 1: AS IS Dasar (0 -> asIsM)
+    const y1 = getY(asIsM);
+    const h1 = Math.max(2, yBaseline - y1);
+
+    // Bar 2: Exception Potensi (asIsM -> asIsM + excM)
+    const top2 = asIsM + excM;
+    const y2 = getY(top2);
+    const h2 = Math.max(6, Math.abs(getY(asIsM) - y2));
+
+    // Bar 3: BAA Open Penyelesaian (top2 -> top2 + baaM)
+    const top3 = top2 + baaM;
+    const y3 = getY(top3);
+    const h3 = Math.max(6, Math.abs(getY(top2) - y3));
+
+    // Bar 4: PA Open Aktivasi (top3 -> top3 + paM)
+    const top4 = top3 + paM;
+    const y4 = getY(top4);
+    const h4 = Math.max(6, Math.abs(getY(top3) - y4));
+
+    // Bar 5: Most Likely Target Akhir (0 -> mostLikelyM)
+    const y5 = getY(mostLikelyM);
+    const h5 = Math.max(2, yBaseline - y5);
+
+    // Connectors
+    const conn1_2_y = y1;
+    const conn2_3_y = y2;
+    const conn3_4_y = y3;
+    const conn4_5_y = y4;
+
+    container.innerHTML = `
+      <svg viewBox="0 0 540 260" style="width: 100%; height: auto; display: block;" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="wf-grad-ml-asis" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0A2540" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+          </linearGradient>
+          <linearGradient id="wf-grad-exception" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F59E0B" />
+            <stop offset="100%" stop-color="#B45309" />
+          </linearGradient>
+          <linearGradient id="wf-grad-baa" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#10B981" />
+            <stop offset="100%" stop-color="#059669" />
+          </linearGradient>
+          <linearGradient id="wf-grad-pa" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8B5CF6" />
+            <stop offset="100%" stop-color="#6D28D9" />
+          </linearGradient>
+          <linearGradient id="wf-grad-mostlikely" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#059669" />
+            <stop offset="100%" stop-color="#064E3B" />
+          </linearGradient>
+        </defs>
+
+        <!-- Gridlines Horizontal Y -->
+        <g stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3">
+          <line x1="45" y1="${getY(yMaxM)}" x2="520" y2="${getY(yMaxM)}" />
+          <line x1="45" y1="${getY(yMaxM * 0.75)}" x2="520" y2="${getY(yMaxM * 0.75)}" />
+          <line x1="45" y1="${getY(yMaxM * 0.5)}" x2="520" y2="${getY(yMaxM * 0.5)}" />
+          <line x1="45" y1="${getY(yMaxM * 0.25)}" x2="520" y2="${getY(yMaxM * 0.25)}" />
+          <line x1="45" y1="${yBaseline}" x2="520" y2="${yBaseline}" stroke="#94A3B8" stroke-dasharray="none" />
+        </g>
+
+        <!-- Y Axis Labels -->
+        <g font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">
+          <text x="38" y="${getY(yMaxM) + 4}">${Math.round(yMaxM).toLocaleString('id-ID')} M</text>
+          <text x="38" y="${getY(yMaxM * 0.75) + 4}">${Math.round(yMaxM * 0.75).toLocaleString('id-ID')} M</text>
+          <text x="38" y="${getY(yMaxM * 0.5) + 4}">${Math.round(yMaxM * 0.5).toLocaleString('id-ID')} M</text>
+          <text x="38" y="${getY(yMaxM * 0.25) + 4}">${Math.round(yMaxM * 0.25).toLocaleString('id-ID')} M</text>
+          <text x="38" y="${yBaseline + 4}">0 M</text>
+        </g>
+
+        <!-- Connector Dashed Lines between Bars -->
+        <g stroke="#94A3B8" stroke-width="1" stroke-dasharray="2 2">
+          <line x1="115" y1="${conn1_2_y}" x2="155" y2="${conn1_2_y}" />
+          <line x1="210" y1="${conn2_3_y}" x2="250" y2="${conn2_3_y}" />
+          <line x1="305" y1="${conn3_4_y}" x2="345" y2="${conn3_4_y}" />
+          <line x1="400" y1="${conn4_5_y}" x2="440" y2="${conn4_5_y}" />
+        </g>
+
+        <!-- Bar 1: AS IS Dasar -->
+        <g>
+          <rect x="60" y="${y1}" width="55" height="${h1}" rx="4" fill="url(#wf-grad-ml-asis)" />
+          <text x="87.5" y="${Math.max(16, y1 - 6)}" font-size="10" font-weight="800" fill="#0A2540" text-anchor="middle">${fmtMShort(asIsM)}</text>
+        </g>
+
+        <!-- Bar 2: Exception Potensi -->
+        <g>
+          <rect x="155" y="${y2}" width="55" height="${h2}" rx="3" fill="url(#wf-grad-exception)" />
+          <text x="182.5" y="${Math.max(16, y2 - 6)}" font-size="9.5" font-weight="800" fill="#B45309" text-anchor="middle">+${fmtMShort(excM)}</text>
+        </g>
+
+        <!-- Bar 3: BAA Open Penyelesaian -->
+        <g>
+          <rect x="250" y="${y3}" width="55" height="${h3}" rx="3" fill="url(#wf-grad-baa)" />
+          <text x="277.5" y="${Math.max(16, y3 - 6)}" font-size="9.5" font-weight="800" fill="#059669" text-anchor="middle">+${fmtMShort(baaM)}</text>
+        </g>
+
+        <!-- Bar 4: PA Open Aktivasi -->
+        <g>
+          <rect x="345" y="${y4}" width="55" height="${h4}" rx="3" fill="url(#wf-grad-pa)" />
+          <text x="372.5" y="${Math.max(16, y4 - 6)}" font-size="9.5" font-weight="800" fill="#6D28D9" text-anchor="middle">+${fmtMShort(paM)}</text>
+        </g>
+
+        <!-- Bar 5: Most Likely Target Akhir -->
+        <g>
+          <rect x="440" y="${y5}" width="55" height="${h5}" rx="4" fill="url(#wf-grad-mostlikely)" />
+          <text x="467.5" y="${Math.max(16, y5 - 6)}" font-size="10" font-weight="800" fill="#047857" text-anchor="middle">${fmtMShort(mostLikelyM)}</text>
+        </g>
+
+        <!-- X Axis Category Labels -->
+        <g font-size="9.5" font-weight="700" fill="#475569" text-anchor="middle">
+          <text x="87.5" y="210">AS IS</text>
+          <text x="87.5" y="222" fill="#94A3B8" font-size="8.5">Dasar</text>
+
+          <text x="182.5" y="210">Exception</text>
+          <text x="182.5" y="222" fill="#94A3B8" font-size="8.5">Potensi</text>
+
+          <text x="277.5" y="210">BAA Open</text>
+          <text x="277.5" y="222" fill="#94A3B8" font-size="8.5">Penyelesaian</text>
+
+          <text x="372.5" y="210">PA Open</text>
+          <text x="372.5" y="222" fill="#94A3B8" font-size="8.5">Aktivasi</text>
+
+          <text x="467.5" y="210" fill="#047857" font-weight="800">Most Likely</text>
+          <text x="467.5" y="222" fill="#047857" font-weight="800">Target Akhir</text>
+        </g>
+      </svg>
+    `;
+  }
+
   function renderPrognosaView() {
     const p = appData.prognosa || DEFAULT_PROGNOSA;
     const srcEl = document.getElementById('prog-active-source');
@@ -56191,7 +56595,10 @@ window.addEventListener('keydown', function(e) {
       asIsM = 2600.00;
     }
 
-    let mostLikelyM = (p.prognosaMostLikely !== undefined && p.prognosaMostLikely > 100) ? p.prognosaMostLikely : DEFAULT_PROGNOSA.prognosaMostLikely;
+        const activeCutoffVal = (selPeriod === 10) ? (document.getElementById('pln-prog-filter-cutoff') ? document.getElementById('pln-prog-filter-cutoff').value : (activeProgCutoff || '15-okt')) : 'default';
+    const activeFactors = getMostLikelyFactors(selPeriod, activeCutoffVal);
+    const activePotensiM = (activeFactors.exception || 0) + (activeFactors.baaOpen || 0) + (activeFactors.paOpen || 0);
+    let mostLikelyM = Number((asIsM + activePotensiM).toFixed(2));
     const gapM = asIsM - tgtKumM;
     const gapPct = tgtKumM > 0 ? ((gapM / tgtKumM) * 100).toFixed(1) : '0,0';
     const achievePct = tgtKumM > 0 ? ((asIsM / tgtKumM) * 100).toFixed(1) : '0,0';
@@ -56351,6 +56758,7 @@ window.addEventListener('keydown', function(e) {
     renderPaTable();
     if (typeof renderPrognosaSbuRevenueTable === 'function') renderPrognosaSbuRevenueTable();
     if (typeof renderPrognosaWaterfallAsIs === 'function') renderPrognosaWaterfallAsIs();
+    if (typeof renderPrognosaWaterfallMostLikely === 'function') renderPrognosaWaterfallMostLikely();
   }
 
   function applyPrognosaFilters() {
@@ -56773,12 +57181,14 @@ window.addEventListener('keydown', function(e) {
   function onSearchProgLog(val) {
     progLogSearchQuery = (val || '').toLowerCase().trim();
     currentProgLogPage = 1;
+    renderMasterMlFactorsSection();
     renderPrognosaLogTable();
   }
 
   function changePageProgLog(delta) {
     currentProgLogPage += delta;
     if (currentProgLogPage < 1) currentProgLogPage = 1;
+    renderMasterMlFactorsSection();
     renderPrognosaLogTable();
   }
 
@@ -56802,6 +57212,7 @@ window.addEventListener('keydown', function(e) {
       appData.prognosaLogs = appData.prognosaLogs.slice(0, 200);
     }
     saveAppData(appData);
+    renderMasterMlFactorsSection();
     renderPrognosaLogTable();
   }
 
@@ -57010,7 +57421,8 @@ window.addEventListener('keydown', function(e) {
     if (confirm('Apakah Anda yakin ingin membersihkan riwayat log perubahan parameter Prognosa? Log akan di-reset ke data baseline penajaman.')) {
       appData.prognosaLogs = JSON.parse(JSON.stringify(DEFAULT_PROGNOSA_LOGS));
       saveAppData(appData);
-      renderPrognosaLogTable();
+      renderMasterMlFactorsSection();
+    renderPrognosaLogTable();
       showToast('Riwayat log berhasil dibersihkan.');
     }
   }
@@ -57631,6 +58043,7 @@ window.addEventListener('keydown', function(e) {
     if (srcBadge && p.sourceFile) srcBadge.textContent = p.sourceFile;
 
     renderMasterPrognosaTable(p.services || DEFAULT_PROGNOSA.services, est);
+    renderMasterMlFactorsSection();
     renderPrognosaLogTable();
   }
 
@@ -57823,6 +58236,351 @@ window.addEventListener('keydown', function(e) {
     renderMasterPrognosaView();
     renderPrognosaView();
     showToast('Parameter 7 Kartu KPI & Master Prognosa berhasil disimpan! Log audit tercatat.');
+  }
+
+    function renderMasterMlFactorsSection() {
+    const periodSel = document.getElementById('m_ml_period_sel');
+    if (!periodSel) return;
+
+    const period = parseInt(periodSel.value) || 10;
+    const cutoffSel = document.getElementById('m_ml_cutoff_sel');
+    const customInput = document.getElementById('m_ml_cutoff_custom_input');
+
+    // Update cut-off options according to period
+    const currentCutoffVal = cutoffSel ? cutoffSel.value : '15-okt';
+    if (period === 10) {
+      cutoffSel.innerHTML = `
+        <option value="15-okt">15 Oktober 2026 (Tgl 15)</option>
+        <option value="31-okt">31 Oktober 2026 (Tgl 31)</option>
+        <option value="21-okt">21 Oktober 2026 (Tgl 21)</option>
+        <option value="default">Default Periode Bulanan</option>
+        <option value="custom">+ Input Cut-off Baru...</option>
+      `;
+      if (['15-okt', '31-okt', '21-okt', 'default', 'custom'].includes(currentCutoffVal)) {
+        cutoffSel.value = currentCutoffVal;
+      } else {
+        cutoffSel.value = '15-okt';
+      }
+    } else if (period === 9) {
+      cutoffSel.innerHTML = `
+        <option value="default">Baseline Sep 2026</option>
+        <option value="custom">+ Input Cut-off Baru...</option>
+      `;
+      cutoffSel.value = (currentCutoffVal === 'custom') ? 'custom' : 'default';
+    } else {
+      const monthMeta = MONTH_META[period] || { name: 'Bulan' };
+      cutoffSel.innerHTML = `
+        <option value="default">Default ${monthMeta.name} 2026</option>
+        <option value="custom">+ Input Cut-off Baru...</option>
+      `;
+      cutoffSel.value = (currentCutoffVal === 'custom') ? 'custom' : 'default';
+    }
+
+    if (cutoffSel.value === 'custom') {
+      if (customInput) customInput.style.display = 'block';
+    } else {
+      if (customInput) customInput.style.display = 'none';
+    }
+
+    const cutoffVal = (cutoffSel.value === 'custom' && customInput && customInput.value.trim())
+      ? customInput.value.trim()
+      : cutoffSel.value;
+
+    const factors = getMostLikelyFactors(period, cutoffVal);
+    const excInput = document.getElementById('m_ml_val_exception');
+    const baaInput = document.getElementById('m_ml_val_baa');
+    const paInput = document.getElementById('m_ml_val_pa');
+    const noteInput = document.getElementById('m_ml_note_input');
+
+    if (excInput) excInput.value = factors.exception;
+    if (baaInput) baaInput.value = factors.baaOpen;
+    if (paInput) paInput.value = factors.paOpen;
+    if (noteInput) noteInput.value = factors.note || '';
+
+    masterAutoCalcMostLikely();
+    renderMasterMlFactorsTable();
+  }
+
+  function onMasterMlPeriodOrCutoffChange() {
+    renderMasterMlFactorsSection();
+  }
+
+  function onMasterMlCutoffSelectChange() {
+    const cutoffSel = document.getElementById('m_ml_cutoff_sel');
+    const customInput = document.getElementById('m_ml_cutoff_custom_input');
+    if (cutoffSel && cutoffSel.value === 'custom') {
+      if (customInput) {
+        customInput.style.display = 'block';
+        customInput.focus();
+      }
+    } else {
+      if (customInput) customInput.style.display = 'none';
+    }
+    renderMasterMlFactorsSection();
+  }
+
+  function masterAutoCalcMostLikely() {
+    const periodSel = document.getElementById('m_ml_period_sel');
+    const cutoffSel = document.getElementById('m_ml_cutoff_sel');
+    const customInput = document.getElementById('m_ml_cutoff_custom_input');
+
+    const period = periodSel ? (parseInt(periodSel.value) || 10) : 10;
+    const cutoff = (cutoffSel && cutoffSel.value === 'custom' && customInput && customInput.value.trim())
+      ? customInput.value.trim()
+      : (cutoffSel ? cutoffSel.value : '15-okt');
+
+    const asIsM = getAsIsBaselineForWaterfall(period, cutoff);
+    const excM = parseFloat(document.getElementById('m_ml_val_exception') ? document.getElementById('m_ml_val_exception').value : 0) || 0;
+    const baaM = parseFloat(document.getElementById('m_ml_val_baa') ? document.getElementById('m_ml_val_baa').value : 0) || 0;
+    const paM = parseFloat(document.getElementById('m_ml_val_pa') ? document.getElementById('m_ml_val_pa').value : 0) || 0;
+
+    const totalPotensiM = excM + baaM + paM;
+    const mostLikelyM = asIsM + totalPotensiM;
+
+    const fmt = v => Number(v).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' M';
+
+    const prevAsIs = document.getElementById('m_ml_preview_asis');
+    const prevExc = document.getElementById('m_ml_preview_exc');
+    const prevBaa = document.getElementById('m_ml_preview_baa');
+    const prevPa = document.getElementById('m_ml_preview_pa');
+    const prevTot = document.getElementById('m_ml_preview_total_potensi');
+    const prevRes = document.getElementById('m_ml_preview_result');
+
+    if (prevAsIs) prevAsIs.textContent = fmt(asIsM);
+    if (prevExc) prevExc.textContent = `+${fmt(excM)}`;
+    if (prevBaa) prevBaa.textContent = `+${fmt(baaM)}`;
+    if (prevPa) prevPa.textContent = `+${fmt(paM)}`;
+    if (prevTot) prevTot.textContent = `+${fmt(totalPotensiM)}`;
+    if (prevRes) prevRes.textContent = fmt(mostLikelyM);
+  }
+
+  function renderMasterMlFactorsTable() {
+    const tbody = document.getElementById('master-ml-factors-tbody');
+    const badge = document.getElementById('m_ml_table_badge');
+    if (!tbody) return;
+
+    if (!appData.mostLikelyFactors) {
+      appData.mostLikelyFactors = JSON.parse(JSON.stringify(DEFAULT_MOSTLIKELY_FACTORS));
+    }
+
+    const keys = Object.keys(appData.mostLikelyFactors);
+    if (badge) badge.textContent = `${keys.length} Entri Terdaftar`;
+
+    const monthNames = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+    let html = '';
+    let no = 1;
+    keys.forEach(k => {
+      const item = appData.mostLikelyFactors[k];
+      const mName = monthNames[item.month] || `Bulan ${item.month}`;
+      const asIs = getAsIsBaselineForWaterfall(item.month, item.cutoff);
+      const totalPotensi = (item.exception || 0) + (item.baaOpen || 0) + (item.paOpen || 0);
+      const mlTotal = asIs + totalPotensi;
+      const fmt = v => Number(v).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      html += `
+        <tr style="border-bottom: 1px solid #F1F5F9;">
+          <td style="text-align: center; font-weight: 700; color: #64748B;">${no++}</td>
+          <td style="font-weight: 700; color: #0A2540;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #00A3E0;"></span>
+              ${mName} 2026
+            </div>
+          </td>
+          <td style="font-weight: 700; color: #1E293B;">
+            <span class="kpi-tag" style="background: #F1F5F9; color: #0F172A; border: 1px solid #CBD5E1; font-weight: 700;">
+              ${item.cutoffLabel || item.cutoff}
+            </span>
+          </td>
+          <td class="num" style="font-weight: 700; color: #0A2540;">${fmt(asIs)}</td>
+          <td class="num" style="font-weight: 700; color: #B45309; background: #FFFDF5;">+${fmt(item.exception || 0)}</td>
+          <td class="num" style="font-weight: 700; color: #047857; background: #F6FEF9;">+${fmt(item.baaOpen || 0)}</td>
+          <td class="num" style="font-weight: 700; color: #6D28D9; background: #FAF5FF;">+${fmt(item.paOpen || 0)}</td>
+          <td class="num" style="font-weight: 800; color: #059669; background: #ECFDF5;">+${fmt(totalPotensi)}</td>
+          <td class="num" style="font-weight: 800; color: #064E3B; background: #DCFCE7;">${fmt(mlTotal)}</td>
+          <td style="font-size: 11px; color: #475569;">
+            <div>${item.note || '-'}</div>
+            <div style="font-size: 10px; color: #94A3B8; margin-top: 2px;">PIC: ${item.pic || 'user'} &middot; ${item.updatedAt || '-'}</div>
+          </td>
+          <td style="text-align: center;">
+            <button type="button" class="btn-secondary" style="padding: 3px 8px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" onclick="editMasterMlFactorRow('${k}')" title="Edit parameter">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              Edit
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    tbody.innerHTML = html;
+  }
+
+  function editMasterMlFactorRow(key) {
+    if (!appData.mostLikelyFactors || !appData.mostLikelyFactors[key]) return;
+    const item = appData.mostLikelyFactors[key];
+
+    const periodSel = document.getElementById('m_ml_period_sel');
+    if (periodSel) periodSel.value = item.month;
+
+    renderMasterMlFactorsSection();
+
+    const cutoffSel = document.getElementById('m_ml_cutoff_sel');
+    const customInput = document.getElementById('m_ml_cutoff_custom_input');
+    if (cutoffSel) {
+      if (['15-okt', '31-okt', '21-okt', 'default'].includes(item.cutoff)) {
+        cutoffSel.value = item.cutoff;
+        if (customInput) customInput.style.display = 'none';
+      } else {
+        cutoffSel.value = 'custom';
+        if (customInput) {
+          customInput.style.display = 'block';
+          customInput.value = item.cutoff;
+        }
+      }
+    }
+
+    const excInput = document.getElementById('m_ml_val_exception');
+    const baaInput = document.getElementById('m_ml_val_baa');
+    const paInput = document.getElementById('m_ml_val_pa');
+    const noteInput = document.getElementById('m_ml_note_input');
+
+    if (excInput) excInput.value = item.exception;
+    if (baaInput) baaInput.value = item.baaOpen;
+    if (paInput) paInput.value = item.paOpen;
+    if (noteInput) noteInput.value = item.note || '';
+
+    masterAutoCalcMostLikely();
+    if (excInput) {
+      excInput.focus();
+      excInput.select();
+    }
+    showToast(`Data parameter mitigasi ${item.cutoffLabel || item.cutoff} dimuat ke form input.`);
+  }
+
+  function saveMasterMostLikelyFactors() {
+    const periodSel = document.getElementById('m_ml_period_sel');
+    const cutoffSel = document.getElementById('m_ml_cutoff_sel');
+    const customInput = document.getElementById('m_ml_cutoff_custom_input');
+
+    const period = periodSel ? (parseInt(periodSel.value) || 10) : 10;
+    const isCustom = cutoffSel && cutoffSel.value === 'custom';
+    const cutoff = (isCustom && customInput && customInput.value.trim())
+      ? customInput.value.trim()
+      : (cutoffSel ? cutoffSel.value : '15-okt');
+
+    const cutoffLabel = isCustom ? cutoff : (cutoffSel ? cutoffSel.options[cutoffSel.selectedIndex].text : cutoff);
+
+    const exc = parseFloat(document.getElementById('m_ml_val_exception') ? document.getElementById('m_ml_val_exception').value : 0) || 0;
+    const baa = parseFloat(document.getElementById('m_ml_val_baa') ? document.getElementById('m_ml_val_baa').value : 0) || 0;
+    const pa = parseFloat(document.getElementById('m_ml_val_pa') ? document.getElementById('m_ml_val_pa').value : 0) || 0;
+    const note = document.getElementById('m_ml_note_input') ? document.getElementById('m_ml_note_input').value.trim() : '';
+    const user = getCurrentPrognosaUser();
+
+    const asIsM = getAsIsBaselineForWaterfall(period, cutoff);
+    const totalPotensi = exc + baa + pa;
+    const newMostLikely = Number((asIsM + totalPotensi).toFixed(2));
+
+    const key = period + '_' + cutoff;
+    if (!appData.mostLikelyFactors) {
+      appData.mostLikelyFactors = JSON.parse(JSON.stringify(DEFAULT_MOSTLIKELY_FACTORS));
+    }
+
+    const prev = appData.mostLikelyFactors[key] || {};
+    const oldExc = (prev.exception !== undefined) ? prev.exception : 0;
+    const oldBaa = (prev.baaOpen !== undefined) ? prev.baaOpen : 0;
+    const oldPa = (prev.paOpen !== undefined) ? prev.paOpen : 0;
+
+    const diffs = [];
+    const fmtMStr = v => Number(v).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' M';
+
+    if (Math.abs(oldExc - exc) > 0.01) {
+      const d = exc - oldExc;
+      diffs.push({
+        param: `Exception Potensi (${cutoffLabel})`,
+        before: fmtMStr(oldExc),
+        after: fmtMStr(exc),
+        change: (d >= 0 ? '+' : '') + fmtMStr(d)
+      });
+    }
+    if (Math.abs(oldBaa - baa) > 0.01) {
+      const d = baa - oldBaa;
+      diffs.push({
+        param: `BAA Open (${cutoffLabel})`,
+        before: fmtMStr(oldBaa),
+        after: fmtMStr(baa),
+        change: (d >= 0 ? '+' : '') + fmtMStr(d)
+      });
+    }
+    if (Math.abs(oldPa - pa) > 0.01) {
+      const d = pa - oldPa;
+      diffs.push({
+        param: `PA Open (${cutoffLabel})`,
+        before: fmtMStr(oldPa),
+        after: fmtMStr(pa),
+        change: (d >= 0 ? '+' : '') + fmtMStr(d)
+      });
+    }
+
+    const now = new Date();
+    const monthsId = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+    const timeStr = `${String(now.getDate()).padStart(2, '0')} ${monthsId[now.getMonth()]} ${now.getFullYear()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} WIB`;
+
+    appData.mostLikelyFactors[key] = {
+      month: period,
+      cutoff: cutoff,
+      cutoffLabel: cutoffLabel,
+      exception: exc,
+      baaOpen: baa,
+      paOpen: pa,
+      note: note || `Update parameter mitigasi ${cutoffLabel}`,
+      updatedAt: timeStr,
+      pic: user
+    };
+
+    // Sinkronkan ke appData.prognosa.prognosaMostLikely jika periode/cutoff ini aktif
+    const activePeriod = document.getElementById('pln-prog-filter-period') ? (parseInt(document.getElementById('pln-prog-filter-period').value) || 9) : 9;
+    const activeCutoff = (activePeriod === 10) ? (activeProgCutoff || '15-okt') : 'default';
+    if (period === activePeriod && (cutoff === activeCutoff || cutoff === 'default' || (period !== 10))) {
+      appData.prognosa.prognosaMostLikely = newMostLikely;
+    }
+
+    if (diffs.length > 0) {
+      addPrognosaAuditLog({
+        user: user,
+        action: 'Update Master Mitigasi Most Likely',
+        source: `Master Prognosa (${cutoffLabel})`,
+        diffs: diffs,
+        note: `Perubahan parameter mitigasi: Exception, BAA Open, dan PA Open menghasilkan Most Likely ${fmtMStr(newMostLikely)}`
+      });
+    } else {
+      addPrognosaAuditLog({
+        user: user,
+        action: 'Konfirmasi Master Mitigasi',
+        source: `Master Prognosa (${cutoffLabel})`,
+        diffs: [],
+        note: `Konfirmasi simpan parameter mitigasi ${cutoffLabel} (${fmtMStr(newMostLikely)})`
+      });
+    }
+
+    saveAppData(appData);
+    renderMasterMlFactorsTable();
+    renderMasterMlFactorsSection();
+    renderPrognosaLogTable();
+    if (typeof renderPrognosaWaterfallMostLikely === 'function') renderPrognosaWaterfallMostLikely();
+    if (typeof renderPrognosaView === 'function') renderPrognosaView();
+
+    showToast(`Parameter Mitigasi ${cutoffLabel} (Most Likely: ${fmtMStr(newMostLikely)}) berhasil disimpan!`);
+  }
+
+  function resetMasterMlFactorsToDefault() {
+    if (confirm('Apakah Anda yakin ingin me-reset seluruh parameter mitigasi (Exception, BAA Open, PA Open) ke konfigurasi standar 2026?')) {
+      appData.mostLikelyFactors = JSON.parse(JSON.stringify(DEFAULT_MOSTLIKELY_FACTORS));
+      saveAppData(appData);
+      renderMasterMlFactorsSection();
+      if (typeof renderPrognosaWaterfallMostLikely === 'function') renderPrognosaWaterfallMostLikely();
+      if (typeof renderPrognosaView === 'function') renderPrognosaView();
+      showToast('Parameter mitigasi Most Likely berhasil di-reset ke nilai default.');
+    }
   }
 
   function renderMasterPrognosaTable(services, totalEst) {
