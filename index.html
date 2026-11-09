@@ -3149,11 +3149,11 @@
             <span class="kpi-title" style="color: #4338CA;">REVENUE MOSTLIKELY</span>
           </div>
           <div class="kpi-value-row">
-            <span class="kpi-value" id="kpi-mostlikely-val" style="color: #4338CA;">1,60</span>
+            <span class="kpi-value" id="kpi-mostlikely-val" style="color: #4338CA;">3.415,00</span>
             <span class="kpi-unit">M</span>
           </div>
           <div class="kpi-sub-row">
-            <span class="kpi-tag" id="kpi-mostlikely-pct-tag" style="background: rgba(99, 102, 241, 0.12); color: #4338CA; border: 1px solid rgba(99, 102, 241, 0.25);">89% Opp</span>
+            <span class="kpi-tag" id="kpi-mostlikely-pct-tag" style="background: rgba(99, 102, 241, 0.12); color: #4338CA; border: 1px solid rgba(99, 102, 241, 0.25);">82,2% Target</span>
             <span class="kpi-desc" id="kpi-mostlikely-desc">Proyeksi realisasi tinggi</span>
           </div>
         </div>
@@ -8976,11 +8976,11 @@
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; color: #4338CA; text-transform: uppercase;">4. REVENUE MOSTLIKELY</span>
               <div style="display: flex; gap: 5px;">
-                <span class="kpi-tag" id="tag-preview-mostlikely" style="background: rgba(99, 102, 241, 0.12); color: #4338CA;">89% Opp</span>
+                <span class="kpi-tag" id="tag-preview-mostlikely" style="background: rgba(99, 102, 241, 0.12); color: #4338CA;">82,2% Target</span>
                 <span class="kpi-tag" style="background: #E2E8F0; color: var(--sub);">Reminder</span>
               </div>
             </div>
-            <div style="font-size: 26px; font-weight: 800; color: #4338CA;" id="val-annual-mostlikely">1,60 <span style="font-size: 13.5px; font-weight: 700; color: #6366F1;">M</span></div>
+            <div style="font-size: 26px; font-weight: 800; color: #4338CA;" id="val-annual-mostlikely">3.415,00 <span style="font-size: 13.5px; font-weight: 700; color: #6366F1;">M</span></div>
             <div style="font-size: 10px; color: var(--sub); margin-top: 6px;">Estimasi revenue probabilitas tinggi dari pipeline & WBS &middot; Input ditutup</div>
           </div>
 
@@ -9706,7 +9706,7 @@
       target: 4156.00, // Mengacu pada sheet 'TARGET KUM & SA', kolom TARGET RKAP baris TOTAL (4.156,00 M)
       opp: 1.80,
       real: 2960.34, // Realisasi Revenue s.d Akhir Oktober 2026 (Sheet TARGET VS REALISASI & Sheet TANGGAL 31: 2.960,34 M)
-      mostLikely: 1.60,
+      mostLikely: 3415.00, // Prognosa Most Likely (Penajaman Strategi Penjualan: 3.415,00 M)
       cash: 0.10,
       wait: 0.20,
       risk: 0.00
@@ -9733,13 +9733,13 @@
               m.proc = 0;
             });
           }
-          if (!parsed.annual || parsed.annual.real < 100 || parsed.annual.real === 159.33 || parsed.annual.opp === 272.80 || !parsed.annual.target || parsed.annual.target < 4000) {
+          if (!parsed.annual || parsed.annual.real < 100 || parsed.annual.mostLikely < 100 || parsed.annual.real === 159.33 || parsed.annual.opp === 272.80 || !parsed.annual.target || parsed.annual.target < 4000) {
             parsed.annual = {
               useDirect: true,
               target: (parsed.annual && parsed.annual.target && parsed.annual.target >= 4000) ? parsed.annual.target : 4156.00,
               opp: (parsed.annual && parsed.annual.opp) ? parsed.annual.opp : 1.80,
               real: 2960.34, // Realisasi Revenue s.d Akhir Oktober 2026
-              mostLikely: (parsed.annual && parsed.annual.mostLikely) ? parsed.annual.mostLikely : 1.60,
+              mostLikely: 3415.00, // Prognosa Most Likely 2026 (3.415,00 M)
               cash: (parsed.annual && parsed.annual.cash) ? parsed.annual.cash : 0.10,
               wait: (parsed.annual && parsed.annual.wait) ? parsed.annual.wait : 0.30,
               risk: 0.00
@@ -58271,15 +58271,17 @@ window.addEventListener('keydown', function(e) {
     const realOctM = (sbuRealData && sbuRealData.months && sbuRealData.months[10]) ? sbuRealData.months[10] : 2960.34;
     const yearRealJt = Math.round(realOctM * 1000);
 
-    const yearMostLikelyJt = (appData.annual && appData.annual.mostLikely !== undefined)
-      ? Math.round(appData.annual.mostLikely * 1000)
-      : (sumWbsJt > 0 ? sumWbsJt : Math.round(yearOppJt * 0.85));
+    // Prognosa Most Likely 1 Tahun (3.415,00 M)
+    const progMostLikelyM = (appData.prognosa && appData.prognosa.prognosaMostLikely !== undefined && appData.prognosa.prognosaMostLikely > 100)
+      ? appData.prognosa.prognosaMostLikely
+      : ((DEFAULT_PROGNOSA && DEFAULT_PROGNOSA.prognosaMostLikely) ? DEFAULT_PROGNOSA.prognosaMostLikely : 3415.00);
+    const yearMostLikelyJt = Math.round(progMostLikelyM * 1000);
 
     // Keep appData.annual in sync
     if (!appData.annual) appData.annual = {};
     appData.annual.opp = parseFloat((yearOppJt / 1000).toFixed(2));
     appData.annual.real = realOctM;
-    appData.annual.mostLikely = parseFloat((yearMostLikelyJt / 1000).toFixed(2));
+    appData.annual.mostLikely = progMostLikelyM;
     appData.annual.cash = parseFloat((yearCashJt / 1000).toFixed(2));
     appData.annual.wait = parseFloat((yearWaitJt / 1000).toFixed(2));
     appData.annual.risk = 0.00;
@@ -58308,12 +58310,12 @@ window.addEventListener('keydown', function(e) {
     const elRealDesc = document.getElementById('kpi-real-desc');
     if (elRealDesc) elRealDesc.textContent = 'Realisasi sd Akhir Okt 2026';
 
-    // 4. Revenue MostLikely 1 Tahun
-    const mostLikelyOppRatio = yearOppJt ? Math.round((yearMostLikelyJt / yearOppJt) * 100) : 0;
+    // 4. Revenue MostLikely 1 Tahun (Prognosa Most Likely)
+    const mostLikelyTargetRatio = yearTargetJt ? ((yearMostLikelyJt / yearTargetJt) * 100).toFixed(1).replace('.', ',') : '0,0';
     const elMostLikelyVal = document.getElementById('kpi-mostlikely-val');
     if (elMostLikelyVal) elMostLikelyVal.textContent = jtToM(yearMostLikelyJt);
     const elMostLikelyTag = document.getElementById('kpi-mostlikely-pct-tag');
-    if (elMostLikelyTag) elMostLikelyTag.textContent = mostLikelyOppRatio + '% Opp';
+    if (elMostLikelyTag) elMostLikelyTag.textContent = mostLikelyTargetRatio + '% Target';
     const elMostLikelyDesc = document.getElementById('kpi-mostlikely-desc');
     if (elMostLikelyDesc) elMostLikelyDesc.textContent = 'Proyeksi realisasi tinggi';
 
@@ -60167,9 +60169,12 @@ window.addEventListener('keydown', function(e) {
     const waitM = parseFloat((sumBelum / 1e9).toFixed(2));
     const realM = parseFloat(((sumCashIn + sumBelum) / 1e9).toFixed(2));
     const wbsM = parseFloat((sumWbs / 1e9).toFixed(2));
-    const mostLikelyM = (appData.annual && appData.annual.mostLikely !== undefined)
+    const progMostLikelyM = (appData.prognosa && appData.prognosa.prognosaMostLikely !== undefined && appData.prognosa.prognosaMostLikely > 100)
+      ? appData.prognosa.prognosaMostLikely
+      : ((DEFAULT_PROGNOSA && DEFAULT_PROGNOSA.prognosaMostLikely) ? DEFAULT_PROGNOSA.prognosaMostLikely : 3415.00);
+    const mostLikelyM = (appData.annual && appData.annual.mostLikely && appData.annual.mostLikely > 100)
       ? appData.annual.mostLikely
-      : (wbsM > 0 ? wbsM : parseFloat((oppM * 0.85).toFixed(2)));
+      : progMostLikelyM;
 
     if (!appData.annual) appData.annual = {};
     appData.annual.target = targetM;
@@ -60210,7 +60215,7 @@ window.addEventListener('keydown', function(e) {
     // Update Percentage Preview Tags
     const oppRatio = targetM ? Math.round((oppM / targetM) * 100) : 0;
     const realRatio = targetM ? Math.round((realM / targetM) * 100) : 0;
-    const mostLikelyRatio = oppM ? Math.round((mostLikelyM / oppM) * 100) : 0;
+    const mostLikelyRatio = targetM ? ((mostLikelyM / targetM) * 100).toFixed(1).replace('.', ',') : '0,0';
     const cashRatio = realM ? Math.round((cashM / realM) * 100) : 0;
     const waitRatio = realM ? Math.round((waitM / realM) * 100) : 0;
 
@@ -60219,7 +60224,7 @@ window.addEventListener('keydown', function(e) {
     const tagReal = document.getElementById('tag-preview-real');
     if (tagReal) tagReal.textContent = realRatio + '% Target';
     const tagMostLikely = document.getElementById('tag-preview-mostlikely');
-    if (tagMostLikely) tagMostLikely.textContent = mostLikelyRatio + '% Opp';
+    if (tagMostLikely) tagMostLikely.textContent = mostLikelyRatio + '% Target';
     const tagCash = document.getElementById('tag-preview-cash');
     if (tagCash) tagCash.textContent = cashRatio + '% Real';
     const tagWait = document.getElementById('tag-preview-wait');
