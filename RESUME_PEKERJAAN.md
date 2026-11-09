@@ -2,13 +2,13 @@
 **Proyek:** Executive Dashboard Revenue Monitoring & Collection — PT PLN Icon Plus (Danantara Indonesia)  
 **Repository GitHub:** [https://github.com/Koentink04/Dashboard-Revenue](https://github.com/Koentink04/Dashboard-Revenue)  
 **Branch Utama:** `main`  
-**Waktu Pembaruan Terakhir:** 09 Oktober 2026
+**Waktu Pembaruan Terakhir:** 09 November 2026
 
 ---
 
 ## 1. Status Proyek Terkini
 - Seluruh kode sumber, aset, dataset (15.013 faktur), dan visualisasi telah berhasil dikomit dan di-push ke repositori GitHub: `https://github.com/Koentink04/Dashboard-Revenue` pada branch `main`.
-- Fitur terbaru yang selesai diimplementasikan dan telah melalui uji visual serta uji interaksi (*browser live verification*) adalah **Interactive Drag-and-Drop Reordering & Bidirectional Synchronization untuk Sub Tab & Sub Menu Modul Collection**.
+- Fitur terbaru: **Standarisasi Seluruh Satuan Angka & Nilai Dashboard Revenue menjadi Miliar Rupiah (M)** dengan format penulisan angka standar Indonesia (pemisah ribuan titik, desimal koma, akhiran satuan `M`), mencakup Top 7 KPI Cards, Waterfall AS IS & Most Likely, Progress Capaian RKAP, dan Revenue at Risk.
 
 ---
 
